@@ -1,5 +1,8 @@
 <!DOCTYPE html>
+{% extends 'main/mainpage.html' %}
 {% load static %}
+
+{% block content %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -48,7 +51,7 @@ box-shadow: 2px 2px 5px 5px #eee;
                 <form>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
-                            <span style="width: 110px;" class="input-group-text"><i class="fas fa-heading"></i></span>
+                            <span style="width: 110px;" class="input-group-text"><i class="fas fa-heading" ></i></span>
                         </div>
                         <input type="text" class="form-control" placeholder="Post Title">
 
@@ -150,7 +153,7 @@ box-shadow: 2px 2px 5px 5px #eee;
                             <span style="width: 110px;" class="input-group-text"><i class="far fa-images"></i></span>
                         </div>
 
-             <input  style= "width:250px; position:right;" type="file" name="profile_pic" accept="image/*" placeholder="Profile Picture" class="form-control " required="required" id="id_profile_pic">
+             <input  style= "width:260px; position:right;" type="file" name="profile_pic" accept="image/*" placeholder="Profile Picture" class="form-control " required="required" id="id_profile_pic">
 
 
                     </div>
@@ -163,7 +166,7 @@ box-shadow: 2px 2px 5px 5px #eee;
             <br>
             <div class="card-footer">
                 <div class="d-flex justify-content-center links">
-                    Do you need any <a href="">Help</a> ?
+                    Do you need any <a href="">help</a> ?
                 </div>
             </div>
         </div>
@@ -171,3 +174,5 @@ box-shadow: 2px 2px 5px 5px #eee;
 </div>
 </body>
 </html>
+
+{% endblock %}
