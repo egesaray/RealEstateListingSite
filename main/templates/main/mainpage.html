@@ -13,7 +13,7 @@
 <body class="g">
 <nav>
     <div class="logo">
-        Nova
+        <a class="navbar-brand pb-2" href="{% url 'homepage' %}"><img src="{% static 'images/nova_logo.gif' %}" style="height: 80px; width: 80px"></a>
     </div>
     <label for="btn" class="icon">
         <span class="fa fa-bars"></span>
@@ -81,7 +81,7 @@ body.g{
 
 }
 nav{
-  background: #1b1b1b;
+  background: #000000;
 }
 nav:after{
   content: '';
@@ -105,7 +105,7 @@ nav ul{
 nav ul li{
   float: left;
   display: inline-block;
-  background: #1b1b1b;
+  background: #000000;
   margin: 0 5px;
 }
 nav ul li a{
