@@ -28,70 +28,81 @@ box-shadow: 2px 2px 5px 5px #eee;
 }
 
         .bg{
-            background-color: #FFC312;
+            background-color: #FFC312;py
             color: #080808;
-            border: none;
+            border-radius:50px;
+        }
+        #step1{
+       display:block;
+        }
+        #step2{
+       display:none;
+        }
+        #step3{
+       display:none;
+        }
+        .custom_button{
+          background-color: #FFC312;
+          border: none;
+          border-radius:50px;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+
         }
 
+
+
     </style>
+    <script>
+
+        function step1() {
+  document.getElementById("step1").style.display = "block";
+    document.getElementById("step2").style.display = "none";
+      document.getElementById("step3").style.display = "none";
+
+  }
+        function step2() {
+  document.getElementById("step1").style.display = "none";
+    document.getElementById("step2").style.display = "block";
+      document.getElementById("step3").style.display = "none";
+
+  }
+        function step3() {
+  document.getElementById("step1").style.display = "none";
+    document.getElementById("step2").style.display = "none";
+      document.getElementById("step3").style.display = "block";
+
+  }
+
+    </script>
 
 
 
 </head>
 
 <body>
+
+
+<div id="step1" >
 <div class="container">
     <div class="d-flex justify-content-center h-100">
         <div class="cardR">
             <div class="card-header">
-                <center><p><font size="5" color="white"><b>Create Post</b></font></p></center>
+                <center><p><font size="5" color="white"><b>Choose</b></font></p></center>
 
             </div>
             <div class="card-body">
                 <form>
                      <div class="row">
             <div class="col-md-6">
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span style="width: 110px;" class="input-group-text"><i class="fas fa-heading" ></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Post Title">
-
-                    </div>
 
 
-
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span style="width: 110px;" style="width: 110px;" class="input-group-text"><i class="fas fa-dollar-sign"> </i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Price">
-
-                    </div>
-
-                       <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span style="width: 110px;" class="input-group-text"><i class="fas fa-building"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Building Age">
-
-                    </div>
-
-                       <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span style="width: 110px;"  class="input-group-text"><i class="fas fa-building"></i></span>
-                        </div>
-                        <input type="text" class="form-control " placeholder="Building Floor">
-
-                    </div>
-
-                       <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span style="width: 110px;" class="input-group-text"><i class="fas fa-calculator"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="MT2">
-
-                    </div>
 
 
                       <div class="input-group form-group">
@@ -154,6 +165,81 @@ box-shadow: 2px 2px 5px 5px #eee;
 
             </div>
 
+
+        </div>
+                </form>  </div>
+            <div class="card-footer">
+
+            </div>
+        </div>
+        <button class="custom_button" onclick="step2()" >NEXT</button>
+    </div>
+</div>
+    </div>
+<div id="step2" >
+    <div class="container">
+    <div class="d-flex justify-content-center h-100">
+        <div class="cardR">
+               <div class="card-header">
+                <center><p><font size="5" color="white"><b>Fill blanks</b></font></p></center>
+
+            </div>
+    <div class="card-body">
+                <form>
+                     <div class="row">
+            <div class="col-md-6">
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span style="width: 110px;" class="input-group-text"><i class="fas fa-heading" ></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Post Title">
+
+                    </div>
+
+
+
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span style="width: 110px;" style="width: 110px;" class="input-group-text"><i class="fas fa-dollar-sign"> </i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Price">
+
+                    </div>
+
+                       <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span style="width: 110px;" class="input-group-text"><i class="fas fa-building"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Building Age">
+
+                    </div>
+
+                       <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span style="width: 110px;"  class="input-group-text"><i class="fas fa-building"></i></span>
+                        </div>
+                        <input type="text" class="form-control " placeholder="Building Floor">
+
+                    </div>
+
+                       <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span style="width: 110px;" class="input-group-text"><i class="fas fa-calculator"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="MT2">
+
+                    </div>
+
+
+
+
+
+
+
+
+
+            </div>
+
              <div class="col-md-6">
                   <div  class="input-group form-group">
                         <div class="input-group-prepend">
@@ -171,17 +257,63 @@ box-shadow: 2px 2px 5px 5px #eee;
 
 
 
+
+             </div>
+
+
+        </div>
+                </form>  </div>
+
+        </div>
+        <button class="custom_button" onclick="step3()" >NEXT</button>
+    </div>
+    </div>
+    </div>
+<div id="step3" >
+     <div class="container">
+    <div class="d-flex justify-content-center h-100">
+        <div class="cardR">
+               <div class="card-header">
+                <center><p><font size="5" color="white"><b>Select Photos</b></font></p></center>
+
+            </div>
+
+            <div class="card-body">
+                <form>
+                     <div class="row">
+
+
+
+
+
+
+
+
+
+
     <div class="input-group form-group">
                      <div class="input-group-prepend">
                             <span style="width: 110px;" class="input-group-text"><i class="far fa-images"></i></span>
                         </div>
 
-                    <div style="height:255px;">
+                    <div style="height:600px;">
                         <input type="file" class="form-control" accept="image/*"  />
                         <br>
                         <input type="file" class="form-control" accept="image/*" />
                         <br>
                         <input type="file" class="form-control" accept="image/*"  />
+                        <br>
+                        <input type="file" class="form-control" accept="image/*" />
+                        <br>
+                          <input type="file" class="form-control" accept="image/*"  />
+                        <br>
+                        <input type="file" class="form-control" accept="image/*" />
+                        <br>
+                        <input type="file" class="form-control" accept="image/*"  />
+                        <br>
+                        <input type="file" class="form-control" accept="image/*" />
+                        <br>
+                          <input type="file" class="form-control" accept="image/*"  />
                         <br>
                         <input type="file" class="form-control" accept="image/*" />
                         <br>
@@ -190,19 +322,15 @@ box-shadow: 2px 2px 5px 5px #eee;
 
              </div>
 
-                    <div class="form-group">
-                        <input type="submit" value="Publish" class="btn float-right login_btn">
-                    </div>
-        </div>
+
                 </form>  </div>
-            <div class="card-footer">
-                <div style="color:white;" class="d-flex justify-content-center links">
-                    Do you need any <a href="">help</a> ?
-                </div>
-            </div>
+
         </div>
+         <button class="custom_button" onclick="step1()" >Publish</button><!--Burası onlick step1() kalkacak publish etmek için kullanılcak-->
     </div>
-</div>
+
+     </div>
+    </div>
 </body>
 </html>
 
