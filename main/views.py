@@ -44,7 +44,7 @@ def register(request):
             email = request.POST['email']
             ouser = ourUser(username=username, first_name=first_name, last_name=last_name, email=email, user=user)
             ouser.save()
-            return redirect('login')
+            return redirect('loginpage')
 
     context = {'form': form}
     return render(request, 'main/register.html' , context)
