@@ -11,3 +11,12 @@ class CreateUserForm(UserCreationForm):
         model = User
         fields = ['username' ,'first_name' , 'last_name' , 'email' ,'password1' , 'password2' ]
 
+
+
+class CreatePost(ModelForm):
+    class Meta:
+        model = Post
+        fields = ['postType' ,'building_type' , 'location' , 'post_title' ,'price' , 'building_age','floor','post_description' ]
+
+
+

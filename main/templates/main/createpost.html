@@ -102,12 +102,10 @@ box-shadow: 2px 2px 5px 5px #eee;
 
             </div>
             <div class="card-body">
-                <form>
+                <form method="POST" action="">
+                    {% csrf_token %}
                      <div class="row">
             <div class="col-md-6">
-
-
-
 
                       <div class="input-group form-group">
                       <label  class="form-control input-group form-group bg" >Post Type</label>
@@ -115,7 +113,7 @@ box-shadow: 2px 2px 5px 5px #eee;
                  <select class="b-r" id="rentOrSale"  style="width:350px";>
                  <option value="rent">For Rent</option>
                <option value="sale">For Sale</option>
-
+            	{{form.postType}}
                   </select>
                     </div>
 
@@ -235,7 +233,7 @@ box-shadow: 2px 2px 5px 5px #eee;
                     </div>
 
 
-                
+
             </div>
 
              <div class="col-md-6">

@@ -50,6 +50,7 @@ def register(request):
     return render(request, 'main/register.html' , context)
 
 
+
 def homepage(request):
     forsale = 'forsale'
     forrent = 'forrent'
@@ -67,6 +68,25 @@ def list(request,RoS):
 
     return render(request, 'main/list.html' ,{'cu' :cu} )
 
+
 @login_required
 def createpost(request):
-    return render(request, 'main/createpost.html')
+    form = CreatePost()
+    if request.method == 'POST':
+        form = CreatePost(request.POST)
+        if form.is_valid():
+            postType = request.POST['postType']
+            building_type = request.POST['building_type']
+            location = request.POST['location']
+            post_title = request.POST['post_title']
+            price = request.POST['price']
+            building_age = request.POST['building_age']
+            floor = request.POST['floor']
+            post_description = request.POST['post_description']
+            post = Post(postType=postType, building_type=building_type, location=location, post_title=post_title,
+                        price=price, building_age=building_age, floor=floor, post_description=post_description)
+            post.save()
+
+    context = {'form': form}
+
+    return render(request, 'main/createpost.html', context)
