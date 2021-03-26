@@ -29,7 +29,13 @@ box-shadow: 2px 2px 5px 5px #eee;
         .bg{
             background-color: #FFC312;py
             color: #080808;
-            border-radius:50px;
+            border-radius: 50px 20px;
+        }
+        .b-r{
+         border-radius: 50px 20px;
+        }
+        .bri{
+        border-bottom-right-radius: 50px 20px;
         }
         #step1{
        display:block;
@@ -58,6 +64,7 @@ box-shadow: 2px 2px 5px 5px #eee;
 
 
     </style>
+
     <script>
 
         function step1() {
@@ -80,8 +87,6 @@ box-shadow: 2px 2px 5px 5px #eee;
   }
 
     </script>
-
-
 
 </head>
 
@@ -107,7 +112,7 @@ box-shadow: 2px 2px 5px 5px #eee;
                       <div class="input-group form-group">
                       <label  class="form-control input-group form-group bg" >Post Type</label>
 
-                 <select id="rentOrSale"  style="width:350px";>
+                 <select class="b-r" id="rentOrSale"  style="width:350px";>
                  <option value="rent">For Rent</option>
                <option value="sale">For Sale</option>
 
@@ -117,7 +122,7 @@ box-shadow: 2px 2px 5px 5px #eee;
                               <div class="input-group form-group" >
                       <label   class=" form-control input-group form-group bg"   >Estate Type</label>
 
-                 <select  style="width:350px";>
+                 <select class="b-r" style="width:350px";>
                  <option value="apt">Apartment</option>
                <option value="house">House</option>
                 <option value="town">Town House</option>
@@ -132,7 +137,7 @@ box-shadow: 2px 2px 5px 5px #eee;
                               <div class="input-group form-group" >
                       <label   class=" form-control input-group form-group bg" >City</label>
 
-                 <select id="type"  style="width:350px";>
+                 <select  class="b-r" id="type"  style="width:350px";>
                  <option value="apt">İstanbul/Asya</option>
                  <option value="apt">İstanbul/Avrupa</option>
                <option value="house">Ankara</option>
@@ -191,7 +196,7 @@ box-shadow: 2px 2px 5px 5px #eee;
                         <div class="input-group-prepend">
                             <span style="width: 110px;" class="input-group-text bg"><i class="fas fa-heading" ></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Post Title">
+                        <input type="text" class="form-control b-r" placeholder="Post Title">
 
                     </div>
 
@@ -201,7 +206,7 @@ box-shadow: 2px 2px 5px 5px #eee;
                         <div class="input-group-prepend">
                             <span style="width: 110px;" style="width: 110px;" class="input-group-text bg"><i class="fas fa-dollar-sign"> </i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Price">
+                        <input type="text" class="form-control b-r" placeholder="Price">
 
                     </div>
 
@@ -209,7 +214,7 @@ box-shadow: 2px 2px 5px 5px #eee;
                         <div class="input-group-prepend">
                             <span style="width: 110px;" class="input-group-text bg"><i class="fas fa-building"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Building Age">
+                        <input type="text" class="form-control b-r" placeholder="Building Age">
 
                     </div>
 
@@ -217,7 +222,7 @@ box-shadow: 2px 2px 5px 5px #eee;
                         <div class="input-group-prepend">
                             <span style="width: 110px;"  class="input-group-text bg"><i class="fas fa-building"></i></span>
                         </div>
-                        <input type="text" class="form-control " placeholder="Building Floor">
+                        <input type="text" class="form-control b-r " placeholder="Building Floor">
 
                     </div>
 
@@ -225,7 +230,7 @@ box-shadow: 2px 2px 5px 5px #eee;
                         <div class="input-group-prepend">
                             <span style="width: 110px;" class="input-group-text bg"><i class="fas fa-calculator"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="MT2">
+                        <input type="text" class="form-control b-r" placeholder="MT2">
 
                     </div>
 
@@ -242,19 +247,13 @@ box-shadow: 2px 2px 5px 5px #eee;
              <div class="col-md-6">
                   <div  class="input-group form-group">
                         <div class="input-group-prepend">
-                            <span style="width: 110px;" class="input-group-text bg"><i class="fas fa-heading" ></i></span>
+                            <span style="width: 70px;" class="input-group-text bg"><i class="fab fa-dyalog"></i></span>
+
                         </div>
-                        <textarea style="height:255px;" rows="4" cols="100" type="text" class="form-control" placeholder="Description">
+                        <textarea style="height:255px;" rows="4" cols="100" type="text" class="form-control b-r" placeholder="Description">
 
                         </textarea>
                     </div>
-
-
-
-
-
-
-
 
 
              </div>
@@ -283,38 +282,31 @@ box-shadow: 2px 2px 5px 5px #eee;
 
 
 
-
-
-
-
-
-
-
     <div class="input-group form-group">
                      <div class="input-group-prepend">
                             <span style="width: 110px;" class="input-group-text bg"><i class="far fa-images"></i></span>
                         </div>
 
                     <div style="height:600px;">
-                        <input type="file" class="form-control" accept="image/*"  />
+                        <input type="file" class="form-control bri" accept="image/*"  />
                         <br>
-                        <input type="file" class="form-control" accept="image/*" />
+                        <input type="file" class="form-control bri" accept="image/*" />
                         <br>
-                        <input type="file" class="form-control" accept="image/*"  />
+                        <input type="file" class="form-control bri" accept="image/*"  />
                         <br>
-                        <input type="file" class="form-control" accept="image/*" />
+                        <input type="file" class="form-control bri" accept="image/*" />
                         <br>
-                          <input type="file" class="form-control" accept="image/*"  />
+                          <input type="file" class="form-control bri" accept="image/*"  />
                         <br>
-                        <input type="file" class="form-control" accept="image/*" />
+                        <input type="file" class="form-control bri" accept="image/*" />
                         <br>
-                        <input type="file" class="form-control" accept="image/*"  />
+                        <input type="file" class="form-control bri" accept="image/*"  />
                         <br>
-                        <input type="file" class="form-control" accept="image/*" />
+                        <input type="file" class="form-control bri" accept="image/*" />
                         <br>
-                          <input type="file" class="form-control" accept="image/*"  />
+                          <input type="file" class="form-control bri" accept="image/*"  />
                         <br>
-                        <input type="file" class="form-control" accept="image/*" />
+                        <input type="file" class="form-control bri" accept="image/*" />
                         <br>
                     </div>
                     </div>
