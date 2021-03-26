@@ -89,12 +89,13 @@
         <div class="container">
 
         <div style="margin-left: 35%">
-            <button class="btn btn-info"><i style='font-size:50px' class="fa fa-home" ></i>For Sale</button>
+            <a href="{% url 'list' forsale %}"><button class="btn btn-info"><i style='font-size:50px' class="fa fa-home"></i>For Sale</button></a>
 
             &ensp;
             &ensp;
             &ensp;
-            <button class="btn btn-info"><i style='font-size:50px' class="fa fa-key"></i>For Rent</button>
+            <a href="{% url 'list' forrent %}"><button class="btn btn-info"><i style='font-size:50px' class="fa fa-key"></i>For Rent</button></a>
+
         </div>
 
             </div>

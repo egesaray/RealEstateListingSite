@@ -26,7 +26,6 @@
 </head>
 <body>
 
-
 <div class="wrap">
     <div class="menu">
         <div class="mini-menu">
@@ -113,7 +112,9 @@
         <div data-price="290.000" class="item">
             <img src="https://www.rocketmortgage.com/resources-cmsassets/RocketMortgage.com/Article_Images/Large_Images/TypesOfHomes/types-of-homes-hero.jpg" alt="jacket" class="img-item"></img>
                 <div class="info">
-                    <h3>Family House In The Suburbs</h3>
+                    {% for i in cu %}
+                    <h3>{{ i.post_title }}</h3>
+                    {% endfor %}
                     <p class="descroption">5+3</p>
                     <h5>$290k</h5>
                 </div>
