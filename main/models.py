@@ -15,12 +15,39 @@ class ourUser(models.Model):
 
 
 
+
+
+city=[
+    (' İstanbul/Asya',' İstanbul/Asya'),
+    ('İstanbul/Avrupa','İstanbul/Avrupa'),
+    ('Ankara', 'Ankara'),
+    (' İzmir', ' İzmir'),
+    ('Eskişehir', 'Eskişehir'),
+    ('Adana', 'Adana'),
+    ('Karabük', 'Karabük'),
+    ('Uşak', 'Uşak'),
+    ('Konya', 'Konya'),
+    ('Antalya', 'Antalya'),
+    ('Mersin', 'Mersin'),
+    ('Diyarbakır', 'Diyarbakır'),
+    ('Sakarya', 'Sakarya'),
+    ('Eskişehir', 'Eskişehir'),
+    ('Van', 'Van'),
+    ('Kars', 'Kars'),
+    ('Amasya', 'Amasya'),
+    ('Balıkesir', 'Balıkesir'),
+    ('Muğla', 'Muğla'),
+    ('Batman', 'Batman'),
+    ('Kocaeli', 'Kocaeli'),
+
+]
+
 class Post(models.Model):
     ouruser = models.ForeignKey(ourUser, null=True, on_delete=models.CASCADE)
     post_title = models.CharField(max_length=255,null=True)
     post_description = models.TextField()
     price = models.DecimalField(decimal_places=2 , max_digits=12)
-    location = models.CharField(max_length=255,null=True)
+    location = models.CharField(max_length=255,null=True,choices=city)
     RorS = [
         ('For Sale', 'For Sale'),
         ('For Rent', 'For Rent'),
@@ -29,7 +56,7 @@ class Post(models.Model):
     floor = models.DecimalField(decimal_places=0 , max_digits=3 ,null=True)
     building_age = models.DecimalField(decimal_places=0, max_digits=2 , null=True)
     area = models.DecimalField(decimal_places=0,max_digits=4 ,null=True)
-    isFurniture = models.BooleanField(default=False, null=False)
+    isFurniture = models.BooleanField(default=False, null=True)
     b_types =[
         ('Apartment', 'Apartment'),
     ('House', 'House'),

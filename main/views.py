@@ -72,19 +72,10 @@ def list(request,RoS):
 @login_required
 def createpost(request):
     form = CreatePost()
-    if request.method == 'POST':
-        form = CreatePost(request.POST)
+    if request.method=='POST':
+        form = CreatePost(request.POST,request.FILES)
         if form.is_valid():
-            postType = request.POST['postType']
-            building_type = request.POST['building_type']
-            location = request.POST['location']
-            post_title = request.POST['post_title']
-            price = request.POST['price']
-            building_age = request.POST['building_age']
-            floor = request.POST['floor']
-            post_description = request.POST['post_description']
-            post = Post(postType=postType, building_type=building_type, location=location, post_title=post_title,
-                        price=price, building_age=building_age, floor=floor, post_description=post_description)
+            post=form.save()
             post.save()
 
     context = {'form': form}
