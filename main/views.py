@@ -1,6 +1,6 @@
 from django.shortcuts import render ,redirect
 from django.contrib.auth import  authenticate , login ,logout
-
+from django.http import HttpResponseRedirect
 from .decorators import unauthenticated_user
 from .forms import *
 from django.contrib.auth.decorators import login_required
@@ -68,7 +68,7 @@ def list(request,RoS):
 
     return render(request, 'main/list.html' ,{'cu' :cu} )
 
-
+"""
 @login_required
 def createpost(request):
     form = CreatePost()
@@ -81,3 +81,16 @@ def createpost(request):
     context = {'form': form}
 
     return render(request, 'main/createpost.html', context)
+
+"""
+@login_required
+def createpost(request):
+    postForm = CreatePost()
+    mydict = {'form': postForm}
+    if request.method == 'POST':
+        postForm = CreatePost(request.POST)
+        if postForm.is_valid():
+            post = postForm.save()
+            post.save()
+
+    return render(request, 'main/createpost.html', context=mydict)

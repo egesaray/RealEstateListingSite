@@ -93,7 +93,7 @@ box-shadow: 2px 2px 5px 5px #eee;
 
 <body>
 
-
+<form method="POST" action="">
 <div id="step1" >
 <div class="container">
     <div class="d-flex justify-content-center h-100">
@@ -103,7 +103,7 @@ box-shadow: 2px 2px 5px 5px #eee;
 
             </div>
             <div class="card-body">
-                <form method="POST" action="">
+
                     {% csrf_token %}
                      <div class="row">
             <div class="col-md-6">
@@ -135,7 +135,7 @@ box-shadow: 2px 2px 5px 5px #eee;
 
 
         </div>
-                </form>  </div>
+                  </div>
             <div class="card-footer">
 
             </div>
@@ -153,7 +153,7 @@ box-shadow: 2px 2px 5px 5px #eee;
 
             </div>
     <div class="card-body">
-               <form method="POST" action="">
+
                       {% csrf_token %}
                      <div class="row">
             <div class="col-md-6">
@@ -165,8 +165,6 @@ box-shadow: 2px 2px 5px 5px #eee;
                             {% render_field form.post_title class="form-control b-r" placeholder="Post Title" %}
 
                     </div>
-
-
 
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
@@ -218,16 +216,18 @@ box-shadow: 2px 2px 5px 5px #eee;
 
 
         </div>
-                </form>  </div>
-            <button class="custom_button" onclick="step1()" >back</button>
 
+                  </div>
+            <button class="custom_button" onclick="step1()" >back</button>
         </div>
-         <button class="custom_button" type="submit" >Publish</button>
+
         <!--<button class="custom_button" onclick="step3()" >NEXT</button>-->
     </div>
     </div>
 
     </div>
+    <button class="custom_button" type="submit" >Publish</button>
+</form>
 
 <!--
 <div id="step3" >

@@ -14,9 +14,6 @@ class ourUser(models.Model):
         return self.username
 
 
-
-
-
 city=[
     (' İstanbul/Asya',' İstanbul/Asya'),
     ('İstanbul/Avrupa','İstanbul/Avrupa'),
@@ -58,7 +55,7 @@ class Post(models.Model):
     area = models.DecimalField(decimal_places=0,max_digits=4 ,null=True)
     isFurniture = models.BooleanField(default=False, null=True)
     b_types =[
-        ('Apartment', 'Apartment'),
+    ('Apartment', 'Apartment'),
     ('House', 'House'),
     ('Flat', 'Flat'),
     ('Town house', 'Town house'),
