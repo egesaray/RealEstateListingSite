@@ -92,5 +92,10 @@ def createpost(request):
         if postForm.is_valid():
             post = postForm.save()
             post.save()
+            return redirect('createpost-success')
 
     return render(request, 'main/createpost.html', context=mydict)
+
+
+def createpostsuccess(request):
+    return render(request, 'main/create-post-success.html')
