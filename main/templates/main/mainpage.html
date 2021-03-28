@@ -21,26 +21,30 @@
     <input type="checkbox" id="btn">
     <ul>
         <li><a href="/">Home</a></li>
+        {% if user.is_authenticated %}
         <li>
-
             <a href="">Account</a>
             <input type="checkbox" id="btn-1">
             <ul>
-                <li><a href="{% url 'register' %}">Register</a></li>
-                <li><a href="{% url 'loginpage' %}">Login</a></li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
             </ul>
         </li>
         <li>
-
-            <a href="">Real Estates</a>
-            <input type="checkbox" id="btn-2">
-
-        <li>
-
             <a href="{% url 'createpost' %}">Create Post</a>
             <input type="checkbox" id="btn-3">
         </li>
+        {% else %}
+
+        <li>
+            <a href="{% url 'loginpage' %}">Login</a>
+            <input type="checkbox" id="btn-2">
+        </li>
+        <li>
+        <li>
+            <a href="{% url 'register' %}">Register</a>
+            <input type="checkbox" id="btn-2">
+        </li>
+        {% endif %}
     </ul>
 </nav>
 <script>

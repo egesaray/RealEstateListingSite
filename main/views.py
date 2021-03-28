@@ -64,9 +64,14 @@ def list(request,RoS):
     elif RoS =='forrent':
         cu = Post.objects.all().filter(postType='For Rent')
 
+    # foto = PostImages.objects.all()
+    # fotos = []
+    # for f in foto:
+    #     fotos.append(f.fotos)
+    # photo = PostImages.objects.all().filter(image__in=fotos)
 
 
-    return render(request, 'main/list.html' ,{'cu' :cu} )
+    return render(request, 'main/list.html' ,{'cu' :cu  } )
 
 """
 @login_required
@@ -91,7 +96,8 @@ def createpost(request):
     mydict = {'form': postForm,'imageForm':imageForm}
     if request.method == 'POST':
         postForm = CreatePost(request.POST)
-        imageForm=ImagePost(request.POST,request.FILES)
+        # imageForm=ImagePost(request.POST,request.FILES)
+        images = request.FILES.getlist('images')
         if postForm.is_valid():
             postType = request.POST['postType']
             building_type = request.POST['building_type']
@@ -105,8 +111,11 @@ def createpost(request):
             isFurniture=request.POST['isFurniture']
             newPost = Post(postType=postType,building_type=building_type,location=location,post_title=post_title,price=price,building_age=building_age, floor=floor,post_description=post_description,area=area,isFurniture=isFurniture, ouruser=ouruser)
             newPost.save()
-            images = imageForm.save()
 
+            for image in images:
+                photo = PostImages.objects.create(image =image , gallery=newPost)
+
+            photo.save()
 
             # area = request.POST['area']  django form kullanılarak çağırılmak istenirse
             # area = request.POST.get('isfurniture')   html ile input kullanularak çağırlmak istenirse
