@@ -312,27 +312,12 @@
                      <div class="input-group-prepend">
                             <span style="width: 110px;" class="input-group-text bg"><i class="far fa-images"></i></span>
                         </div>
-                    <div style="height:600px;">
-                        <input type="file" class="form-control bri" accept="image/*"  />
-                        <br>
-                        <input type="file" class="form-control bri" accept="image/*" />
-                        <br>
-                        <input type="file" class="form-control bri" accept="image/*"  />
-                        <br>
-                        <input type="file" class="form-control bri" accept="image/*" />
-                        <br>
-                          <input type="file" class="form-control bri" accept="image/*"  />
-                        <br>
-                        <input type="file" class="form-control bri" accept="image/*" />
-                        <br>
-                        <input type="file" class="form-control bri" accept="image/*"  />
-                        <br>
-                        <input type="file" class="form-control bri" accept="image/*" />
-                        <br>
-                          <input type="file" class="form-control bri" accept="image/*"  />
-                        <br>
-                        <input type="file" class="form-control bri" accept="image/*" />
-                        <br>
+                    <div style="height:255px;">
+                          <div class="form-group">
+              {% render_field imageForm.image required="required" class="form-control" placeholder="Profile Picture" %}
+            </div>
+
+
                     </div>
                     </div>
              </div>

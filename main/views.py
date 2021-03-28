@@ -86,10 +86,12 @@ def createpost(request):
 @login_required
 def createpost(request):
     postForm = CreatePost()
+    imageForm=ImagePost()
     ouruser = request.user.ouruser
-    mydict = {'form': postForm}
+    mydict = {'form': postForm,'imageForm':imageForm}
     if request.method == 'POST':
         postForm = CreatePost(request.POST)
+        imageForm=ImagePost(request.POST,request.FILES)
         if postForm.is_valid():
             postType = request.POST['postType']
             building_type = request.POST['building_type']
@@ -103,6 +105,8 @@ def createpost(request):
             isFurniture=request.POST['isFurniture']
             newPost = Post(postType=postType,building_type=building_type,location=location,post_title=post_title,price=price,building_age=building_age, floor=floor,post_description=post_description,area=area,isFurniture=isFurniture, ouruser=ouruser)
             newPost.save()
+            images = imageForm.save()
+
 
             # area = request.POST['area']  django form kullanılarak çağırılmak istenirse
             # area = request.POST.get('isfurniture')   html ile input kullanularak çağırlmak istenirse

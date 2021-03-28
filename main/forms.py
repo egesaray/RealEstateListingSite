@@ -20,3 +20,8 @@ class CreatePost(ModelForm):
 
 
 
+
+class ImagePost(ModelForm):
+    class Meta:
+        model= PostImages
+        fields = ['image']
