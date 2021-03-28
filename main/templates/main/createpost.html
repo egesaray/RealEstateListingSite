@@ -19,14 +19,46 @@
 
     <style>
         .cardR{
-height: 800px;
-margin-top: auto;
-margin-bottom: auto;
-width: 800px;
-background-color: rgba(0,0,0,0.5) !important;
-box-shadow: 2px 2px 5px 5px #eee;
+            height: 800px;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 800px;
+            background-color: rgba(0,0,0,0.5) !important;
+            box-shadow: 2px 2px 5px 5px #eee;
 }
 
+        .createpost{
+          height: 900px;
+          width: 1100px;
+          position: relative;
+          top:15%;
+          left:25%;
+          border: 3px solid rgba(0,0,0,0.5);
+        }
+        .rightb{
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          right : 0;
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+        }
+        .leftb{
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left : 0;
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+        }
+        .bottomb{
+         margin: 0;
+          position: absolute;
+          left: 45%;
+          bottom : 0;
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+        }
         .bg{
             background-color: #FFC312;
             color: #080808;
@@ -92,7 +124,7 @@ box-shadow: 2px 2px 5px 5px #eee;
 </head>
 
 <body>
-
+<div class="createpost">
 <form method="post" enctype="multipart/form-data">
 <div id="step1" >
 <div class="container">
@@ -226,12 +258,12 @@ box-shadow: 2px 2px 5px 5px #eee;
     </div>
 
     </div>
-    <button class="custom_button" type="submit" >Publish</button>
+    <button class="custom_button bottomb" type="submit" >Publish</button>
 </form>
 
-  <button class="custom_button" onclick="step2()" >NEXT</button>
- <button class="custom_button" onclick="step1()" >Back</button>
-
+  <button class="custom_button rightb" onclick="step2()" >NEXT</button>
+ <button class="custom_button leftb" onclick="step1()" >Back</button>
+</div>
 <!--
 <div id="step3" >
      <div class="container">
