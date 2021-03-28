@@ -59,6 +59,22 @@
           -ms-transform: translateY(-50%);
           transform: translateY(-50%);
         }
+
+        .custom_button{
+          background-color: #FFC312;
+          border: none;
+          border-radius:50px;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+
+        }
+
         .bg{
             background-color: #FFC312;
             color: #080808;
@@ -79,20 +95,19 @@
         #step3{
        display:none;
         }
-        .custom_button{
-          background-color: #FFC312;
-          border: none;
-          border-radius:50px;
-          color: white;
-          padding: 15px 32px;
-          text-align: center;
-          text-decoration: none;
-          display: inline-block;
-          font-size: 16px;
-          margin: 4px 2px;
-          cursor: pointer;
-
+        #back1{
+       display:none;
         }
+        #back2{
+       display:none;
+        }
+        #next1{
+       display:block;
+        }
+        #next2{
+       display:none;
+        }
+
 
 
 
@@ -104,20 +119,32 @@
   document.getElementById("step1").style.display = "block";
     document.getElementById("step2").style.display = "none";
       document.getElementById("step3").style.display = "none";
+      document.getElementById("next1").style.display = "block";
+    document.getElementById("next2").style.display = "none";
+        document.getElementById("back1").style.display = "none";
 
   }
         function step2() {
   document.getElementById("step1").style.display = "none";
     document.getElementById("step2").style.display = "block";
       document.getElementById("step3").style.display = "none";
+          document.getElementById("next1").style.display = "none";
+    document.getElementById("next2").style.display = "block";
+    document.getElementById("back1").style.display = "block";
+    document.getElementById("back2").style.display = "none";
 
   }
         function step3() {
   document.getElementById("step1").style.display = "none";
     document.getElementById("step2").style.display = "none";
       document.getElementById("step3").style.display = "block";
+      document.getElementById("back1").style.display = "none";
+    document.getElementById("back2").style.display = "block";
+    document.getElementById("next2").style.display = "none";
 
   }
+
+
 
     </script>
 
@@ -259,36 +286,23 @@
 
                     </div>
 
-                    <!--<button class="custom_button" onclick="step3()" >NEXT</button>-->
+
                 </div>
                 </div>
         </div>
-        <button class="custom_button bottomb" type="submit" >Publish</button>
-    </form>
-    <button class="custom_button rightb" onclick="step2()" >NEXT</button>
-    <button class="custom_button leftb" onclick="step1()" >Back</button>
-</div>
-<!--
-<div id="step3" >
+        <div id="step3" >
      <div class="container">
     <div class="d-flex justify-content-center h-100">
         <div class="cardR">
                <div class="card-header">
                 <center><p><font size="5" color="white"><b>Select Photos</b></font></p></center>
-
             </div>
-
             <div class="card-body">
-                <form>
                      <div class="row">
-
-
-
     <div class="input-group form-group">
                      <div class="input-group-prepend">
                             <span style="width: 110px;" class="input-group-text bg"><i class="far fa-images"></i></span>
                         </div>
-
                     <div style="height:600px;">
                         <input type="file" class="form-control bri" accept="image/*"  />
                         <br>
@@ -312,22 +326,28 @@
                         <br>
                     </div>
                     </div>
-
              </div>
 
-
-                </form>  </div>
-            <button class="custom_button" onclick="step2()" >back</button>
+            </div>
 
         </div>
-         <button class="custom_button" type="submit" >Publish</button>
 
     </div>
 
      </div>
 
     </div>
--->
+        <button class="custom_button bottomb" type="submit" >Publish</button>
+    </form>
+      <!--<button class="custom_button" onclick="step3()" >NEXT</button>-->
+    <button id="next1" class="custom_button rightb" onclick="step2()" >NEXT</button>
+    <button id="next2" class="custom_button rightb" onclick="step3()" >NEXT</button>
+    <button id="back1" class="custom_button leftb" onclick="step1()" >Back</button>
+    <button id="back2" class="custom_button leftb" onclick="step2()" >Back</button>
+</div>
+
+
+
 
 </body>
 </html>
