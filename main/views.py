@@ -86,12 +86,26 @@ def createpost(request):
 @login_required
 def createpost(request):
     postForm = CreatePost()
+    ouruser = request.user.ouruser
     mydict = {'form': postForm}
     if request.method == 'POST':
         postForm = CreatePost(request.POST)
         if postForm.is_valid():
-            post = postForm.save()
-            post.save()
+            postType = request.POST['postType']
+            building_type = request.POST['building_type']
+            location = request.POST['location']
+            post_title = request.POST['post_title']
+            price = request.POST['price']
+            building_age = request.POST['building_age']
+            floor = request.POST['floor']
+            post_description = request.POST['post_description']
+            area = request.POST['area']
+            newPost = Post(postType=postType,building_type=building_type,location=location,post_title=post_title,price=price,building_age=building_age, floor=floor,post_description=post_description,area=area, ouruser=ouruser)
+            newPost.save()
+
+            # area = request.POST['area']  django form kullanılarak çağırılmak istenirse
+            # area = request.POST.get('isfurniture')   html ile input kullanularak çağırlmak istenirse
+
             return redirect('createpost-success')
 
     return render(request, 'main/createpost.html', context=mydict)
