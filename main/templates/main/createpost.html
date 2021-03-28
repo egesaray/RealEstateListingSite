@@ -99,6 +99,9 @@
         #step3{
             display:none;
         }
+        #publish{
+            display:none;
+        }
 
         #back1{
             display:none;
@@ -127,6 +130,7 @@
         document.getElementById("next1").style.display = "block";
         document.getElementById("next2").style.display = "none";
         document.getElementById("back1").style.display = "none";
+        document.getElementById("publish").style.display = "none";
 
   }
         function step2() {
@@ -137,6 +141,7 @@
         document.getElementById("next2").style.display = "block";
         document.getElementById("back1").style.display = "block";
         document.getElementById("back2").style.display = "none";
+        document.getElementById("publish").style.display = "none";
 
   }
         function step3() {
@@ -146,6 +151,7 @@
         document.getElementById("back1").style.display = "none";
         document.getElementById("back2").style.display = "block";
         document.getElementById("next2").style.display = "none";
+        document.getElementById("publish").style.display = "block";
 
   }
 
@@ -340,7 +346,7 @@
      </div>
 
     </div>
-        <button class="custom_button bottomb" type="submit" >Publish</button>
+        <button id="publish" class="custom_button bottomb" type="submit" >Publish</button>
     </form>
     <button id="next1" class="custom_button rightb" onclick="step2()" >NEXT</button>
     <button id="next2" class="custom_button rightb" onclick="step3()" >NEXT</button>
