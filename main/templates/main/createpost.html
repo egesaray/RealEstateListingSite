@@ -19,13 +19,12 @@
 
     <style>
         .cardR{
-            height: 800px;
-            margin-top: auto;
-            margin-bottom: auto;
-            width: 800px;
-            box-shadow: 2px 2px 5px 5px #eee;
-}
-
+          height: 800px;
+          margin-top: auto;
+          margin-bottom: auto;
+          width: 800px;
+          box-shadow: 2px 2px 5px 5px #eee;
+    }
         .createpost{
           height: 900px;
           width: 1100px;
@@ -35,29 +34,30 @@
           background-color: rgba(0,0,0,0.5) !important;
           box-shadow: 2px 2px 5px 5px #eee;
         }
+
         .rightb{
-          margin: 0;
-          position: absolute;
-          top: 50%;
-          right : 0;
-          -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            right : 0;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
         }
         .leftb{
-          margin: 0;
-          position: absolute;
-          top: 50%;
-          left : 0;
-          -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left : 0;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
         }
         .bottomb{
-         margin: 0;
-          position: absolute;
-          left: 45%;
-          bottom : 0;
-          -ms-transform: translateY(-50%);
-          transform: translateY(-50%);
+            margin: 0;
+            position: absolute;
+            left: 45%;
+            bottom : 0;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
         }
 
         .custom_button{
@@ -72,7 +72,6 @@
           font-size: 16px;
           margin: 4px 2px;
           cursor: pointer;
-
         }
 
         .bg{
@@ -80,71 +79,75 @@
             color: #080808;
             border-radius: 50px 20px;
         }
+
         .b-r{
-         border-radius: 50px 20px;
+            border-radius: 50px 20px;
         }
+
         .bri{
-        border-bottom-right-radius: 50px 20px;
+            border-bottom-right-radius: 50px 20px;
         }
+
         #step1{
-       display:block;
+            display:block;
         }
+
         #step2{
-       display:none;
+            display:none;
         }
+
         #step3{
-       display:none;
+            display:none;
         }
+
         #back1{
-       display:none;
+            display:none;
         }
+
         #back2{
-       display:none;
+            display:none;
         }
+
         #next1{
-       display:block;
+            display:block;
         }
+
         #next2{
-       display:none;
+            display:none;
         }
-
-
-
 
     </style>
 
     <script>
 
         function step1() {
-  document.getElementById("step1").style.display = "block";
-    document.getElementById("step2").style.display = "none";
-      document.getElementById("step3").style.display = "none";
-      document.getElementById("next1").style.display = "block";
-    document.getElementById("next2").style.display = "none";
+        document.getElementById("step1").style.display = "block";
+        document.getElementById("step2").style.display = "none";
+        document.getElementById("step3").style.display = "none";
+        document.getElementById("next1").style.display = "block";
+        document.getElementById("next2").style.display = "none";
         document.getElementById("back1").style.display = "none";
 
   }
         function step2() {
-  document.getElementById("step1").style.display = "none";
-    document.getElementById("step2").style.display = "block";
-      document.getElementById("step3").style.display = "none";
-          document.getElementById("next1").style.display = "none";
-    document.getElementById("next2").style.display = "block";
-    document.getElementById("back1").style.display = "block";
-    document.getElementById("back2").style.display = "none";
+        document.getElementById("step1").style.display = "none";
+        document.getElementById("step2").style.display = "block";
+        document.getElementById("step3").style.display = "none";
+        document.getElementById("next1").style.display = "none";
+        document.getElementById("next2").style.display = "block";
+        document.getElementById("back1").style.display = "block";
+        document.getElementById("back2").style.display = "none";
 
   }
         function step3() {
-  document.getElementById("step1").style.display = "none";
-    document.getElementById("step2").style.display = "none";
-      document.getElementById("step3").style.display = "block";
-      document.getElementById("back1").style.display = "none";
-    document.getElementById("back2").style.display = "block";
-    document.getElementById("next2").style.display = "none";
+        document.getElementById("step1").style.display = "none";
+        document.getElementById("step2").style.display = "none";
+        document.getElementById("step3").style.display = "block";
+        document.getElementById("back1").style.display = "none";
+        document.getElementById("back2").style.display = "block";
+        document.getElementById("next2").style.display = "none";
 
   }
-
-
 
     </script>
 
@@ -339,7 +342,6 @@
     </div>
         <button class="custom_button bottomb" type="submit" >Publish</button>
     </form>
-      <!--<button class="custom_button" onclick="step3()" >NEXT</button>-->
     <button id="next1" class="custom_button rightb" onclick="step2()" >NEXT</button>
     <button id="next2" class="custom_button rightb" onclick="step3()" >NEXT</button>
     <button id="back1" class="custom_button leftb" onclick="step1()" >Back</button>
