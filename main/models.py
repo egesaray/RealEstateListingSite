@@ -36,7 +36,22 @@ city=[
     ('Muğla', 'Muğla'),
     ('Batman', 'Batman'),
     ('Kocaeli', 'Kocaeli'),
-
+]
+RorS = [
+    ('For Sale', 'For Sale'),
+    ('For Rent', 'For Rent'),
+]
+Furniture = [
+    ('Yes', 'Yes'),
+    ('No', 'No'),
+]
+b_types = [
+    ('Apartment', 'Apartment'),
+    ('House', 'House'),
+    ('Flat', 'Flat'),
+    ('Town house', 'Town house'),
+    ('Villa', 'Villa'),
+    ('Others', 'Others'),
 ]
 
 class Post(models.Model):
@@ -45,23 +60,11 @@ class Post(models.Model):
     post_description = models.TextField()
     price = models.DecimalField(decimal_places=2 , max_digits=12)
     location = models.CharField(max_length=255,null=True,choices=city)
-    RorS = [
-        ('For Sale', 'For Sale'),
-        ('For Rent', 'For Rent'),
-    ]
     postType = models.CharField(choices=RorS , max_length=50, null=True , default='For Sale')
     floor = models.DecimalField(decimal_places=0 , max_digits=3 ,null=True)
     building_age = models.DecimalField(decimal_places=0, max_digits=2 , null=True)
     area = models.DecimalField(decimal_places=0,max_digits=4 ,null=True)
-    isFurniture = models.BooleanField(default=False, null=True)
-    b_types =[
-    ('Apartment', 'Apartment'),
-    ('House', 'House'),
-    ('Flat', 'Flat'),
-    ('Town house', 'Town house'),
-    ('Villa', 'Villa'),
-    ('Others', 'Others'),
-    ]
+    isFurniture = models.CharField(choices=Furniture ,null=True,max_length=50,default="No")
     building_type = models.CharField(choices=b_types ,null=True ,max_length=50)
 
 

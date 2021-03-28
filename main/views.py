@@ -100,7 +100,8 @@ def createpost(request):
             floor = request.POST['floor']
             post_description = request.POST['post_description']
             area = request.POST['area']
-            newPost = Post(postType=postType,building_type=building_type,location=location,post_title=post_title,price=price,building_age=building_age, floor=floor,post_description=post_description,area=area, ouruser=ouruser)
+            isFurniture=request.POST['isFurniture']
+            newPost = Post(postType=postType,building_type=building_type,location=location,post_title=post_title,price=price,building_age=building_age, floor=floor,post_description=post_description,area=area,isFurniture=isFurniture, ouruser=ouruser)
             newPost.save()
 
             # area = request.POST['area']  django form kullanılarak çağırılmak istenirse

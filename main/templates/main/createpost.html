@@ -23,7 +23,6 @@
             margin-top: auto;
             margin-bottom: auto;
             width: 800px;
-            background-color: rgba(0,0,0,0.5) !important;
             box-shadow: 2px 2px 5px 5px #eee;
 }
 
@@ -33,7 +32,8 @@
           position: relative;
           top:15%;
           left:25%;
-          border: 3px solid rgba(0,0,0,0.5);
+          background-color: rgba(0,0,0,0.5) !important;
+          box-shadow: 2px 2px 5px 5px #eee;
         }
         .rightb{
           margin: 0;
@@ -125,144 +125,148 @@
 
 <body>
 <div class="createpost">
-<form method="post" enctype="multipart/form-data">
-<div id="step1" >
-<div class="container">
-    <div class="d-flex justify-content-center h-100">
-        <div class="cardR">
-            <div class="card-header">
-                <center><p><font size="5" color="white"><b>Choose</b></font></p></center>
+    <form method="post" enctype="multipart/form-data">
+        <div id="step1" >
+            <div class="container">
+                <div class="d-flex justify-content-center h-100">
+                    <div class="cardR">
+                        <div class="card-header">
+                            <center><p><font size="5" color="white"><b>Choose</b></font></p></center>
 
+                        </div>
+                        <div class="card-body">
+
+                                {% csrf_token %}
+                                 <div class="row">
+                        <div class="col-md-6">
+
+                                  <div class="input-group form-group">
+                                  <label  class="form-control input-group form-group bg" >Post Type</label>
+
+                              {% render_field form.postType class="form-control b-r"  %}
+                                </div>
+
+                                          <div class="input-group form-group" >
+                                  <label   class=" form-control input-group form-group bg"   >Estate Type</label>
+
+                        {% render_field form.building_type class="form-control b-r"  %}
+                                </div>
+
+
+
+                                          <div class="input-group form-group" >
+                                  <label   class=" form-control input-group form-group bg" >City</label>
+
+                          {% render_field form.location class="form-control b-r"  %}
+                                </div>
+
+                               <div class="input-group form-group" >
+                                  <label   class=" form-control input-group form-group bg" >Furniture</label>
+
+                          {% render_field form.isFurniture class="form-control b-r"  %}
+                                </div>
+
+
+
+
+                        </div>
+
+
+                    </div>
+                              </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <div class="card-body">
-
-                    {% csrf_token %}
-                     <div class="row">
-            <div class="col-md-6">
-
-                      <div class="input-group form-group">
-                      <label  class="form-control input-group form-group bg" >Post Type</label>
-
-                  {% render_field form.postType class="form-control b-r"  %}
-                    </div>
-
-                              <div class="input-group form-group" >
-                      <label   class=" form-control input-group form-group bg"   >Estate Type</label>
-
-            {% render_field form.building_type class="form-control b-r"  %}
-                    </div>
-
-
-
-                              <div class="input-group form-group" >
-                      <label   class=" form-control input-group form-group bg" >City</label>
-
-              {% render_field form.location class="form-control b-r"  %}
-                    </div>
-
-
-
-
-            </div>
-
-
         </div>
-                  </div>
-            <div class="card-footer">
+        <div id="step2" >
+            <div class="container">
+                <div class="d-flex justify-content-center h-100">
+                    <div class="cardR">
+                           <div class="card-header">
+                            <center><p><font size="5" color="white"><b>Fill blanks</b></font></p></center>
 
-            </div>
+                        </div>
+                <div class="card-body">
+
+                                  {% csrf_token %}
+                                 <div class="row">
+                        <div class="col-md-6">
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span style="width: 110px;" class="input-group-text bg"><i class="fas fa-heading" ></i></span>
+                                    </div>
+
+                                        {% render_field form.post_title class="form-control b-r" placeholder="Post Title" %}
+
+                                </div>
+
+                                <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span style="width: 110px;" style="width: 110px;" class="input-group-text bg"><i class="fas fa-dollar-sign"> </i></span>
+                                    </div>
+                                     {% render_field form.price class="form-control b-r" placeholder="Price" %}
+
+                                </div>
+
+                                   <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span style="width: 110px;" class="input-group-text bg"><i class="fas fa-building"></i></span>
+                                    </div>
+                                     {% render_field form.building_age class="form-control b-r" placeholder="Building Age" %}
+
+                                </div>
+
+                                   <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span style="width: 110px;"  class="input-group-text bg"><i class="fas fa-building"></i></span>
+                                    </div>
+                                    {% render_field form.floor class="form-control b-r" placeholder="Building Floor" %}
+
+                                </div>
+
+                                   <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span style="width: 110px;" class="input-group-text bg"><i class="fas fa-calculator"></i></span>
+                                    </div>
+                                    {% render_field form.area class="form-control b-r" placeholder="M2" %}
+
+                                </div>
+            <input id="isfurniture">
+
+
+                        </div>
+
+                         <div class="col-md-6">
+                              <div  class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span style="width: 70px;" class="input-group-text bg"><i class="fab fa-dyalog"></i></span>
+
+                                    </div>
+                                   {% render_field form.post_description class="form-control b-r" placeholder="Description" %}
+                                </div>
+
+
+                         </div>
+
+
+                    </div>
+
+                              </div>
+
+                    </div>
+
+                    <!--<button class="custom_button" onclick="step3()" >NEXT</button>-->
+                </div>
+                </div>
         </div>
-
-    </div>
-</div>
-    </div>
-<div id="step2" >
-    <div class="container">
-    <div class="d-flex justify-content-center h-100">
-        <div class="cardR">
-               <div class="card-header">
-                <center><p><font size="5" color="white"><b>Fill blanks</b></font></p></center>
-
-            </div>
-    <div class="card-body">
-
-                      {% csrf_token %}
-                     <div class="row">
-            <div class="col-md-6">
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span style="width: 110px;" class="input-group-text bg"><i class="fas fa-heading" ></i></span>
-                        </div>
-
-                            {% render_field form.post_title class="form-control b-r" placeholder="Post Title" %}
-
-                    </div>
-
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span style="width: 110px;" style="width: 110px;" class="input-group-text bg"><i class="fas fa-dollar-sign"> </i></span>
-                        </div>
-                         {% render_field form.price class="form-control b-r" placeholder="Price" %}
-
-                    </div>
-
-                       <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span style="width: 110px;" class="input-group-text bg"><i class="fas fa-building"></i></span>
-                        </div>
-                         {% render_field form.building_age class="form-control b-r" placeholder="Building Age" %}
-
-                    </div>
-
-                       <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span style="width: 110px;"  class="input-group-text bg"><i class="fas fa-building"></i></span>
-                        </div>
-                        {% render_field form.floor class="form-control b-r" placeholder="Building Floor" %}
-
-                    </div>
-
-                       <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span style="width: 110px;" class="input-group-text bg"><i class="fas fa-calculator"></i></span>
-                        </div>
-                        {% render_field form.area class="form-control b-r" placeholder="M2" %}
-
-                    </div>
-<input id="isfurniture">
-
-
-            </div>
-
-             <div class="col-md-6">
-                  <div  class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span style="width: 70px;" class="input-group-text bg"><i class="fab fa-dyalog"></i></span>
-
-                        </div>
-                       {% render_field form.post_description class="form-control b-r" placeholder="Description" %}
-                    </div>
-
-
-             </div>
-
-
-        </div>
-
-                  </div>
-
-        </div>
-
-        <!--<button class="custom_button" onclick="step3()" >NEXT</button>-->
-    </div>
-    </div>
-
-    </div>
-    <button class="custom_button bottomb" type="submit" >Publish</button>
-</form>
-
-  <button class="custom_button rightb" onclick="step2()" >NEXT</button>
- <button class="custom_button leftb" onclick="step1()" >Back</button>
+        <button class="custom_button bottomb" type="submit" >Publish</button>
+    </form>
+    <button class="custom_button rightb" onclick="step2()" >NEXT</button>
+    <button class="custom_button leftb" onclick="step1()" >Back</button>
 </div>
 <!--
 <div id="step3" >
