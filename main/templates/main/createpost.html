@@ -28,7 +28,7 @@ box-shadow: 2px 2px 5px 5px #eee;
 }
 
         .bg{
-            background-color: #FFC312;py
+            background-color: #FFC312;
             color: #080808;
             border-radius: 50px 20px;
         }
@@ -93,7 +93,7 @@ box-shadow: 2px 2px 5px 5px #eee;
 
 <body>
 
-<form method="POST" action="">
+<form method="post" enctype="multipart/form-data">
 <div id="step1" >
 <div class="container">
     <div class="d-flex justify-content-center h-100">
@@ -140,7 +140,7 @@ box-shadow: 2px 2px 5px 5px #eee;
 
             </div>
         </div>
-        <button class="custom_button" onclick="step2()" >NEXT</button>
+
     </div>
 </div>
     </div>
@@ -218,7 +218,7 @@ box-shadow: 2px 2px 5px 5px #eee;
         </div>
 
                   </div>
-            <button class="custom_button" onclick="step1()" >back</button>
+
         </div>
 
         <!--<button class="custom_button" onclick="step3()" >NEXT</button>-->
@@ -228,6 +228,9 @@ box-shadow: 2px 2px 5px 5px #eee;
     </div>
     <button class="custom_button" type="submit" >Publish</button>
 </form>
+
+  <button class="custom_button" onclick="step2()" >NEXT</button>
+ <button class="custom_button" onclick="step1()" >Back</button>
 
 <!--
 <div id="step3" >
