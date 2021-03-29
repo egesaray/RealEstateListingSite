@@ -155,13 +155,43 @@
 
   }
 
+        function dogrula() {
+            var building_type = document.forms["create_post_form"]["building_type"].value;
+            var location = document.forms["create_post_form"]["location"].value;
+            //var post_title = document.forms["create_post_form"]["post_title"].value;
+            var price = document.forms["create_post_form"]["price"].value;
+            var building_age = document.forms["create_post_form"]["building_age"].value;
+            var floor = document.forms["create_post_form"]["floor"].value;
+            var area = document.forms["create_post_form"]["area"].value;
+            //var post_description = document.forms["create_post_form"]["post_description"].value;
+
+            // if ( building_type === "" || null ||" " ||'' ||' ' ){ alert("hata");
+            //     return false;}
+            // if ( location === "" || null ||" " ||'' ||' ' ){ alert("hata");
+            //     return false;}
+            // if ( post_title === "" || null ||" " ||'' ||' '){ alert("hata");
+            //     return false;}
+            if ( price >= 999999999999){ alert("Price can not exceed 999999999999");
+                return false;}
+            if ( building_age >= 99){ alert("Age of building can not exceed 99");
+                return false;}
+            if ( floor >= 999){ alert("Floor number can not exceed 999");
+                return false;}
+            if ( area >= 9999){ alert("Area can not exceed 9999");
+                return false;}
+            // if ( post_description === "" || null ||" " ||'' ||' ' ){ alert("hata");
+            //     return false;}
+        }
+
+
+
     </script>
 
 </head>
 
 <body>
 <div class="createpost">
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" onsubmit="return dogrula()" id="create_post_form">
         <div id="step1" >
             <div class="container">
                 <div class="d-flex justify-content-center h-100">
@@ -185,7 +215,7 @@
                                           <div class="input-group form-group" >
                                   <label   class=" form-control input-group form-group bg"   >Estate Type</label>
 
-                        {% render_field form.building_type class="form-control b-r"  %}
+                        {% render_field form.building_type class="form-control b-r" id="building_type"  %}
                                 </div>
 
 
@@ -193,7 +223,7 @@
                                           <div class="input-group form-group" >
                                   <label   class=" form-control input-group form-group bg" >City</label>
 
-                          {% render_field form.location class="form-control b-r"  %}
+                          {% render_field form.location class="form-control b-r"  id="location" %}
                                 </div>
 
                                <div class="input-group form-group" >
@@ -236,7 +266,7 @@
                                         <span style="width: 110px;" class="input-group-text bg"><i class="fas fa-heading" ></i></span>
                                     </div>
 
-                                        {% render_field form.post_title class="form-control b-r" placeholder="Post Title" %}
+                                        {% render_field form.post_title class="form-control b-r" placeholder="Post Title" id="post_title" %}
 
                                 </div>
 
@@ -244,7 +274,7 @@
                                     <div class="input-group-prepend">
                                         <span style="width: 110px;" style="width: 110px;" class="input-group-text bg"><i class="fas fa-dollar-sign"> </i></span>
                                     </div>
-                                     {% render_field form.price class="form-control b-r" placeholder="Price" %}
+                                     {% render_field form.price class="form-control b-r" placeholder="Price" id="price" %}
 
                                 </div>
 
@@ -252,7 +282,7 @@
                                     <div class="input-group-prepend">
                                         <span style="width: 110px;" class="input-group-text bg"><i class="fas fa-building"></i></span>
                                     </div>
-                                     {% render_field form.building_age class="form-control b-r" placeholder="Building Age" %}
+                                     {% render_field form.building_age class="form-control b-r" placeholder="Building Age" id="building_age" %}
 
                                 </div>
 
@@ -260,7 +290,7 @@
                                     <div class="input-group-prepend">
                                         <span style="width: 110px;"  class="input-group-text bg"><i class="fas fa-building"></i></span>
                                     </div>
-                                    {% render_field form.floor class="form-control b-r" placeholder="Building Floor" %}
+                                    {% render_field form.floor class="form-control b-r" placeholder="Building Floor" id="floor" %}
 
                                 </div>
 
@@ -268,7 +298,7 @@
                                     <div class="input-group-prepend">
                                         <span style="width: 110px;" class="input-group-text bg"><i class="fas fa-calculator"></i></span>
                                     </div>
-                                    {% render_field form.area class="form-control b-r" placeholder="M2" %}
+                                    {% render_field form.area class="form-control b-r" placeholder="Area m²" id=area%}
 
                                 </div>
             <input id="isfurniture">
@@ -282,7 +312,7 @@
                                         <span style="width: 70px;" class="input-group-text bg"><i class="fab fa-dyalog"></i></span>
 
                                     </div>
-                                   {% render_field form.post_description class="form-control b-r" placeholder="Description" %}
+                                   {% render_field form.post_description class="form-control b-r" placeholder="Description" id="post_description"%}
                                 </div>
 
 
