@@ -9,6 +9,10 @@ from django.contrib import messages
 from .models import *
 
 
+
+
+
+
 def logoutUser(request):
 	logout(request)
 	return redirect('homepage')
@@ -127,3 +131,6 @@ def createpost(request):
 
 def createpostsuccess(request):
     return render(request, 'main/create-post-success.html')
+
+def productdetails(request):
+    return render(request, 'main/product-details.html')
