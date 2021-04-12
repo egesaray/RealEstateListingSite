@@ -135,6 +135,6 @@ def createpostsuccess(request):
 def productdetails(request, pk):
     posts = Post.objects.get(id=pk)
 
-    pimage = PostImages.objects.get(gallery=posts)
+    pimage = PostImages.objects.filter(gallery=posts)
 
     return render(request, 'main/product_details.html', { 'posts':posts ,'pimage':pimage} )

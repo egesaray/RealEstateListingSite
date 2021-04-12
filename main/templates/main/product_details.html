@@ -6,8 +6,10 @@
 
 <h1>Product Details Page</h1>
 <h2>{{posts.post_title}}</h2>
-{{ pimage.image }}
-<div> <img src="{% static pimage.image.url %}" alt="Profile Pic" height="130px" width="130px" /></div>
+{% for i in pimage %}
 
+    <img src="{% static i.image.url %}" alt="Profile Pic" height="130px" width="130px"/>
+
+{% endfor %}
 
 {% endblock %}
