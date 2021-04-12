@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 from django.contrib import messages
 from .models import *
-
+from .filters import *
 
 
 
@@ -68,14 +68,11 @@ def list(request,RoS):
     elif RoS =='forrent':
         cu = Post.objects.all().filter(postType='For Rent')
 
-    # foto = PostImages.objects.all()
-    # fotos = []
-    # for f in foto:
-    #     fotos.append(f.fotos)
-    # photo = PostImages.objects.all().filter(image__in=fotos)
+    myFilter = PostFilter(request.GET , queryset=cu)
+    cu = myFilter.qs
 
 
-    return render(request, 'main/list.html' ,{'cu' :cu  } )
+    return render(request, 'main/list.html' ,{'cu' :cu , 'myFilter':myFilter} )
 
 """
 @login_required

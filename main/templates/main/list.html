@@ -28,51 +28,92 @@
 
 <div class="wrap">
     <div class="menu">
+
         <div class="mini-menu">
-            <ul>
-        <li class="sub">
-            <a href="#">Categories</a>
-            <ul>
-               <li><a href="#">For Sale</a></li>
-               <li><a href="#">For Rent</a></li>
+            <form method="get">
 
-            </ul>
-        </li>
-        <li class="sub">
-            <a href="#">Rooms</a>
-            <ul>
-               <li><a href="#">1+0</a></li>
-               <li><a href="#">1+1</a></li>
-               <li><a href="#">2+1</a></li>
-               <li><a href="#">3+1</a></li>
-               <li><a href="#">3+2</a></li>
-               <li><a href="#">4+1</a></li>
-               <li><a href="#">4+2</a></li>
-            </ul>
-        </li>
-        <li class="sub">
-            <a href="#">With Furniture</a>
-            <ul>
-                <li><a href="#">Yes</a></li>
-               <li><a href="#">No</a></li>
+                <div class="card rounded" style="background-color:#FFFFFF">
+                    <br><br>
+                    <center><b><p>city/state</p></b></center>
+                    <center>{{ myFilter.form.location }}</center>
+                    <br><br>
+                </div>
+                <br>
+                <div class="card rounded" style="background-color:#FFFFFF">
+                    <br><br>
+                    <center><b><p>Price</p></b></center>
+                    <center>{{ myFilter.form.price }}</center>
+                    <br><br>
+                </div>
+                <br>
+                <div class="card rounded" style="background-color:#FFFFFF">
+                    <br><br>
+                    <center><b><p>Area</p></b></center>
+                    <center>{{ myFilter.form.area }}</center>
+                    <br><br>
+                </div>
+                <br>
+                <div class="card rounded" style="background-color:#FFFFFF">
+                    <br><br>
+                    <center><b><p>Building Age</p></b></center>
+                    <center>{{ myFilter.form.building_age }}</center>
+                    <br><br>
+                </div>
+                <br>
 
-            </ul>
-        </li>
-        <li class="sub">
-            <a href="#">Building Age</a>
-            <ul>
-               <li><a href="#">1-9</a></li>
-               <li><a href="#">10-14</a></li>
-               <li><a href="#">15-19</a></li>
-               <li><a href="#">20-24</a></li>
-               <li><a href="#">25-30</a></li>
-               <li><a href="#">30+</a></li>
-            </ul>
-        </li>
-    </ul>
+
+                <button class="btn btn-primary btn-block" type="submit">Filter</button>
+
+            </form>
+                    <!--        <li class="sub">-->
+<!--            <a href="#">Rooms</a>-->
+<!--            <ul>-->
+<!--               <li><a href="#">1+0</a></li>-->
+<!--               <li><a href="#">1+1</a></li>-->
+<!--               <li><a href="#">2+1</a></li>-->
+<!--               <li><a href="#">3+1</a></li>-->
+<!--               <li><a href="#">3+2</a></li>-->
+<!--               <li><a href="#">4+1</a></li>-->
+<!--               <li><a href="#">4+2</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
+
+
+
+<!--        <li class="sub">-->
+<!--            <a href="#">With Furniture</a>-->
+<!--            <ul>-->
+<!--                <li><a href="#">Yes</a></li>-->
+<!--               <li><a href="#">No</a></li>-->
+
+<!--            </ul>-->
+<!--        </li>-->
+
+
+
+<!--        <li class="sub">-->
+<!--            <a href="#">Building Age</a>-->
+<!--            <ul>-->
+<!--               <li><a href="#">1-9</a></li>-->
+<!--               <li><a href="#">10-14</a></li>-->
+<!--               <li><a href="#">15-19</a></li>-->
+<!--               <li><a href="#">20-24</a></li>-->
+<!--               <li><a href="#">25-30</a></li>-->
+<!--               <li><a href="#">30+</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
+<!--    </ul>-->
+
         </div>
-        <div class="menu-colors menu-item">
-            <center><div class="header-item" >M2</div></center>
+
+
+
+
+
+
+
+        <div class="menu-colors menu-itemN">
+            <center><div class="header-itemN" >M2</div></center>
            <center><form action="/action_page.php">
   <label for="minm2">Min M2:</label>
   <input type="text" class="form-control" name="minm2" id="minm2">
@@ -83,8 +124,8 @@
         </div>
         <br><br>
 
-        <div class="menu-size menu-item">
-           <center><div class="header-item" >Location:</div></center>
+        <div class="menu-size menu-itemN">
+           <center><div class="header-itemN" >Location:</div></center>
            <center><form action="/action_page.php">
             <label for="location">City:</label>
             <input type="text" class="form-control" name="location"><br><br>
@@ -94,16 +135,14 @@
 
         <br><br>
 
-        <div class="menu-price menu-item">
-            <div class="header-item" >Price</div>
+        <div class="menu-price menu-itemN">
+            <div class="header-itemN" >Price</div>
             <p>
                 <label for="amount">Price range:</label>
-                <input type="text" readonly id="amount"  style="border:0; color:#000000; font-weight:bold;">
+                <input type="text" readonly id="amount"  style="border:0; color:#f0e300; font-weight:bold;">
             </p>
             <div id="slider-range"></div>
-
         </div>
-
     </div>
 
     <div class="items">
@@ -111,7 +150,7 @@
         {% for i in cu %}
         <div data-price="{{ i.price }}" class="item">
 
-            <div class="info"  onclick="window.location.href='{% url 'product_details' i.id %}'" >
+            <div class="info"  onclick="window.location.href='{% url 'product_details' i.id %}'">
 
                         <h3>{{ i.post_title }}</h3>
                         <h5>City : {{ i.location }}</h5>
@@ -138,7 +177,6 @@
 
 
 
-
     <!--Menu-->
   <script type="text/javascript">
     $(document).ready(function () {
@@ -160,6 +198,7 @@
         });
     });
 </script>
+
 <script src="script.js" ></script>
 -->
 </html>
@@ -214,7 +253,7 @@
     margin: 10px ;
 
 }
-.menu-item {
+.menu-itemN {
     background-color: #FEFEFE;
     width: 200px;
     height: 150px;
@@ -223,7 +262,7 @@
     box-shadow:0 0 8px rgba(0, 0, 0, 0.06);
 }
 
-.header-item {
+.header-itemN {
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #3C3D41  ;
