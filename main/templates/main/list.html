@@ -110,8 +110,8 @@
   <div class="items">
         {% for i in cu %}
         <div data-price="{{ i.price }}" class="item">
-            <a href=" {% url 'product_details' i.id %}">
-            <div class="info" >
+
+            <div class="info"  onclick="window.location.href='{% url 'product_details' i.id %}'" >
 
                         <h3>{{ i.post_title }}</h3>
                         <h5>City : {{ i.location }}</h5>
