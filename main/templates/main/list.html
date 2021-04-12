@@ -110,15 +110,15 @@
   <div class="items">
         {% for i in cu %}
         <div data-price="{{ i.price }}" class="item">
-            <div class="info">
-                 <button onclick="window.location.href='/product-details'">
+            <div class="info" onclick="window.location.href='/product-details'">
+
                         <h3>{{ i.post_title }}</h3>
                         <h5>City : {{ i.location }}</h5>
                         <h5>Furniture : {{ i.isFurniture }}</h5>
                         <h5>Building type : {{ i.building_type }}</h5>
                         <h3>{{ i.price }}$</h3>
                         <p class="descroption">{{i.area}} m<sup>2</sup></p>
-                 </button>
+                
                 </div>
         </div>
         {% endfor %}
