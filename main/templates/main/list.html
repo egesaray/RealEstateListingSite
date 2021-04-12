@@ -110,7 +110,8 @@
   <div class="items">
         {% for i in cu %}
         <div data-price="{{ i.price }}" class="item">
-            <div class="info" onclick="window.location.href='/product-details'">
+            <a href=" {% url 'product_details' i.id %}">
+            <div class="info" >
 
                         <h3>{{ i.post_title }}</h3>
                         <h5>City : {{ i.location }}</h5>
@@ -119,7 +120,7 @@
                         <h3>{{ i.price }}$</h3>
                         <p class="descroption">{{i.area}} m<sup>2</sup></p>
                 
-                </div>
+                </div></a>
         </div>
         {% endfor %}
     </div>

@@ -10,5 +10,5 @@ urlpatterns = [
     path('list/<str:RoS>', views.list, name="list"),
     path('createpost/', views.createpost, name="createpost"),
     path('createpost-success/', views.createpostsuccess, name="createpost-success"),
-    path('product-details/', views.productdetails, name="product-details"),
+    path('product_details/<int:pk>', views.productdetails, name="product_details"),
     ]

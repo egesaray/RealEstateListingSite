@@ -132,5 +132,9 @@ def createpost(request):
 def createpostsuccess(request):
     return render(request, 'main/create-post-success.html')
 
-def productdetails(request):
-    return render(request, 'main/product-details.html')
+def productdetails(request, pk):
+    posts = Post.objects.get(id=pk)
+
+    pimage = PostImages.objects.get(gallery=posts)
+
+    return render(request, 'main/product_details.html', { 'posts':posts ,'pimage':pimage} )

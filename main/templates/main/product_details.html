@@ -1,0 +1,13 @@
+{% extends 'main/mainpage.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<h1>Product Details Page</h1>
+<h2>{{posts.post_title}}</h2>
+{{ pimage.image }}
+<div> <img src="{% static pimage.image.url %}" alt="Profile Pic" height="130px" width="130px" /></div>
+
+
+{% endblock %}
