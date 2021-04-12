@@ -1,15 +1,188 @@
+<!DOCTYPE html>
 {% extends 'main/mainpage.html' %}
 {% load static %}
 {% block content %}
 
+<html>
+
+<style>
+
+    body{
+	padding-top: 100px;
+
+}
+.bgs{
+background-color: white;
+}
+
+#content-wrapper{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.column{
+	width: 600px;
+	padding: 10px;
+
+}
+
+#featured{
+	max-width: 500px;
+	max-height: 600px;
+	object-fit: cover;
+	cursor: pointer;
+	border: 2px solid black;
+
+}
+
+.thumbnail{
+	object-fit: cover;
+	max-width: 180px;
+	max-height: 100px;
+	cursor: pointer;
+	opacity: 0.5;
+	margin: 5px;
+	border: 2px solid black;
+
+}
+
+.thumbnail:hover{
+	opacity:1;
+}
+
+.active{
+	opacity: 1;
+}
+
+#slide-wrapper{
+	max-width: 500px;
+	display: flex;
+	min-height: 100px;
+	align-items: center;
+}
+
+#slider{
+	width: 440px;
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+
+}
+
+#slider::-webkit-scrollbar {
+		width: 8px;
+
+}
+
+#slider::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+
+}
+
+#slider::-webkit-scrollbar-thumb {
+  background-color: #dede2e;
+  outline: 1px solid slategrey;
+   border-radius: 100px;
+
+}
+
+#slider::-webkit-scrollbar-thumb:hover{
+    background-color: #18b5ce;
+}
+
+.arrow{
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	transition: .3s;
+}
+
+.arrow:hover{
+	opacity: .5;
+	width: 35px;
+	height: 35px;
+}
+
+</style>
 
 
-<h1>Product Details Page</h1>
-<h2>{{posts.post_title}}</h2>
-{% for i in pimage %}
+<body>
+	<div class="bgs">
+	<div id="content-wrapper">
+		<div class="column">
+			<img id=featured src="{% static pimage.image.url %}" >
 
-    <img src="{% static i.image.url %}" alt="Profile Pic" height="130px" width="130px"/>
+			<div id="slide-wrapper" >
+				<button id="slideLeft" class="arrow" ></button>
 
-{% endfor %}
+				<div id="slider">
+
+	<!-----<img class="thumbnail active" src="{% static i.image.url %}" height="130px" width="130px"/>- ilk fotoğraf active olacak sayfa açıldığında açılcak--->
+					{% for i in pimage %}
+
+    <img class="thumbnail" src="{% static i.image.url %}" height="130px" width="130px"/>
+
+					{% endfor %}
+				</div>
+
+				<button id="slideRight" class="arrow" ></button>
+			</div>
+		</div>
+
+		<div class="column">
+			<h1>{{posts.post_title}}</h1>
+			<hr>
+			<h4>Price:{{posts.price}}$</h4>
+
+			<h4>Description:{{posts.post_description}}</h4>
+			<h4>Location:{{posts.location}}</h4>
+			<h4>floor:{{posts.floor}}</h4>
+			<h4>building_age:{{posts.building_age}}</h4>
+			<h4>area:{{posts.area}}</h4>
+			<h4>isFurniture:{{posts.isFurniture}}</h4>
+			<h4>building_type:{{posts.building_type}}</h4>
+
+
+		</div>
+
+	</div>
+	</div>
+<script type="text/javascript">
+		let thumbnails = document.getElementsByClassName('thumbnail')
+
+		let activeImages = document.getElementsByClassName('active')
+
+		for (var i=0; i < thumbnails.length; i++){
+
+			thumbnails[i].addEventListener('mouseover', function(){
+				console.log(activeImages)
+
+				if (activeImages.length > 0){
+					activeImages[0].classList.remove('active')
+				}
+
+
+				this.classList.add('active')
+				document.getElementById('featured').src = this.src
+			})
+		}
+
+
+		let buttonRight = document.getElementById('slideRight');
+		let buttonLeft = document.getElementById('slideLeft');
+
+		buttonLeft.addEventListener('click', function(){
+			document.getElementById('slider').scrollLeft -= 180
+		})
+
+		buttonRight.addEventListener('click', function(){
+			document.getElementById('slider').scrollLeft += 180
+		})
+
+
+	</script>
+</body>
 
 {% endblock %}
