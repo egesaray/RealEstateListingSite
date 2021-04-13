@@ -13,14 +13,23 @@
 background-color: white;
 }
 .bg{
-background-color: #F2FAFA ;
+background-color: #F6FBFC  ;
 }
 .des{
-  text-align: right;
+  text-align: justify;
   text-transform: uppercase;
   color: #114045 ;
-}
 
+}
+h4{
+text-shadow: 2px 2px 5px #2F4345;
+}
+mark{
+background-color:#87CCD2 ;
+}
+.price{
+text-shadow: 2px 2px 5px #FFD700;
+}
 #content-wrapper{
 	display: flex;
 	flex-wrap: wrap;
@@ -122,7 +131,7 @@ background-color: #F2FAFA ;
 
 
 			<div id="slide-wrapper" >
-				<button id="slideLeft" class="arrow" > << </button>
+				<button id="slideLeft" class="arrow" > <b><<</b> </button>
 
 				<div id="slider">
 
@@ -133,24 +142,22 @@ background-color: #F2FAFA ;
 					{% endfor %}
 				</div>
 
-				<button id="slideRight" class="arrow" > >> </button>
+				<button id="slideRight" class="arrow" > <b>>></b> </button>
 			</div>
 		</div>
 
 		<div class="column bg">
-			<h1 style=" text-align: center;">{{posts.post_title}}</h1>
+			<h1 style=" text-align: center;text-shadow: 2px 2px 5px #557578;">{{posts.post_title}}</h1>
 			<hr>
-			<h4 style="text-align: right;">Price:{{posts.price|intcomma}}$</h4>
-
-
-			<h4 style="text-align: right;">Location:{{posts.location}}</h4>
-			<h4 style="text-align: right;"> floor:{{posts.floor}}</h4>
-			<h4 style="text-align: right;">Age:{{posts.building_age}}</h4>
-			<h4 style="text-align: right;">area:{{posts.area}}</h4>
-			<h4 style="text-align: right;">Furniture:{{posts.isFurniture}}</h4>
-			<h4 style="text-align: right;">Type:{{posts.building_type}}</h4>
+			<h4 class="price" style="text-align: right;"><em>Price:</em>{{posts.price|intcomma}}$</h4>
+			<h4 style="text-align: right;"><em>Location:</em>{{posts.location}}</h4>
+			<h4 style="text-align: right;"><em>Floor:</em>{{posts.floor}}</h4>
+			<h4 style="text-align: right;"><em>Age:</em>{{posts.building_age}}</h4>
+			<h4 style="text-align: right;"><em>Area:</em>{{posts.area}} m<sup>2</sup></h4>
+			<h4 style="text-align: right;"><em>Furniture:</em>{{posts.isFurniture}}</h4>
+			<h4 style="text-align: right;"><em>Type:</em>{{posts.building_type}}</h4>
 			<hr>
-			<h4  class="des" ><mark>Description:</mark>{{posts.post_description}}</h4>
+			<h4 class="des" ><mark>Description:</mark>{{posts.post_description}}</h4>
 			<h4 style="text-align: right;">By:{{posts.ouruser.first_name}}</h4>
 
 		</div>
