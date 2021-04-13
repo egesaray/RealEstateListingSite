@@ -19,6 +19,7 @@ background-color: #F6FBFC  ;
   text-align: justify;
   text-transform: uppercase;
   color: #114045 ;
+  word-wrap:break-word;
 
 }
 h4{
@@ -132,7 +133,15 @@ hr {
 	<div class="bgs">
 	<div id="content-wrapper">
 		<div class="column">
-			<img id=featured src='/static/images/minimal.jpg' >
+
+				{% if 'For Rent' == posts.postType %}
+
+			<img id=featured src='/static/images/rent.png' >
+			{% else %}
+			<img id=featured src='/static/images/sale.jpg' >
+						{% endif %}
+
+
 
 
 			<div id="slide-wrapper" >
@@ -153,20 +162,29 @@ hr {
 
 		<div class="column bg">
 			<h1 style=" text-align: center;text-shadow: 2px 2px 5px #557578;">{{posts.post_title}}</h1>
+			<h2>{{posts.postType}}</h2>
 			<hr>
 			<h4 ><mark>Price:</mark>{{posts.price|intcomma}}$</h4>
 			<h4 ><mark>Location:</mark>{{posts.location}}</h4>
 			<h4 ><mark>Floor:</mark>{{posts.floor}}</h4>
+
 			<h4 ><mark>Age:</mark>{{posts.building_age}}</h4>
 			<h4 ><mark>Area:</mark>{{posts.area}} m<sup>2</sup></h4>
 			<h4 ><mark>Furniture:</mark>{{posts.isFurniture}}</h4>
 			<h4 ><mark>Type:</mark>{{posts.building_type}}</h4>
-			<hr>
-			<h4 class="des" ><mark>Description:</mark>{{posts.post_description}}</h4>
+
+
 			<hr>
 			<h4 style="text-align: right;">By:{{posts.ouruser.first_name}}</h4>
 			<h4 style="text-align: right;">{{posts.ouruser.email}}</h4>
 
+		</div>
+
+
+		<div class="column bg">
+			<hr>
+			<h4 class="des"  ><mark>Description:</mark>{{posts.post_description}}</h4>
+			<hr>
 		</div>
 
 
