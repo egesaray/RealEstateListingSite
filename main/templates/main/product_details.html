@@ -23,13 +23,17 @@ background-color: #F6FBFC  ;
 }
 h4{
 text-shadow: 2px 2px 5px #2F4345;
+text-align: right;
 }
 mark{
-background-color:#87CCD2 ;
+background-color:#AFDFE3;
 }
-.price{
-text-shadow: 2px 2px 5px #FFD700;
+hr {
+    height: 12px;
+    border: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
 }
+
 #content-wrapper{
 	display: flex;
 	flex-wrap: wrap;
@@ -149,15 +153,16 @@ text-shadow: 2px 2px 5px #FFD700;
 		<div class="column bg">
 			<h1 style=" text-align: center;text-shadow: 2px 2px 5px #557578;">{{posts.post_title}}</h1>
 			<hr>
-			<h4 class="price" style="text-align: right;"><em>Price:</em>{{posts.price|intcomma}}$</h4>
-			<h4 style="text-align: right;"><em>Location:</em>{{posts.location}}</h4>
-			<h4 style="text-align: right;"><em>Floor:</em>{{posts.floor}}</h4>
-			<h4 style="text-align: right;"><em>Age:</em>{{posts.building_age}}</h4>
-			<h4 style="text-align: right;"><em>Area:</em>{{posts.area}} m<sup>2</sup></h4>
-			<h4 style="text-align: right;"><em>Furniture:</em>{{posts.isFurniture}}</h4>
-			<h4 style="text-align: right;"><em>Type:</em>{{posts.building_type}}</h4>
+			<h4 ><mark>Price:</mark>{{posts.price|intcomma}}$</h4>
+			<h4 ><mark>Location:</mark>{{posts.location}}</h4>
+			<h4 ><mark>Floor:</mark>{{posts.floor}}</h4>
+			<h4 ><mark>Age:</mark>{{posts.building_age}}</h4>
+			<h4 ><mark>Area:</mark>{{posts.area}} m<sup>2</sup></h4>
+			<h4 ><mark>Furniture:</mark>{{posts.isFurniture}}</h4>
+			<h4 ><mark>Type:</mark>{{posts.building_type}}</h4>
 			<hr>
 			<h4 class="des" ><mark>Description:</mark>{{posts.post_description}}</h4>
+			<hr>
 			<h4 style="text-align: right;">By:{{posts.ouruser.first_name}}</h4>
 
 		</div>
