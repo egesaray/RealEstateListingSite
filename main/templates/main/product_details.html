@@ -12,6 +12,14 @@
 .bgs{
 background-color: white;
 }
+.bg{
+background-color: #F2FAFA ;
+}
+.des{
+  text-align: right;
+  text-transform: uppercase;
+  color: #114045 ;
+}
 
 #content-wrapper{
 	display: flex;
@@ -129,7 +137,7 @@ background-color: white;
 			</div>
 		</div>
 
-		<div class="column">
+		<div class="column bg">
 			<h1 style=" text-align: center;">{{posts.post_title}}</h1>
 			<hr>
 			<h4 style="text-align: right;">Price:{{posts.price|intcomma}}$</h4>
@@ -142,7 +150,7 @@ background-color: white;
 			<h4 style="text-align: right;">Furniture:{{posts.isFurniture}}</h4>
 			<h4 style="text-align: right;">Type:{{posts.building_type}}</h4>
 			<hr>
-			<h4 style="text-align: right;"><mark>Description:</mark>{{posts.post_description}}</h4>
+			<h4  class="des" ><mark>Description:</mark>{{posts.post_description}}</h4>
 			<h4 style="text-align: right;">By:{{posts.ouruser.first_name}}</h4>
 
 		</div>
