@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-{% extends 'main/mainpage.html' %}
+
 {% load static %}
+{% load humanize %}
 {% block content %}
 
 <html>
 
 <style>
 
-    .body{
-	padding-top: 100px;
 
-}
 .bgs{
 background-color: white;
 }
@@ -120,10 +118,9 @@ background-color: white;
 
 				<div id="slider">
 
-	<!-----<img class="thumbnail active" src="{% static i.image.url %}" height="130px" width="130px"/>- ilk fotoğraf active olacak sayfa açıldığında açılcak--->
 					{% for i in pimage %}
 
-    <img class="thumbnail" src="{% static i.image.url %}">
+    					<img class="thumbnail" src="{% static i.image.url %}">
 
 					{% endfor %}
 				</div>
@@ -133,23 +130,24 @@ background-color: white;
 		</div>
 
 		<div class="column">
-			<h1>{{posts.post_title}}</h1>
+			<h1 style=" text-align: center;">{{posts.post_title}}</h1>
 			<hr>
-			<h4>Price:{{posts.price}}$</h4>
-
-			<h4>Description:{{posts.post_description}}</h4>
-			<h4>Location:{{posts.location}}</h4>
-			<h4>floor:{{posts.floor}}</h4>
-			<h4>Age:{{posts.building_age}}</h4>
-			<h4>area:{{posts.area}}</h4>
-			<h4>Furniture:{{posts.isFurniture}}</h4>
-			<h4>Type:{{posts.building_type}}</h4>
-			<h4>By:{{posts.ouruser.first_name}}</h4>
+			<h4 style="text-align: right;">Price:{{posts.price|intcomma}}$</h4>
 
 
-
+			<h4 style="text-align: right;">Location:{{posts.location}}</h4>
+			<h4 style="text-align: right;"> floor:{{posts.floor}}</h4>
+			<h4 style="text-align: right;">Age:{{posts.building_age}}</h4>
+			<h4 style="text-align: right;">area:{{posts.area}}</h4>
+			<h4 style="text-align: right;">Furniture:{{posts.isFurniture}}</h4>
+			<h4 style="text-align: right;">Type:{{posts.building_type}}</h4>
+			<hr>
+			<h4 style="text-align: right;"><mark>Description:</mark>{{posts.post_description}}</h4>
+			<h4 style="text-align: right;">By:{{posts.ouruser.first_name}}</h4>
 
 		</div>
+
+
 
 	</div>
 	</div>
