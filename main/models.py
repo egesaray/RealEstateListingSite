@@ -9,7 +9,7 @@ class ourUser(models.Model):
     first_name = models.CharField(max_length=255,null=True)
     last_name = models.CharField(max_length=255,null=True)
     email = models.EmailField(max_length=254)
-
+    #phone number for product details
     def __str__(self):
         return self.username
 

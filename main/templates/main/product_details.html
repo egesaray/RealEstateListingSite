@@ -22,8 +22,8 @@ background-color: #F6FBFC  ;
 
 }
 h4{
-text-shadow: 2px 2px 5px #2F4345;<!--Here-->
-text-align: right;
+text-shadow: 2px 2px 5px #2F4345;
+
 }
 mark{
 background-color:#AFDFE3;
@@ -165,6 +165,7 @@ hr {
 			<h4 class="des" ><mark>Description:</mark>{{posts.post_description}}</h4>
 			<hr>
 			<h4 style="text-align: right;">By:{{posts.ouruser.first_name}}</h4>
+			<h4 style="text-align: right;">{{posts.ouruser.email}}</h4>
 
 		</div>
 
