@@ -58,6 +58,29 @@ hr {
 
 }
 
+.animation {
+  width: 100px;
+  height: 100px;
+  animation-name: example;
+  background-color: #D1D1D1;
+  animation-duration: 4s;
+}
+
+@keyframes example {
+  0%   {background-color: #878787;}
+  10%  {background-color: #E5E5E5;}
+  20%  {background-color: #D1D1D1;}
+  30% {background-color: #B3B3B3;}
+  40%  {background-color: #999999;}
+  50% {background-color: #878787;}
+  60%  {background-color: #999999;}
+  70% {background-color: #B3B3B3;}
+  80%  {background-color: #D1D1D1;}
+  90% {background-color: #E5E5E5;}
+  100%  {background-color: #878787;}
+
+}
+
 .thumbnail{
 	object-fit: cover;
 	max-width: 180px;
@@ -114,49 +137,40 @@ hr {
 }
 
 .arrow{
-	width: 30px;
-	height: 30px;
+	width: 50px;
+	height: 50px;
 	cursor: pointer;
 	transition: .3s;
+	border-radius:30%;
 }
 
 .arrow:hover{
 	opacity: .5;
-	width: 35px;
-	height: 35px;
+	width: 55px;
+	height: 55px;
 }
 
 </style>
 
 
 <body>
-	<div class="bgs">
+	<div class="bgs ">
 	<div id="content-wrapper">
+
 		<div class="column">
+			<img id=featured src="{% static pimage.first.image.url %}">
+			<div id="slide-wrapper"  >
+				<button id="slideLeft" class="arrow animation" > <b><<</b> </button>
 
-				{% if 'For Rent' == posts.postType %}
+				<div id="slider" >
 
-			<img id=featured src='/static/images/rent.png' >
-			{% else %}
-			<img id=featured src='/static/images/sale.jpg' >
-						{% endif %}
-
-
-
-
-			<div id="slide-wrapper" >
-				<button id="slideLeft" class="arrow" > <b><<</b> </button>
-
-				<div id="slider">
 
 					{% for i in pimage %}
-
-    					<img class="thumbnail" src="{% static i.image.url %}">
-
+    					<img class="thumbnail" src="{% static i.image.url %}" width="500" height="333">
 					{% endfor %}
 				</div>
 
-				<button id="slideRight" class="arrow" > <b>>></b> </button>
+				<button id="slideRight" class="arrow animation" > <b>>></b> </button>
 			</div>
 		</div>
 
