@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import *
 from .filters import *
-
+from django.db.models import Q
 
 
 
@@ -71,8 +71,55 @@ def list(request,RoS):
     myFilter = PostFilter(request.GET , queryset=cu)
     cu = myFilter.qs
 
-
     return render(request, 'main/list.html' ,{'cu' :cu , 'myFilter':myFilter} )
+
+
+
+def postlistings(request,RoS):
+    if RoS == 'forsale':
+        cu = Post.objects.all().filter(postType='For Sale')
+    elif RoS =='forrent':
+        cu = Post.objects.all().filter(postType='For Rent')
+
+    query = request.GET.get('query')
+    price_from = request.GET.get('price_from',0)
+    price_to = request.GET.get('price_to', 1000000000)
+    min_area = request.GET.get('min_area', 0)
+    max_area = request.GET.get('max_area', 4000)
+    min_age = request.GET.get('min_age', 0)
+    max_age = request.GET.get('max_age', 100)
+
+
+    if query != None:
+        print("sadasdas")
+        cu = cu.filter(Q(post_title__icontains = query) | Q(location__icontains = query)| Q(area__icontains = query)| Q(building_type__icontains = query))
+    else:
+        query = ""
+
+    cu = cu.filter(price__gte =price_from).filter(price__lte=price_to)
+    cu = cu.filter(area__gte=min_area).filter(area__lte=max_area)
+    cu = cu.filter(building_age__gte=min_age).filter(building_age__lte=max_age)
+
+    myFilter = PostFilter(request.GET , queryset=cu)
+    cu = myFilter.qs
+
+    context = {
+        'cu': cu,
+        'RoS': RoS,
+        'price_from':price_from,
+        'price_to':price_to,
+        'min_area':min_area,
+        'max_area':max_area,
+        'min_age': min_age,
+        'max_age': max_age,
+        'myFilter': myFilter,
+        'query':query,
+    }
+
+    return render(request, 'main/postlistings.html' , context )
+
+
+
 
 """
 @login_required
