@@ -170,7 +170,10 @@
         <div class="col-md-8 rounded" style=" box-shadow: 2px 2px 5px 5px #000000;background-color: rgba(0,0,0,0.7)">
             <div class="row p-2 my-2">
 
+                {% if cu %}
+
                 {% for i in cu %}
+
                 <div class="col-md-6 ">
                     <div class="container-fluid bg-white rounded text-dark" style="text-align:center;">
 
@@ -189,6 +192,12 @@
                 </div>
 
                 {% endfor %}
+
+                {%else%}
+
+                <h3>No related search results are available...</h3>
+
+                {% endif %}
 
             </div>
         </div>
