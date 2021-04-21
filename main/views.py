@@ -54,6 +54,9 @@ def register(request):
     return render(request, 'main/register.html' , context)
 
 
+def homepagealternative(request):
+    return render(request, 'main/homepagealternative.html')
+
 
 def homepage(request):
     forsale = 'forsale'

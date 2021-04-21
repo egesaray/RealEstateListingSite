@@ -4,6 +4,7 @@ from .import views
 urlpatterns = [
     # leave as empty string fo base url
     path('', views.homepage, name="homepage"),
+    path('homepagealternative/', views.homepagealternative),
     path('loginpage/', views.loginpage, name="loginpage"),
     path('logout/', views.logoutUser, name="logout"),
     path('register/', views.register, name="register"),
