@@ -134,6 +134,10 @@
         .b-r{
             border-radius: 50px 20px;
         }
+          .b-r-c{
+        cursor:pointer;
+            border-radius: 50px 20px;
+        }
 
         .bri{
             border-bottom-right-radius: 50px 20px;
@@ -298,13 +302,13 @@
                                   <div class="input-group form-group">
                                   <label  class="form-control input-group form-group bg" >Post Type</label>
 
-                              {% render_field form.postType class="form-control b-r"  %}
+                              {% render_field form.postType class="form-control b-r-c"  %}
                                 </div>
 
                                           <div class="input-group form-group" >
                                   <label   class=" form-control input-group form-group bg"   >Estate Type</label>
 
-                        {% render_field form.building_type class="form-control b-r" id="building_type"  %}
+                        {% render_field form.building_type class="form-control b-r-c" id="building_type"  %}
                                 </div>
 
 
@@ -312,13 +316,13 @@
                                           <div class="input-group form-group" >
                                   <label   class=" form-control input-group form-group bg" >City</label>
 
-                          {% render_field form.location class="form-control b-r"  id="location" %}
+                          {% render_field form.location class="form-control b-r-c"  id="location" %}
                                 </div>
 
                                <div class="input-group form-group" >
                                   <label   class=" form-control input-group form-group bg" >Furniture</label>
 
-                          {% render_field form.isFurniture class="form-control b-r"  %}
+                          {% render_field form.isFurniture class="form-control b-r-c"  %}
                                 </div>
 
 
