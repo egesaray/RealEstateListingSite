@@ -128,13 +128,17 @@
 
 
 
-
+        .desdiv{
+                    max-height: 370px;
+                    min-height: 255px;
+        }
 
 
         .b-r{
             box-shadow: 2px 2px 5px 5px #b3aca5;
             background-color: #dedad7;
             border-radius: 50px 20px;
+
         }
         .b-r:focus{
             box-shadow: 2px 2px 5px 5px #b3aca5;
@@ -414,7 +418,7 @@
                                         <span style="width: 70px;" class="input-group-text bg"><i class="fas fa-paragraph"></i></span>
 
                                     </div>
-                                   {% render_field form.post_description class="form-control b-r" placeholder="Description" id="post_description"%}
+                                   {% render_field form.post_description class="form-control desdiv b-r" placeholder="Description" id="post_description"%}
                                 </div>
 
 
