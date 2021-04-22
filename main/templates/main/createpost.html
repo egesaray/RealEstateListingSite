@@ -21,6 +21,12 @@
     .bdy{
     box-shadow: 2px 2px 5px 5px #eee;
     }
+    .bdyn{
+    clear: both;
+    border: 1px solid transparent;
+    height: 0px;
+
+    }
 
     .txt {
     font-size: 30px;
@@ -52,13 +58,13 @@
 
         .rightb{
            position: absolute;
-            left : 10%;
+            left : 20%;
 
 
         }
         .leftb{
             position: absolute;
-            left : 2%;
+            left : 8%;
 
         }
         .leftb:active{
@@ -246,12 +252,14 @@
 </head>
 
 <body>
-
+    <br>
+    <br>
 <div class="container-md">
 
     <form method="post" enctype="multipart/form-data" onsubmit="return dogrula()" id="create_post_form">
-        <div class="d-flex flex-row">
-        <div class="p-2" id="step1" >
+
+        <div class="row align-items-start">
+        <div class="col-md-4" id="step1" >
             <div class=" container">
                 <div class="d-flex justify-content-center h-100">
                     <div class="cardR">
@@ -305,7 +313,7 @@
                 </div>
             </div>
         </div>
-        <div class="p-2" id="step2" >
+        <div class="col-md-4" id="step2" >
             <div class="container">
                 <div class="d-flex justify-content-center h-100">
                     <div class="cardR">
@@ -386,7 +394,7 @@
                 </div>
                 </div>
         </div>
-        <div class="p-2" id="step3" >
+        <div class="col-md-4" id="step3" >
      <div class="container">
     <div class="d-flex justify-content-center h-100">
         <div class="cardR">
@@ -428,20 +436,25 @@
 
     </div>
         </div>
+           <hr class="bdyn">
         <button id="publish" class="custom_button bottomb txt" type="submit" >Publish</button>
+
     </form>
-      <hr class="bdy">
+     <br>
+    <br>
+   <hr class="bdyn">
      <hr class="bdy">
      <div class="d-flex flex-row">
-        <button id="next1" class="custom_button p-4 rightb txt" onclick="step2()" >NEXT</button>
-        <button id="next2" class="custom_button p-4 rightb txt" onclick="step3()" >NEXT</button>
-        <button id="back1" class="custom_button p-4 leftb txt" onclick="step1()" >Back</button>
-        <button id="back2" class="custom_button p-4  leftb txt" onclick="step2()" >Back</button>
+        <button id="next1" class="custom_button p rightb txt" onclick="step2()" >NEXT</button>
+        <button id="next2" class="custom_button p rightb txt" onclick="step3()" >NEXT</button>
+        <button id="back1" class="custom_button p leftb txt" onclick="step1()" >BACK</button>
+        <button id="back2" class="custom_button p  leftb txt" onclick="step2()" >BACK</button>
      </div>
-    <hr class="bdy">
-    <hr class="bdy">
-    <hr class="bdy">
-    <hr class="bdy">
+
+    <hr class="bdyn">
+    <hr class="bdyn">
+     <hr class="bdyn">
+     <hr class="bdy">
 
 
 </div>
