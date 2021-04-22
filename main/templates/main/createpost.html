@@ -176,6 +176,25 @@
             display:none;
         }
 
+.ele {
+
+  animation: 1s fadeIn;
+  animation-fill-mode: forwards;
+
+  visibility: hidden;
+}
+
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
 
 
     </style>
@@ -260,7 +279,7 @@
     <form method="post" enctype="multipart/form-data" onsubmit="return dogrula()" id="create_post_form">
 
         <div class="row align-items-start">
-        <div class="col-md-4" id="step1" >
+        <div class="col-md-4 ele" id="step1" >
             <div class=" container">
                 <div class="d-flex justify-content-center h-100">
                     <div class="cardR">
@@ -314,7 +333,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4" id="step2" >
+        <div class="col-md-4 ele" id="step2" >
             <div class="container">
                 <div class="d-flex justify-content-center h-100">
                     <div class="cardR">
@@ -395,7 +414,7 @@
                 </div>
                 </div>
         </div>
-        <div class="col-md-4" id="step3" >
+        <div class="col-md-4 ele" id="step3" >
      <div class="container">
     <div class="d-flex justify-content-center h-100">
         <div class="cardR">
