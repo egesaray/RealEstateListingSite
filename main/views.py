@@ -212,3 +212,7 @@ def editpost(request,pk):
 
     return render(request, 'main/editpost.html',context = mydict)
 
+def deletepost(request,pk):
+    fuser = Post.objects.get(id=pk)
+    fuser.delete()
+    return redirect('listaddedposts')
