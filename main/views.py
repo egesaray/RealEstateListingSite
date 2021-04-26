@@ -193,4 +193,4 @@ def listaddedposts(request):
     posts = Post.objects.all().filter(ouruser=user)
     current_user = request.user
     print("Here--->",current_user.id)
-    return render(request, 'main/listaddedposts.html', { 'posts':posts})
+    return render(request, 'main/listaddedposts.html', { 'posts':posts , 'user':user})
