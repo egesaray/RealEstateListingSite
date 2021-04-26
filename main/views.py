@@ -182,8 +182,6 @@ def createpost(request):
 def createpostsuccess(request):
     return render(request, 'main/create-post-success.html')
 
-def updatesuccess(request):
-    return render(request, 'main/update-success.html')
 
 def productdetails(request, pk):
     posts = Post.objects.get(id=pk)
@@ -210,7 +208,7 @@ def editpost(request,pk):
         if p_form.is_valid():
             post=p_form.save()
             fuser.save()
-            return redirect('update-success')
+            return redirect('listaddedposts')
 
     return render(request, 'main/editpost.html',context = mydict)
 
