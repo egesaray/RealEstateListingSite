@@ -1,0 +1,92 @@
+{% extends 'main/mainpage.html' %}
+
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+
+
+<head>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <style>
+
+        .wrn-btn{
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
+
+
+
+            .search-sec{
+        position: relative;
+        background-color: rgba(0,0,0,0.7) !important;
+        justify-content: center;
+        box-shadow: 2px 2px 5px 5px #000000;
+        border-radius: 5px;
+    }
+            .search-slt{
+    display: block;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+}
+
+    </style>
+
+</head>
+
+
+<div class="col-md-8 rounded" style=" box-shadow: 2px 2px 5px 5px #000000;background-color: rgba(0,0,0,0.7)">
+            <div class="row p-2 my-2">
+
+
+
+                {% for i in posts %}
+
+                <div class="col-md-6 ">
+                    <div class="container-fluid bg-white rounded text-dark" style="text-align:center;">
+
+                        <h3>{{ i.post_title }}</h3>
+                        <h5>City : {{ i.location }}</h5>
+                        <h5>Furniture : {{ i.isFurniture }}</h5>
+                        <h5>Building type : {{ i.building_type }}</h5>
+                        <h3>{{ i.price }}$</h3>
+                        <p class="descroption">{{i.area}} m<sup>2</sup></p>
+                        <a href="{% url 'product_details' i.id %}" class="btn btn-info btn-lg active" role="button"
+                           aria-pressed="true">Show Post</a>
+                        <br><br>
+
+                    </div>
+                    <br>
+                </div>
+
+                {% endfor %}
+
+
+
+            </div>
+        </div>
+
+{% endblock %}

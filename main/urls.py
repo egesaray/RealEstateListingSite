@@ -13,4 +13,5 @@ urlpatterns = [
     path('createpost-success/', views.createpostsuccess, name="createpost-success"),
     path('product_details/<int:pk>', views.productdetails, name="product_details"),
     path('postlistings/<str:RoS>',views.postlistings, name="postlistings" ),
+    path('listaddedposts/',views.listaddedposts, name="listaddedposts" ),
     ]
