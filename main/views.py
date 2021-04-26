@@ -187,7 +187,7 @@ def productdetails(request, pk):
     return render(request, 'main/product_details.html', { 'posts':posts ,'pimage':pimage} )
 
 
-
+@login_required
 def listaddedposts(request):
     user = ourUser.objects.get(user_id=request.user.id)
     posts = Post.objects.all().filter(ouruser=user)
