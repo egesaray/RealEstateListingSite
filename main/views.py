@@ -179,33 +179,6 @@ def createpost(request):
 
 
 
-
-@login_required
-def editpost(request,pk):
-    fuser = Post.objects.get(id=pk)
-    p_form = CreatePost(instance=fuser)
-    mydict  =  { 'fuser':fuser,'p_form':p_form }
-    if request.method == 'POST':
-        p_form = CreatePost(request.POST,instance=fuser)
-        if p_form.is_valid():
-            post=p_form.save()
-            fuser.save()
-            return redirect('update-success')
-
-    return render(request, 'main/editpost.html',context = mydict)
-
-
-
-
-
-
-
-
-
-
-
-
-
 def createpostsuccess(request):
     return render(request, 'main/create-post-success.html')
 
@@ -226,4 +199,18 @@ def listaddedposts(request):
     posts = Post.objects.all().filter(ouruser=fuser)
     mydict  =  { 'posts':posts , 'fuser':fuser}
     return render(request, 'main/listaddedposts.html',context = mydict)
+
+@login_required
+def editpost(request,pk):
+    fuser = Post.objects.get(id=pk)
+    p_form = CreatePost(instance=fuser)
+    mydict  =  { 'fuser':fuser,'p_form':p_form }
+    if request.method == 'POST':
+        p_form = CreatePost(request.POST,instance=fuser)
+        if p_form.is_valid():
+            post=p_form.save()
+            fuser.save()
+            return redirect('update-success')
+
+    return render(request, 'main/editpost.html',context = mydict)
 
