@@ -195,3 +195,9 @@ def listaddedposts(request):
     posts = Post.objects.all().filter(ouruser=fuser)
     mydict  =  { 'posts':posts , 'fuser':fuser}
     return render(request, 'main/listaddedposts.html',context = mydict)
+
+@login_required
+def editpost(request,pk):
+    post = Post.objects.get(id=pk)
+    mydict  =  { 'post':post }
+    return render(request, 'main/editpost.html',context = mydict)

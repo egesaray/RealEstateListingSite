@@ -19,8 +19,6 @@ class CreatePost(ModelForm):
         fields = ['postType' , 'isFurniture' , 'building_type' , 'location' , 'post_title' ,'price' , 'building_age','floor','post_description','area' ]
 
 
-
-
 class ImagePost(ModelForm):
     class Meta:
         model= PostImages

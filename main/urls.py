@@ -14,4 +14,5 @@ urlpatterns = [
     path('product_details/<int:pk>', views.productdetails, name="product_details"),
     path('postlistings/<str:RoS>',views.postlistings, name="postlistings" ),
     path('listaddedposts/',views.listaddedposts, name="listaddedposts" ),
+    path('editpost/<int:pk>',views.editpost, name="editpost" ),
     ]
