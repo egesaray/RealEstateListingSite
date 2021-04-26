@@ -17,6 +17,7 @@ def logoutUser(request):
 	logout(request)
 	return redirect('homepage')
 
+
 def loginpage(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -189,6 +190,6 @@ def productdetails(request, pk):
 
 @login_required
 def listaddedposts(request):
-    user = ourUser.objects.get(user_id=request.user.id)
-    posts = Post.objects.all().filter(ouruser=user)
-    return render(request, 'main/listaddedposts.html', { 'posts':posts , 'user':user})
+    fuser = ourUser.objects.get(user_id=request.user.id)
+    posts = Post.objects.all().filter(ouruser=fuser)
+    return render(request, 'main/listaddedposts.html', { 'posts':posts , 'fuser':fuser})
