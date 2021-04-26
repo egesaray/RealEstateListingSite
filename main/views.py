@@ -191,4 +191,5 @@ def productdetails(request, pk):
 def listaddedposts(request):
     user = ourUser.objects.get(user_id=request.user.id)
     posts = Post.objects.all().filter(ouruser=user)
-    return render(request, 'main/listaddedposts.html', { 'posts':posts , 'user':user})
+    mydict  =  { 'posts':posts , 'user':user}
+    return render(request, 'main/listaddedposts.html',context = mydict)
