@@ -190,6 +190,8 @@ def productdetails(request, pk):
 
 @login_required
 def listaddedposts(request):
+
     fuser = ourUser.objects.get(user_id=request.user.id)
     posts = Post.objects.all().filter(ouruser=fuser)
-    return render(request, 'main/listaddedposts.html', { 'posts':posts , 'fuser':fuser})
+    mydict  =  { 'posts':posts , 'fuser':fuser}
+    return render(request, 'main/listaddedposts.html',context = mydict)
