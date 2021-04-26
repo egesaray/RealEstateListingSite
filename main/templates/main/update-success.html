@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'main/mainpage.html' %}
+{% load static %}
+
+{% block content %}
+<html lang="en">
+<head>
+
+
+    <style>
+
+        body,
+html {
+  width           : 100%;
+  height          : 100%;
+  margin          : 0;
+  padding         : 0;
+  background-color: #000000;
+font-family: 'Comfortaa', cursive;
+  color           : #ffffff;
+  font-size       : 30px;
+}
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+<p class="center">
+The button version...
+    <button type="button" value="My Post" onclick="window.history.go(-2)"></button>
+</p>
+
+
+</body>
+</html>
+
+{% endblock %}

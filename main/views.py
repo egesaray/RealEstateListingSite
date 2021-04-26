@@ -177,8 +177,40 @@ def createpost(request):
     return render(request, 'main/createpost.html', context=mydict)
 
 
+
+
+
+@login_required
+def editpost(request,pk):
+    fuser = Post.objects.get(id=pk)
+    p_form = CreatePost(instance=fuser)
+    mydict  =  { 'fuser':fuser,'p_form':p_form }
+    if request.method == 'POST':
+        p_form = CreatePost(request.POST,instance=fuser)
+        if p_form.is_valid():
+            post=p_form.save()
+            fuser.save()
+            return redirect('update-success')
+
+    return render(request, 'main/editpost.html',context = mydict)
+
+
+
+
+
+
+
+
+
+
+
+
+
 def createpostsuccess(request):
     return render(request, 'main/create-post-success.html')
+
+def updatesuccess(request):
+    return render(request, 'main/update-success.html')
 
 def productdetails(request, pk):
     posts = Post.objects.get(id=pk)
@@ -186,7 +218,6 @@ def productdetails(request, pk):
     pimage = PostImages.objects.filter(gallery=posts)
 
     return render(request, 'main/product_details.html', { 'posts':posts ,'pimage':pimage} )
-
 
 @login_required
 def listaddedposts(request):
@@ -196,8 +227,3 @@ def listaddedposts(request):
     mydict  =  { 'posts':posts , 'fuser':fuser}
     return render(request, 'main/listaddedposts.html',context = mydict)
 
-@login_required
-def editpost(request,pk):
-    post = Post.objects.get(id=pk)
-    mydict  =  { 'post':post }
-    return render(request, 'main/editpost.html',context = mydict)

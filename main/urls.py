@@ -15,4 +15,5 @@ urlpatterns = [
     path('postlistings/<str:RoS>',views.postlistings, name="postlistings" ),
     path('listaddedposts/',views.listaddedposts, name="listaddedposts" ),
     path('editpost/<int:pk>',views.editpost, name="editpost" ),
+     path('update-success/', views.updatesuccess, name="update-success"),
     ]
