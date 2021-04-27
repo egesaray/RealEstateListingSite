@@ -212,7 +212,8 @@ def listaddedposts(request):
 def editpost(request,pk):
     fuser = Post.objects.get(id=pk)
     p_form = CreatePost(instance=fuser)
-    mydict  =  { 'fuser':fuser,'p_form':p_form }
+    pimage = PostImages.objects.filter(gallery=fuser)
+    mydict  =  { 'fuser':fuser,'p_form':p_form ,'pimage':pimage }
     if request.method == 'POST':
         p_form = CreatePost(request.POST,instance=fuser)
         if p_form.is_valid():
