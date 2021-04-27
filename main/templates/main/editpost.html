@@ -3,7 +3,7 @@
 {% load static %}
 {% block content %}
 <!-- Postların yayında olup olmadığını anlamak için yayında mı checkbox yapılabilir -->
-<head>
+<head xmlns="http://www.w3.org/1999/html">
     <title>EDIT</title>
 
 
@@ -69,7 +69,7 @@ display:none;
 }
 #message{
 height: 400px;
-width: 600px;
+width: 760px;
 top:50%;
 position: absolute;
 left : 50%;
@@ -87,7 +87,7 @@ top:50%;
 left:50%;
 transform:translate(-50%,-50%);
   position:relative;
-  width: 560px;
+  width: 660px;
   height: 289px;
   background-color: #fcfcfc;;
   box-shadow: 0 1px 3px #000;
@@ -156,16 +156,18 @@ display:block;
     <div id="message">
   <div id="modal_inner">
     <h1>Are you sure you want to do that?</h1>
-    <h5>It is impossible to access files you deleted once.</h5>
-    <div class="buttons">
+    <center><h5>&middot;It is impossible to access files you deleted once.</h5></center>
+      <br><br>
+   <center style="top:10px;">
 		<button onclick="document.getElementById('delete').click()" class="custom_button btn-success" type="button" >
       Yes, do it now!
     </button>
     <button onclick="hide()" type="button" class=" btn-danger custom_button" >
       No, I'm insane!
     </button>
+       </center>
     </div>
-</div>
+
     </div>
 
     <div id="updates">
