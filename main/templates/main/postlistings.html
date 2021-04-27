@@ -1,7 +1,7 @@
 {% extends 'main/mainpage.html' %}
-
 {% load widget_tweaks %}
 {% load static %}
+{% load humanize %}
 {% block content %}
 
 <head>
@@ -210,7 +210,7 @@
                         <h5>City : {{ i.location }}</h5>
                         <h5>Furniture : {{ i.isFurniture }}</h5>
                         <h5>Building type : {{ i.building_type }}</h5>
-                        <h3>{{ i.price }}$</h3>
+                        <h3>{{ i.price|intcomma }}$</h3>
                         <p class="descroption">{{i.area}} m<sup>2</sup></p>
                         <a href="{% url 'product_details' i.id %}" class="btn btn-info btn-lg active" role="button"
                            aria-pressed="true">Show Post</a>

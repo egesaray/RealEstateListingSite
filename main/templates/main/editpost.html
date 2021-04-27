@@ -4,10 +4,10 @@
 {% block content %}
 <!-- Postların yayında olup olmadığını anlamak için yayında mı checkbox yapılabilir -->
 <head>
+    <title>EDIT</title>
 
-                  <title>EDIT</title>
 
-  <style >
+    <style >
   hr{
       border-style: none;
     box-shadow: 2px 2px 5px 5px #102c35;
@@ -130,8 +130,7 @@ cursor:grabbing;
 display:block;
 }
   </style>
-
-     <script>
+    <script>
         function preventBack() { window.history.forward(); }
         setTimeout("preventBack()", 0);
         window.onunload = function () { null };
@@ -262,7 +261,7 @@ display:block;
 
     </div>
 
-		<div class="col-sm">
+    <div class="col-sm">
                <form method="post" action="{% url 'delete-post' fuser.id  %}">
                    {% csrf_token %}
                    <button type="submit" id="delete" class="btn btn-danger btn-sm">Delete</button>
