@@ -41,6 +41,20 @@
       background: #0062cc;
       color: #fff;
     }
+     .custom_button{
+          background-color: #0c2026 ;
+          border: none;
+          border-bottom:4px solid #36362f;
+          border-radius:50px;
+          color: #f8fcfd;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+	      cursor: pointer;
+        }
 
 #slider{
 	width: 440px;
@@ -53,6 +67,40 @@
 #delete{
 display:none;
 }
+#message{
+height: 400px;
+width: 600px;
+top:50%;
+position: absolute;
+left : 50%;
+transform:translate(-50%,-50%);
+background-color:info;
+box-shadow: 2px 2px 15px 15px #020708;
+display:none;
+
+}
+
+
+
+#modal_inner {
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+  position:relative;
+  width: 560px;
+  height: 289px;
+  background-color: #fcfcfc;;
+  box-shadow: 0 1px 3px #000;
+}
+
+h1 {
+  font-size: 35px;
+    font-family: "Times New Roman", Times, cursive;
+    font-weight: lighter;
+    font-variant: small-caps;
+    color:#f8fcfd;
+}
+
 
 #slider::-webkit-scrollbar {
 		width: 8px;
@@ -77,12 +125,26 @@ cursor:grabbing;
 #slider::-webkit-scrollbar-thumb:active{
     background-color: #2F4345;
 }
+
+#updates{
+display:block;
+}
   </style>
 
      <script>
         function preventBack() { window.history.forward(); }
         setTimeout("preventBack()", 0);
         window.onunload = function () { null };
+
+        function show() {
+        document.getElementById("message").style.display = "block";
+        document.getElementById("updates").style.display = "none";
+        }
+        function hide() {
+        document.getElementById("message").style.display = "none";
+        document.getElementById("updates").style.display = "block";
+        }
+
      </script>
 
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -91,7 +153,25 @@ cursor:grabbing;
 </head>
 
 <body >
+
+    <div id="message">
+  <div id="modal_inner">
+    <h1>Are you sure you want to do that?</h1>
+    <h5>It is impossible to access files you deleted once.</h5>
+    <div class="buttons">
+		<button onclick="document.getElementById('delete').click()" class="custom_button" type="button" >
+      Yes, do it now!
+    </button>
+    <button onclick="hide()" type="button" class="custom_button" >
+      No, I'm insane!
+    </button>
+    </div>
+</div>
+    </div>
+
+    <div id="updates">
 <form method="post" enctype="multipart/form-data">
+
   {% csrf_token %}
 <div class="container register-form">
   <div class="form">
@@ -169,7 +249,7 @@ cursor:grabbing;
       <hr>
            <center>
         <button type="submit" class="btnSubmit" style="background: #649eeb; color:white; border-color: #649eeb">Update</button>
-               <button onclick="document.getElementById('delete').click()" type="button" class="btn btn-danger btn-sm">Delete</button>
+               <button onclick="show()" type="button" class="btn btn-danger btn-sm">Delete</button>
 
       </center>
     </div>
@@ -178,6 +258,9 @@ cursor:grabbing;
 </div>
 
 </form>
+
+
+    </div>
 
 		<div class="col-sm">
                <form method="post" action="{% url 'delete-post' fuser.id  %}">
