@@ -225,5 +225,7 @@ def editpost(request,pk):
 
 def deletepost(request,pk):
     fuser = Post.objects.get(id=pk)
+    pimage = PostImages.objects.filter(gallery=fuser)
     fuser.delete()
+    pimage.delete()
     return redirect('listaddedposts')
