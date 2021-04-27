@@ -130,10 +130,40 @@
                             <input type="number" name="max_area" class="form-control" value="{{ max_area }}" min="0"
                                    max="4000" required>
                         </div>
+
+
+                    </div><br><br>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <label>Minimum Room number</label>
+                            <input type="number" name="min_room_num" class="form-control" value="{{ min_room_num }}" min="0"
+                                   max="20" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Maximum Room number</label>
+                            <input type="number" name="max_room_num" class="form-control" value="{{ max_room_num }}" min="0"
+                                   max="20" required>
+                        </div>
+
+
                     </div>
-
                     <br><br>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <label>Minimum Floor number</label>
+                            <input type="number" name="min_floor_num" class="form-control" value="{{ min_floor_num }}" min="0"
+                                   max="100" required>
+                        </div>
 
+                        <div class="col-md-6">
+                            <label>Maximum Floor number</label>
+                            <input type="number" name="max_floor_num" class="form-control" value="{{ max_floor_num }}" min="0"
+                                   max="100" required>
+                        </div>
+
+                    </div>
+                    <br><br>
 
                     <div class="row ">
                         <div class="col-md-6">
@@ -149,7 +179,6 @@
                         </div>
                     </div>
                     <br><br>
-
 
                     <center>
                         <button class="btn btn-info" id="primarybutton">Search</button>

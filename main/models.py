@@ -66,6 +66,7 @@ class Post(models.Model):
     area = models.DecimalField(decimal_places=0,max_digits=4 ,null=True)
     isFurniture = models.CharField(choices=Furniture ,null=True,max_length=50,default="No")
     building_type = models.CharField(choices=b_types ,null=True ,max_length=50)
+    room = models.DecimalField(decimal_places=0 , max_digits=3 ,null=True)
 
 
     def __str__(self):

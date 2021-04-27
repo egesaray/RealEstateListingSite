@@ -92,7 +92,10 @@ def postlistings(request,RoS):
     max_area = request.GET.get('max_area', 4000)
     min_age = request.GET.get('min_age', 0)
     max_age = request.GET.get('max_age', 100)
-
+    min_room_num = request.GET.get('min_room_num', 0)
+    max_room_num = request.GET.get('max_room_num', 20)
+    min_floor_num = request.GET.get('min_floor_num', 0)
+    max_floor_num = request.GET.get('max_floor_num', 100)
 
     if query != None:
         print("sadasdas")
@@ -103,6 +106,8 @@ def postlistings(request,RoS):
     cu = cu.filter(price__gte =price_from).filter(price__lte=price_to)
     cu = cu.filter(area__gte=min_area).filter(area__lte=max_area)
     cu = cu.filter(building_age__gte=min_age).filter(building_age__lte=max_age)
+    cu = cu.filter(room__gte=min_room_num).filter(room__lte=max_room_num)
+    cu = cu.filter(floor__gte=min_floor_num).filter(floor__lte=max_floor_num)
 
     myFilter = PostFilter(request.GET , queryset=cu)
     cu = myFilter.qs
@@ -116,6 +121,10 @@ def postlistings(request,RoS):
         'max_area':max_area,
         'min_age': min_age,
         'max_age': max_age,
+        'min_room_num':min_room_num,
+        'max_room_num':max_room_num,
+        'min_floor_num':min_floor_num,
+        'max_floor_num':max_floor_num,
         'myFilter': myFilter,
         'query':query,
     }
@@ -158,10 +167,11 @@ def createpost(request):
             price = request.POST['price']
             building_age = request.POST['building_age']
             floor = request.POST['floor']
+            room = request.POST['room']
             post_description = request.POST['post_description']
             area = request.POST['area']
             isFurniture=request.POST['isFurniture']
-            newPost = Post(postType=postType,building_type=building_type,location=location,post_title=post_title,price=price,building_age=building_age, floor=floor,post_description=post_description,area=area,isFurniture=isFurniture, ouruser=ouruser)
+            newPost = Post(postType=postType,building_type=building_type,location=location,post_title=post_title,price=price,building_age=building_age, floor=floor,room=room,post_description=post_description,area=area,isFurniture=isFurniture, ouruser=ouruser)
             newPost.save()
 
             for image in images:

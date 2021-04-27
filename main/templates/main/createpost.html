@@ -262,6 +262,7 @@
             var price = document.forms["create_post_form"]["price"].value;
             var building_age = document.forms["create_post_form"]["building_age"].value;
             var floor = document.forms["create_post_form"]["floor"].value;
+            var room = document.forms["create_post_form"]["room"].value;
             var area = document.forms["create_post_form"]["area"].value;
             //var post_description = document.forms["create_post_form"]["post_description"].value;
 
@@ -276,6 +277,8 @@
             if ( building_age >= 99){ alert("Age of building can not exceed 99");
                 return false;}
             if ( floor >= 999){ alert("Floor number can not exceed 999");
+                return false;}
+            if ( room >= 999){ alert("Room number can not exceed 999");
                 return false;}
             if ( area >= 9999){ alert("Area can not exceed 9999");
                 return false;}
@@ -319,10 +322,10 @@
                               {% render_field form.postType class="form-control b-r-c"  %}
                                 </div>
 
-                                          <div class="input-group form-group" >
-                                  <label   class=" form-control input-group form-group bg"   >Estate Type</label>
+                                  <div class="input-group form-group" >
+                                  <label  class=" form-control input-group form-group bg"   >Estate Type</label>
 
-                        {% render_field form.building_type class="form-control b-r-c" id="building_type"  %}
+                              {% render_field form.building_type class="form-control b-r-c" id="building_type"  %}
                                 </div>
 
 
@@ -404,6 +407,13 @@
                                         <span style="width: 110px;" class="input-group-text bg"><i class="fas fa-arrows-alt"></i></span>
                                     </div>
                                     {% render_field form.area class="form-control b-r" placeholder="Area m²" id=area%}
+
+                                </div>
+                                     <div class="input-group form-group">
+                                    <div class="input-group-prepend">
+                                        <span style="width: 110px;"  class="input-group-text bg"><i class="fas fa-building"></i></span>
+                                    </div>
+                                    {% render_field form.room class="form-control b-r" placeholder="Room Number" id="room" %}
 
                                 </div>
             <input id="isfurniture">
