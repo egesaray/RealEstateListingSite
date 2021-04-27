@@ -79,7 +79,4 @@ class PostImages(models.Model):
     image = models.ImageField(null=True, blank=True)
     gallery = models.ForeignKey(Post,null=True,on_delete= models.CASCADE)
 
-    def delete(self, *args, **kwargs):
-        self.image.delete()
-        super().delete(*args, **kwargs)
 
