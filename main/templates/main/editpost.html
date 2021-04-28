@@ -129,6 +129,10 @@ cursor:grabbing;
 #updates{
 display:block;
 }
+  .desdiv{
+                    max-height: 300px;
+                    min-height: 255px;
+        }
   </style>
     <script>
         function preventBack() { window.history.forward(); }
@@ -232,7 +236,7 @@ display:block;
 
             <div class="form-group">
               <label>Description</label>
-              {% render_field p_form.post_description class="form-control" placeholder="Description" %}
+              {% render_field p_form.post_description class="form-control desdiv" placeholder="Description" %}
             </div>
         </div>
 
