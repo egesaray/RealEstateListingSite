@@ -27,7 +27,10 @@ def loginpage(request):
 
         if user is not None:
             login( request,user)
-            return redirect('homepage')
+            if user.is_staff:
+                return redirect('adminPage')
+            else:
+                return redirect('homepage')
         else:
             messages.info(request, 'Username OR password is incorrect')
 
@@ -58,6 +61,8 @@ def register(request):
 def homepagealternative(request):
     return render(request, 'main/homepagealternative.html')
 
+def adminPage(request):
+    return render(request, 'main/adminPage.html')
 
 def homepage(request):
     forsale = 'forsale'

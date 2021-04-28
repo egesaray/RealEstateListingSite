@@ -50,7 +50,11 @@
 
 
     </style>
-
+{% if user.is_superuser %}
+    <p>Hello, admin!</p>
+{% else %}
+    <p>Hello, user!</p>
+{% endif %}
 
     <br><br><br><br>
 <section class="search-sec">
