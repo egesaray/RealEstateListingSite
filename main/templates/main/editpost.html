@@ -80,6 +80,14 @@ display:none;
 
 }
 
+#addphoto{
+display:none;
+}
+#addbutton{
+display:block;
+}
+
+
 #modal_inner {
 top:50%;
 left:50%;
@@ -145,6 +153,11 @@ display:block;
         document.getElementById("message").style.display = "none";
         document.getElementById("updates").style.display = "block";
         }
+        function showphoto() {
+        document.getElementById("addphoto").style.display = "block";
+        document.getElementById("addbutton").style.display = "none";
+        }
+
 
      </script>
 
@@ -244,18 +257,21 @@ display:block;
                     {% for i in pimage %}
                     <div class="border border-info">
                     <img class="thumbnail" src="{% static i.image.url %}" width="500" height="333">
-                        <a href="{% url 'delete-photo' i.id %}" class="btn btn-danger btn-lg active" role="button"
-                           aria-pressed="true">X</a>
-                        <h1>{{i.id}}</h1>
+                        <center><a href="{% url 'delete-photo' i.id %}" class="btn btn-danger btn-lg active" role="button"
+                                   aria-pressed="true">X</a></center>
                     </div>
                     {% endfor %}
                 </div>
             </div>
             <div class="row">
-            <div style="top:15px;" class="col-sm">
+                <div id="addbutton"  style="top:15px;" class="col-sm">
+                    <h1>New Photo</h1>
+                <button  onclick="showphoto()" type="button" class=" btnSubmit btn-info ">+</button>
+                </div>
+            <div id="addphoto" style="top:15px;" class="col-sm">
                   <div class=" border border-info input-group form-group">
                      <div class="input-group-prepend">
-                         <h1>New Photo</h1>
+                            <h1>New Photo</h1>
                         </div>
 
                           <div class="form-group ">
