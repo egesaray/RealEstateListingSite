@@ -220,11 +220,12 @@ def editpost(request,pk):
         if p_form.is_valid():
             post=p_form.save()
             fuser.save()
-            for image in images:
-                photo = PostImages.objects.create(image =image , gallery=fuser)
 
-            photo.save()
-            return redirect('listaddedposts')
+            if images != None :
+                for image in images:
+                    photo = PostImages.objects.create(image =image , gallery=fuser)
+                    photo.save()
+                return redirect('listaddedposts')
 
     return render(request, 'main/editpost.html',context = mydict)
 
