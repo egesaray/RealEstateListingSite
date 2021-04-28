@@ -230,3 +230,12 @@ def deletepost(request,pk):
         fuser.delete()
         pimage.delete()
     return redirect('listaddedposts')
+
+
+def deletephoto(request,pk):
+    pimage = PostImages.objects.filter(id=pk)
+    pimage.delete()
+
+    return redirect(request.META['HTTP_REFERER'])
+
+

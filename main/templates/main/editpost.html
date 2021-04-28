@@ -80,7 +80,9 @@ display:none;
 
 }
 
-
+.foto{
+border:2px solid blue;
+}
 
 #modal_inner {
 top:50%;
@@ -244,7 +246,12 @@ display:block;
             <div id="slide-wrapper">
                 <div id="slider" >
                     {% for i in pimage %}
+                    <div class="foto">
                     <img class="thumbnail" src="{% static i.image.url %}" width="500" height="333">
+                        <a href="{% url 'delete-photo' i.id %}" class="btn btn-danger btn-lg active" role="button"
+                           aria-pressed="true">X</a>
+                        <h1>{{i.id}}</h1>
+                    </div>
                     {% endfor %}
                 </div>
             </div>
