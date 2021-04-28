@@ -80,10 +80,6 @@ display:none;
 
 }
 
-.foto{
-border:2px solid blue;
-}
-
 #modal_inner {
 top:50%;
 left:50%;
@@ -246,7 +242,7 @@ display:block;
             <div id="slide-wrapper">
                 <div id="slider" >
                     {% for i in pimage %}
-                    <div class="foto">
+                    <div class="border border-info">
                     <img class="thumbnail" src="{% static i.image.url %}" width="500" height="333">
                         <a href="{% url 'delete-photo' i.id %}" class="btn btn-danger btn-lg active" role="button"
                            aria-pressed="true">X</a>
@@ -255,7 +251,35 @@ display:block;
                     {% endfor %}
                 </div>
             </div>
+            <div class="row">
+            <div style="top:15px;" class="col-sm">
+                  <div class=" border border-info input-group form-group">
+                     <div class="input-group-prepend">
+                         <h1>New Photo</h1>
+                        </div>
+
+                          <div class="form-group ">
+
+                            <input style="
+                                              border-radius: 50px 20px;
+                                              cursor:cell;
+                                              background-color: #f8fcfd;;
+                                              box-shadow: 2px 2px 5px 5px #e9f5f8;
+                                              padding: 10px;
+                                              text-align: center;
+                                              text-decoration: none;
+                                              margin: 4px 2px;
+                                              outline: none;
+                                        " required name="images" type="file" multiple class="form-control-file">
+            </div>
+
+                    </div>
+          </div>
+            </div>
 		</div>
+
+
+
 
       </div>
       <hr>
@@ -265,6 +289,7 @@ display:block;
 
       </center>
     </div>
+
 
   </div>
 </div>
