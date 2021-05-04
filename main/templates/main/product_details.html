@@ -5,6 +5,11 @@
 {% block content %}
 
 <html>
+<head>
+
+	   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+</head>
 
 <style>
 
@@ -26,11 +31,36 @@ background-color: #F6FBFC  ;
   word-wrap:break-word;
 
 }
-h1{
+.hh1{
 text-shadow: 2px 2px 5px #2F4345;
 text-align: center;
 text-transform: capitalize;
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
 }
+.hh2{
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.hh4 {
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
 mark{
 background-color:#AFDFE3;
 border-radius: 25%;
@@ -253,30 +283,30 @@ cursor:grabbing;
 		</div>
 
 		<div class="column ">
-			<h1>{{posts.post_title}}</h1>
-			<h2>{{posts.postType}}</h2>
+			<p class="hh1">{{posts.post_title}}</p>
+			<p class="hh2"> {{posts.postType}}</p>
 			<hr>
-			<h4 ><mark>Price:</mark>&nbsp;{{posts.price|intcomma}}$</h4>
-			<h4 ><mark>Location:</mark>&nbsp;{{posts.location}}</h4>
-			<h4 ><mark>Floor:</mark>&nbsp;{{posts.floor}}</h4>
+			<p class="hh4"><mark>Price:</mark>&nbsp;{{posts.price|intcomma}}$</p>
+			<p class="hh4"><mark>Location:</mark>&nbsp;{{posts.location}}</p>
+			<p class="hh4"><mark>Floor:</mark>&nbsp;{{posts.floor}}</p>
 
-			<h4 ><mark>Age:</mark>&nbsp;{{posts.building_age}}</h4>
-			<h4 ><mark>Area:</mark>&nbsp;{{posts.area}} m<sup>2</sup></h4>
-			<h4 ><mark>Room number: </mark>&nbsp;{{ posts.room }}</h4>
-			<h4 ><mark>Furniture:</mark>&nbsp;{{posts.isFurniture}}</h4>
-			<h4 ><mark>Type:</mark>&nbsp;{{posts.building_type}}</h4>
+			<p class="hh4"><mark>Age:</mark>&nbsp;{{posts.building_age}}</p>
+			<p class="hh4"><mark>Area:</mark>&nbsp;{{posts.area}} m<sup>2</sup></p>
+			<p class="hh4"><mark>Room number: </mark>&nbsp;{{ posts.room }}</p>
+			<p class="hh4"><mark>Furniture:</mark>&nbsp;{{posts.isFurniture}}</p>
+			<p class="hh4"><mark>Type:</mark>&nbsp;{{posts.building_type}}</p>
 
 
 			<hr>
-			<h4 style="text-align: right;">By:&nbsp;{{posts.ouruser.first_name}}</h4>
-			<h4 style="text-align: right;">&nbsp;{{posts.ouruser.email}}</h4>
+			<p class="hh4" style="text-align: right;">By:&nbsp;{{posts.ouruser.first_name}}</p>
+			<p class="hh4" style="text-align: right;">&nbsp;{{posts.ouruser.email}}</p>
 
 		</div>
 
 
 		<div class="column ">
 			<hr>
-			<h4 class="des"  ><mark>Description:</mark>&nbsp;{{posts.post_description}}</h4>
+			<p class="des hh4"  ><mark>Description:</mark>&nbsp;{{posts.post_description}}</p>
 			<hr>
 		</div>
 
