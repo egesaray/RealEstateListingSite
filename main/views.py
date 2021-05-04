@@ -1,7 +1,7 @@
 from django.shortcuts import render ,redirect
 from django.contrib.auth import  authenticate , login ,logout
 from django.http import HttpResponseRedirect
-from .decorators import unauthenticated_user
+from .decorators import unauthenticated_user, allowed_users
 from .forms import *
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -9,7 +9,7 @@ from django.contrib import messages
 from .models import *
 from .filters import *
 from django.db.models import Q
-
+from django.contrib.auth.models import Group
 
 
 
@@ -17,7 +17,7 @@ def logoutUser(request):
 	logout(request)
 	return redirect('homepage')
 
-
+@unauthenticated_user
 def loginpage(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -52,6 +52,11 @@ def register(request):
             email = request.POST['email']
             ouser = ourUser(username=username, first_name=first_name, last_name=last_name, email=email, user=user)
             ouser.save()
+            usergroup = Group.objects.get(name = 'customer')
+            user.groups.add(usergroup)
+
+
+
             return redirect('loginpage')
 
     context = {'form': form}
@@ -61,8 +66,12 @@ def register(request):
 def homepagealternative(request):
     return render(request, 'main/homepagealternative.html')
 
+@login_required
+@allowed_users(allowed_roles=['admin'])
 def adminPage(request):
+
     return render(request, 'main/adminPage.html')
+
 
 def homepage(request):
     forsale = 'forsale'
@@ -155,6 +164,7 @@ def createpost(request):
 
 """
 @login_required
+@allowed_users(allowed_roles=['customer'])
 def createpost(request):
     postForm = CreatePost()
     imageForm=ImagePost()
@@ -206,6 +216,7 @@ def productdetails(request, pk):
     return render(request, 'main/product_details.html', { 'posts':posts ,'pimage':pimage} )
 
 @login_required
+@allowed_users(allowed_roles=['customer'])
 def listaddedposts(request):
 
     fuser = ourUser.objects.get(user_id=request.user.id)
@@ -214,6 +225,7 @@ def listaddedposts(request):
     return render(request, 'main/listaddedposts.html',context = mydict)
 
 @login_required
+@allowed_users(allowed_roles=['customer'])
 def editpost(request,pk):
     fuser = Post.objects.get(id=pk)
     p_form = CreatePost(instance=fuser)

@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-{% extends 'main/mainpage.html' %}
-
-{% block content %}
-
 {% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NOVA</title>
+    <title>NOVA ADMIN</title>
 </head>
 <body>
 
+<h1>This is admin page,</h1>
+<h1>it will be added in the next sprint</h1>
+<a href="/">Visitor view for admin</a>
+<br>
+
+<a href="{% url 'logout' %}">Logout</a>
 </body>
 </html>
-{% endblock %}
