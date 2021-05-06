@@ -1,0 +1,17 @@
+
+{% block title %} Delete User Confirm Page{% endblock %}
+
+
+{% block content %}
+<div class="row my-4">
+    <div class="col-md-6 offset-md-3 p-3 bg-white">
+        <h3>Delete User</h3>
+        <hr>
+        <form>
+            {% csrf_token %}
+
+            <input class="btn btn-info" type="submit" value="Confirm">
+        </form>
+    </div>
+</div>
+{% endblock %}

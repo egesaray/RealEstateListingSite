@@ -10,7 +10,7 @@ from .models import *
 from .filters import *
 from django.db.models import Q
 from django.contrib.auth.models import Group
-
+from django.contrib.auth.models import User
 
 
 def logoutUser(request):
@@ -80,13 +80,106 @@ def adminPage(request):
 
     context = {
 
-
         'sales_count' : sales_count,
        'rents_count': rents_count,
         'users_count': users_count,
     }
     return render(request, 'main/adminPage.html', context)
 
+
+@login_required
+@allowed_users(allowed_roles=['admin'])
+def user(request):
+    sales = Post.objects.all().filter(postType='For Sale')
+    sales_count = sales.count()
+
+    rents = Post.objects.all().filter(postType='For Rent')
+    rents_count = rents.count()
+
+    users = ourUser.objects.all()
+    users_count = users.count()
+
+    context = {
+
+        'users': users,
+        'rents': rents,
+        'sales': sales,
+        'sales_count': sales_count,
+        'rents_count': rents_count,
+        'users_count': users_count ,
+    }
+
+    return render(request, 'main/user.html' , context)
+
+@login_required
+@allowed_users(allowed_roles=['admin'])
+def sale(request):
+    sales = Post.objects.all().filter(postType='For Sale')
+    sales_count = sales.count()
+
+    rents = Post.objects.all().filter(postType='For Rent')
+    rents_count = rents.count()
+
+    users = ourUser.objects.all()
+    users_count = users.count()
+
+    context = {
+        'users': users,
+        'rents': rents,
+        'sales': sales,
+        'sales_count': sales_count,
+        'rents_count': rents_count,
+        'users_count': users_count,
+    }
+    return render(request, 'main/sale.html' , context)
+
+@login_required
+@allowed_users(allowed_roles=['admin'])
+def rent(request):
+    sales = Post.objects.all().filter(postType='For Sale')
+    sales_count = sales.count()
+
+    rents = Post.objects.all().filter(postType='For Rent')
+    rents_count = rents.count()
+
+    users = ourUser.objects.all()
+    users_count = users.count()
+
+    context = {
+        'users': users,
+        'rents': rents,
+        'sales': sales,
+        'sales_count': sales_count,
+        'rents_count': rents_count,
+        'users_count': users_count,
+    }
+    return render(request, 'main/rent.html' , context)
+
+
+@login_required
+@allowed_users(allowed_roles=['admin'])
+def graphs(request):
+    sales = Post.objects.all().filter(postType='For Sale')
+    sales_count = sales.count()
+
+    rents = Post.objects.all().filter(postType='For Rent')
+    rents_count = rents.count()
+
+    users = ourUser.objects.all()
+    users_count = users.count()
+
+    context = {
+
+        'users': users,
+        'rents': rents,
+        'sales': sales,
+        'sales_count': sales_count,
+        'rents_count': rents_count,
+        'users_count': users_count ,
+    }
+
+
+    return render(request, 'main/graphs.html' , context)
 
 def homepage(request):
     forsale = 'forsale'
@@ -277,3 +370,29 @@ def deletephoto(request,pk):
     return redirect(request.META['HTTP_REFERER'])
 
 
+
+
+@login_required
+@allowed_users(allowed_roles=['admin'])
+def delete_user(request, pk):
+    user = ourUser.objects.get(id=pk)
+    if request.method == 'POST':
+        user.delete()
+        return redirect('adminPage')
+    context = {
+        'user': user
+    }
+    return render(request, 'main/user-delete.html', context)
+
+
+@login_required
+@allowed_users(allowed_roles=['admin'])
+def delete_post(request, pk):
+    post = Post.objects.get(id=pk)
+    if request.method == 'POST':
+        post.delete()
+        return redirect('adminPage')
+    context = {
+        'post': post
+    }
+    return render(request, 'main/post_delete.html', context)

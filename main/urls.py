@@ -18,4 +18,11 @@ urlpatterns = [
     path('delete-post/<int:pk>', views.deletepost,name='delete-post'),
     path('delete-photo/<int:pk>', views.deletephoto,name='delete-photo'),
     path('adminPage/', views.adminPage, name="adminPage"),
+    path('user/', views.user, name="user"),
+    path('sale/', views.sale, name="sale"),
+    path('rent/', views.rent, name="rent"),
+    path('user-delete/<int:pk>', views.delete_user, name="deleteuser"),
+    path('post_delete/<int:pk>', views.delete_post, name="deletepost"),
+    path('graphs/', views.graphs, name="graphs")
+
     ]
