@@ -69,8 +69,23 @@ def homepagealternative(request):
 @login_required
 @allowed_users(allowed_roles=['admin'])
 def adminPage(request):
+    sales = Post.objects.all().filter(postType='For Sale')
+    sales_count = sales.count()
 
-    return render(request, 'main/adminPage.html')
+    rents = Post.objects.all().filter(postType='For Rent')
+    rents_count = rents.count()
+
+    users = ourUser.objects.all()
+    users_count = users.count()
+
+    context = {
+
+
+        'sales_count' : sales_count,
+       'rents_count': rents_count,
+        'users_count': users_count,
+    }
+    return render(request, 'main/adminPage.html', context)
 
 
 def homepage(request):

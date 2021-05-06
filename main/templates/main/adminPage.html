@@ -4,14 +4,460 @@
 <head>
     <meta charset="UTF-8">
     <title>NOVA ADMIN</title>
+
+      <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <!--FontAwesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+        integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+
+    <!--Chartjs CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
+    <!--Custome CSS-->
+    <link rel="stylesheet" href="../dashboard/style.css">
+
+    <title>Home Page</title>
 </head>
-<body>
+<body class="g">
+<nav>
+    <div class="logo">
+        <a class="navbar-brand pb-2" href="{% url 'homepage' %}"><img src="{% static 'images/nova_logo.gif' %}"
+                                                                      style="height: 80px; width: 80px"></a>
+    </div>
+    <label for="btn" class="icon">
+        <span class="fa fa-bars"></span>
+    </label>
+    <input type="checkbox" id="btn">
+    <ul>
+        {% if user.is_authenticated %}
+        <li><a href="/">Visitor view for admin</a></li>
 
-<h1>This is admin page,</h1>
-<h1>it will be added in the next sprint</h1>
-<a href="/">Visitor view for admin</a>
-<br>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% endif %}
 
-<a href="{% url 'logout' %}">Logout</a>
+    </ul>
+</nav>
+
+
+
+
+
+
+    <!--Topside-->
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        Information
+                    </div>
+                    <div class="card-body">
+                        <marquee behavior="" direction="">
+                            <h3 class="my-4">This is the Information</h3>
+                        </marquee>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        Statistics
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a class="text-decoration-none text-dark" href="staff">
+                                    <div class="card my-card shadow text-center p-3">
+                                        <h4>Users <i class="fas fa-users"></i></h4>
+                                        <h3>{{ users_count }}</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="text-decoration-none text-dark" href="product">
+                                    <div class="card my-card shadow text-center p-3">
+                                        <h4>Posts for Sale <i class="fas fa-box"></i></h4>
+                                    <h3>{{ sales_count }}</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="text-decoration-none text-dark" href="../dashboard/order.html">
+                                    <div class="card my-card shadow text-center p-3">
+                                        <h4>Posts for Rent <i class="fas fa-shipping-fast"></i></h4>
+                                        <h3>{{ rents_count }}</h3>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End Topside-->
+
+    <!--Graphs-->
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-md-6">
+                <div class="bg-white">
+                    <canvas id="myChart1" width="400" height="300"></canvas>
+                    <script>
+                        var ctx = document.getElementById('myChart1').getContext('2d');
+                        var myChart1 = new Chart(ctx, {
+                            type: 'pie',
+                            data: {
+                                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                datasets: [{
+                                    label: 'Products',
+                                    data: [12, 19, 3, 5, 2, 3],
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="bg-white">
+                    <canvas id="myChart" width="400" height="300"></canvas>
+                    <script>
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var myChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                datasets: [{
+                                    label: 'Products',
+                                    data: [12, 19, 3, 5, 2, 3],
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End Graphs-->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    -->
+<script>
+    $('.icon').click(function () {
+        $('span').toggleClass("cancel");
+    });
+</script>
+
+{% block content %}
+
+
+{% endblock %}
+
+
+
+<!DOCTYPE html>
+{% load static %}
+
+
 </body>
-</html>
+
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+.my-card:hover{
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+}
+    nav {
+        margin: 0;
+        padding: 0;
+        user-select: none;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body.g {
+        background-image: url('/static/images/wallpaper.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+
+    }
+
+    nav {
+        background: #000000;
+    }
+
+    nav:after {
+        content: '';
+        clear: both;
+        display: table;
+    }
+
+    nav .logo {
+        float: left;
+        color: white;
+        font-size: 27px;
+        font-weight: 600;
+        line-height: 70px;
+        padding-left: 60px;
+    }
+
+    nav ul {
+        float: right;
+        margin-right: 40px;
+        list-style: none;
+        position: relative;
+        z-index: 10000;
+    }
+
+    nav ul li {
+        float: left;
+        display: inline-block;
+        background: #000000;
+        margin: 0 5px;
+
+    }
+
+    nav ul li a {
+        color: white;
+        line-height: 70px;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 8px 15px;
+
+    }
+
+    nav ul li a:hover {
+        color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 5px #F0FFFF,
+        0 0 10px #F0FFFF;
+    }
+
+    nav ul ul li a:hover {
+        box-shadow: none;
+    }
+
+    nav ul ul {
+        position: absolute;
+        top: 90px;
+        border-top: 3px solid white;
+        opacity: 0;
+        visibility: hidden;
+        transition: top .3s;
+    }
+
+    nav ul ul ul {
+        border-top: none;
+    }
+
+    nav ul li:hover > ul {
+        top: 70px;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    nav ul ul li {
+        position: relative;
+        margin: 0px;
+        width: 150px;
+        float: none;
+        display: list-item;
+        border-bottom: 1px solid;
+    }
+
+    nav ul ul li a {
+        line-height: 50px;
+    }
+
+    nav ul ul ul li {
+        position: relative;
+        top: -60px;
+        left: 150px;
+    }
+
+    .show, .icon, input {
+        display: none;
+    }
+
+    .fa-plus {
+        font-size: 15px;
+        margin-left: 40px;
+    }
+
+    @media all and (max-width: 968px) {
+        nav ul {
+            margin-right: 0px;
+            float: left;
+        }
+
+        nav .logo {
+            padding-left: 30px;
+            width: 100%;
+        }
+
+        .show + a, ul {
+            display: none;
+        }
+
+        nav ul li, nav ul ul li {
+            display: block;
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            box-shadow: none;
+        }
+
+        .show {
+            display: block;
+            color: white;
+            font-size: 18px;
+            padding: 0 20px;
+            line-height: 70px;
+            cursor: pointer;
+        }
+
+        .show:hover {
+            color: white;
+        }
+
+        .icon {
+            display: block;
+            color: white;
+            position: absolute;
+            top: 0;
+            right: 40px;
+            line-height: 70px;
+            cursor: pointer;
+            font-size: 25px;
+        }
+
+        nav ul ul {
+            top: 70px;
+            border-top: 0px;
+            float: none;
+            position: static;
+            display: none;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        nav ul ul a {
+            padding-left: 40px;
+        }
+
+        nav ul ul ul a {
+            padding-left: 80px;
+        }
+
+        nav ul ul ul li {
+            position: static;
+        }
+
+        [id^=btn]:checked + ul {
+            display: block;
+        }
+
+        nav ul ul li {
+            border-bottom: 0px;
+        }
+
+        span.cancel:before {
+            content: '\f00d';
+        }
+    }
+
+    .content {
+        z-index: -1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    header {
+        font-size: 35px;
+        font-weight: 600;
+        padding: 10px 0;
+    }
+
+</style>
