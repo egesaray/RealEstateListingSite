@@ -13,30 +13,29 @@
         </div>
         <div class="col-md-8">
             <div class="row ">
-        <table class="table bg-white">
-            <thead class="bg-info text-white">
-            <tr>
-                <th scope="col">Post Title</th>
-                <th scope="col">Price</th>
-                <th scope="col">Activity</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for sale in sales %}
-            <tr>
+                <table class="table bg-white">
+                    <thead class="bg-info text-white">
+                    <tr>
+                        <th scope="col">Post Title</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Activity</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for sale in sales %}
+                    <tr>
 
-                <td>{{ sale.post_title }}</td>
-                <td>{{ sale.price }}</td>
-                <td>
-                    <a class="btn btn-info btn-sm mr-2"
-                    >Edit</a>
-                    <a class="btn btn-danger btn-sm ml-2"
-                       href="{% url 'deletepost' sale.id %}">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                        <td>{{ sale.post_title }}</td>
+                        <td>{{ sale.price }}</td>
+                        <td>
+                            <a class="btn btn-info btn-sm mr-2" href="{% url 'editpost_admin' sale.id %}">Edit</a>
+
+                            <a class="btn btn-danger btn-sm ml-2" href="{% url 'deletepost' sale.id %}">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
 
             </div>
         </div>

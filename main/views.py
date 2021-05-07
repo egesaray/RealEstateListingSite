@@ -399,3 +399,14 @@ def delete_post(request, pk):
         'post': post
     }
     return render(request, 'main/post_delete.html', context)
+
+
+@login_required
+@allowed_users(allowed_roles=['admin'])
+def editpost_admin(request, pk):
+    post = Post.objects.get(id=pk)
+
+    context = {
+        'post': post
+    }
+    return render(request, 'main/editpost_admin.html', context)

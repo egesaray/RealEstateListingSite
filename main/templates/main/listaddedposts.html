@@ -16,45 +16,45 @@
 
     <style>
 
-        .wrn-btn{
-    width: 100%;
-    font-size: 16px;
-    font-weight: 400;
-    text-transform: capitalize;
-    height: calc(3rem + 2px) !important;
-    border-radius:0;
-}
+        .wrn-btn {
+            width: 100%;
+            font-size: 16px;
+            font-weight: 400;
+            text-transform: capitalize;
+            height: calc(3rem + 2px) !important;
+            border-radius: 0;
+        }
 
 
+        .search-sec {
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.7) !important;
+            justify-content: center;
+            box-shadow: 2px 2px 5px 5px #000000;
+            border-radius: 5px;
+        }
 
-            .search-sec{
-        position: relative;
-        background-color: rgba(0,0,0,0.7) !important;
-        justify-content: center;
-        box-shadow: 2px 2px 5px 5px #000000;
-        border-radius: 5px;
-    }
-            .search-slt{
-    display: block;
-    width: 100%;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    color: #55595c;
-    background-color: #fff;
-    background-image: none;
-    border: 1px solid #ccc;
-    height: calc(3rem + 2px) !important;
-    border-radius:0;
-}
+        .search-slt {
+            display: block;
+            width: 100%;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            color: #55595c;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            height: calc(3rem + 2px) !important;
+            border-radius: 0;
+        }
 
     </style>
 
 </head>
 
 <div style="margin-left: 17%">
-<div class="container p-1 my-1 text-white rounded">
-    <h1>{{fuser.first_name}}'s Post</h1>
-<div class="col-md-8 rounded" style=" box-shadow: 2px 2px 5px 5px #000000;background-color: rgba(0,0,0,0.7)">
+    <div class="container p-1 my-1 text-white rounded">
+        <h1>{{fuser.first_name}}'s Post</h1>
+        <div class="col-md-8 rounded" style=" box-shadow: 2px 2px 5px 5px #000000;background-color: rgba(0,0,0,0.7)">
             <div class="row p-2 my-2">
 
                 {% if posts %}
@@ -72,7 +72,7 @@
                         <p class="descroption">{{i.area}} m<sup>2</sup></p>
                         <a href="{% url 'product_details' i.id %}" class="btn btn-primary btn-lg active" role="button"
                            aria-pressed="true">SHOW<i class="fas fa-external-link-alt"></i></a>
-                         <a href="{% url 'editpost' i.id %}" class="btn btn-secondary btn-lg active" role="button"
+                        <a href="{% url 'editpost' i.id %}" class="btn btn-secondary btn-lg active" role="button"
                            aria-pressed="true">EDIT<i class="fas fa-wrench"></i></i></a>
                         <br><br>
 
@@ -81,7 +81,7 @@
                 </div>
 
                 {% endfor %}
-                 {%else%}
+                {%else%}
 
                 <h3>You dont have any post yet</h3>
 
@@ -90,9 +90,8 @@
                 {% endif %}
 
 
-
             </div>
         </div>
-</div>
     </div>
+</div>
 {% endblock %}
