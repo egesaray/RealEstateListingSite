@@ -394,7 +394,11 @@ def delete_post(request, pk):
     post = Post.objects.get(id=pk)
     if request.method == 'POST':
         post.delete()
-        return redirect('sale')
+        if post.postType == 'For Sale':
+            return redirect('sale')
+        else:
+            return redirect('rent')
+
     context = {
         'post': post
     }
@@ -422,6 +426,8 @@ def editpost_admin(request, pk):
         images = request.FILES.getlist('images')
         if p_form.is_valid():
             post = p_form.save()
+            post_name = p_form.cleaned_data.get('post_title')
+            messages.success(request, f'{post_name} has been added')
             fuser.save()
 
             if images != None:
@@ -434,3 +440,29 @@ def editpost_admin(request, pk):
                     return redirect('rent')
 
     return render(request, 'main/editpost_admin.html', context=mydict)
+
+
+@login_required
+@allowed_users(allowed_roles=['admin'])
+def user_detail(request, pk):
+
+
+    sales = Post.objects.all().filter(postType='For Sale')
+    sales_count = sales.count()
+
+    rents = Post.objects.all().filter(postType='For Rent')
+    rents_count = rents.count()
+
+    users = ourUser.objects.all()
+    users_count = users.count()
+
+    user = ourUser.objects.get(id=pk)
+
+    context = {
+        'user': user,
+        'sales_count': sales_count,
+        'rents_count': rents_count,
+        'users_count': users_count,
+
+    }
+    return render(request, 'main/user_detail.html', context)

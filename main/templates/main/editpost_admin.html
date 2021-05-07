@@ -6,8 +6,7 @@
 <head xmlns="http://www.w3.org/1999/html">
     <title>EDIT</title>
 
-
-    <style >
+  <style >
   hr{
       border-style: none;
     box-shadow: 2px 2px 5px 5px #102c35;
@@ -72,7 +71,6 @@ top:50%;
 position: absolute;
 left : 50%;
 transform:translate(-50%,-50%);
-background-color:info;
 box-shadow: 2px 2px 15px 15px #020708;
 display:none;
 
@@ -162,10 +160,18 @@ display:block;
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 
 <body >
 
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
 
 <div class="container">
     <div class="row mt-4">
@@ -280,9 +286,6 @@ display:block;
           </div>
             </div>
 		</div>
-
-
-
 
       </div>
            <center>
