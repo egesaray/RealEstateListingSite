@@ -378,7 +378,7 @@ def delete_user(request, pk):
     user = ourUser.objects.get(id=pk)
     if request.method == 'POST':
         user.delete()
-        return redirect('adminPage')
+        return redirect('user')
     context = {
         'user': user
     }
@@ -391,7 +391,7 @@ def delete_post(request, pk):
     post = Post.objects.get(id=pk)
     if request.method == 'POST':
         post.delete()
-        return redirect('adminPage')
+        return redirect('sale')
     context = {
         'post': post
     }

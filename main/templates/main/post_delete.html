@@ -1,16 +1,41 @@
-
-{% block title %} Delete Post Confirm Page{% endblock %}
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
 {% block content %}
-<div class="row my-4">
-    <div class="col-md-6 offset-md-3 p-3 bg-white">
-        <h3>Post Delete</h3>
-        <hr>
-        <form>
-            {% csrf_token %}
-            <input class="btn btn-info" type="submit" value="Confirm">
-        </form>
-    </div>
-</div>
+{% include 'main/adminPage.html' %}
+
+  <div class="container">
+        <div class="row mt-4">
+     <div class="col-md-9">
+
+                <div class="card">
+
+                    <div class="card-header bg-info text-white">
+                        Confirmation
+                    </div>
+                    <div class="card-body">
+                     <h3>Do you confirm the delete post '{% url 'deletepost' post.id  %}'</h3>
+
+           <form method="post" action="{% url 'deletepost' post.id  %}">
+                   {% csrf_token %}
+                   <button type="submit" id="delete" class="btn btn-danger btn-sm">Delete</button>
+               </form>
+                    </div>
+                </div>
+
+            </div>
+
+
+                </div>
+            </div>
+
 {% endblock %}
+
+</body>
+</html>
+
+
