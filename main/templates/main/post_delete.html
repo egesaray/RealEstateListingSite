@@ -23,10 +23,21 @@
                     <div class="center">
                         <h3>Do you confirm the delete post '{{ post.post_title }}'</h3>
                         <br>
-                        <form method="post" action="{% url 'deletepost' post.id  %}">
+
+                                 <div class="Area">
+                            <div class="Box">
+                              <form method="post" action="{% url 'deletepost' post.id  %}">
                             {% csrf_token %}
-                            <button type="submit" id="delete" class="btn-lg btn-secondary btn">Delete</button>
+                            <button type="submit" id="delete" class="btn-lg btn-danger btn">Delete</button>
                         </form>
+                            </div>
+                            <div class="Box">
+                                <a class="btn btn-secondary btn-lg mr-2" href="{% url 'sale'  %}">Cancel</a>
+                            </div>
+
+                        </div>
+
+
                     </div>
                 </div>
             </div>
@@ -45,6 +56,21 @@
 
         text-align: center;
 
+    }
 
+    .Area {
+        width: 900px;
+        height: 40px;
+        margin-left: 150px;
+        margin-right: 100px
+    }
+
+    .Box {
+        width: 200px;
+        height: 40px;
+        float: left;
+        margin: 0px;
+        margin-bottom: 5px;
+        margin-left: 0px;
     }
 </style>

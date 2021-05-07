@@ -379,11 +379,22 @@ def deletephoto(request, pk):
 @allowed_users(allowed_roles=['admin'])
 def delete_user(request, pk):
     user = ourUser.objects.get(id=pk)
+    sales = Post.objects.all().filter(postType='For Sale')
+    sales_count = sales.count()
+
+    rents = Post.objects.all().filter(postType='For Rent')
+    rents_count = rents.count()
+
+    users = ourUser.objects.all()
+    users_count = users.count()
     if request.method == 'POST':
         user.delete()
         return redirect('user')
     context = {
-        'user': user
+        'user': user,
+        'sales_count': sales_count,
+        'rents_count': rents_count,
+        'users_count': users_count,
     }
     return render(request, 'main/user-delete.html', context)
 
@@ -392,6 +403,14 @@ def delete_user(request, pk):
 @allowed_users(allowed_roles=['admin'])
 def delete_post(request, pk):
     post = Post.objects.get(id=pk)
+    sales = Post.objects.all().filter(postType='For Sale')
+    sales_count = sales.count()
+
+    rents = Post.objects.all().filter(postType='For Rent')
+    rents_count = rents.count()
+
+    users = ourUser.objects.all()
+    users_count = users.count()
     if request.method == 'POST':
         post.delete()
         if post.postType == 'For Sale':
@@ -400,7 +419,10 @@ def delete_post(request, pk):
             return redirect('rent')
 
     context = {
-        'post': post
+        'post': post,
+        'sales_count': sales_count,
+        'rents_count': rents_count,
+        'users_count': users_count,
     }
     return render(request, 'main/post_delete.html', context)
 
