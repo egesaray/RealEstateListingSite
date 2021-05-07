@@ -1,5 +1,5 @@
-from django.shortcuts import render ,redirect
-from django.contrib.auth import  authenticate , login ,logout
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from .decorators import unauthenticated_user, allowed_users
 from .forms import *
@@ -14,8 +14,9 @@ from django.contrib.auth.models import User
 
 
 def logoutUser(request):
-	logout(request)
-	return redirect('homepage')
+    logout(request)
+    return redirect('homepage')
+
 
 @unauthenticated_user
 def loginpage(request):
@@ -26,7 +27,7 @@ def loginpage(request):
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            login( request,user)
+            login(request, user)
             if user.is_staff:
                 return redirect('adminPage')
             else:
@@ -35,6 +36,7 @@ def loginpage(request):
             messages.info(request, 'Username OR password is incorrect')
 
     return render(request, 'main/loginpage.html')
+
 
 @unauthenticated_user
 def register(request):
@@ -52,19 +54,18 @@ def register(request):
             email = request.POST['email']
             ouser = ourUser(username=username, first_name=first_name, last_name=last_name, email=email, user=user)
             ouser.save()
-            usergroup = Group.objects.get(name = 'customer')
+            usergroup = Group.objects.get(name='customer')
             user.groups.add(usergroup)
-
-
 
             return redirect('loginpage')
 
     context = {'form': form}
-    return render(request, 'main/register.html' , context)
+    return render(request, 'main/register.html', context)
 
 
 def homepagealternative(request):
     return render(request, 'main/homepagealternative.html')
+
 
 @login_required
 @allowed_users(allowed_roles=['admin'])
@@ -80,8 +81,8 @@ def adminPage(request):
 
     context = {
 
-        'sales_count' : sales_count,
-       'rents_count': rents_count,
+        'sales_count': sales_count,
+        'rents_count': rents_count,
         'users_count': users_count,
     }
     return render(request, 'main/adminPage.html', context)
@@ -106,10 +107,11 @@ def user(request):
         'sales': sales,
         'sales_count': sales_count,
         'rents_count': rents_count,
-        'users_count': users_count ,
+        'users_count': users_count,
     }
 
-    return render(request, 'main/user.html' , context)
+    return render(request, 'main/user.html', context)
+
 
 @login_required
 @allowed_users(allowed_roles=['admin'])
@@ -131,7 +133,8 @@ def sale(request):
         'rents_count': rents_count,
         'users_count': users_count,
     }
-    return render(request, 'main/sale.html' , context)
+    return render(request, 'main/sale.html', context)
+
 
 @login_required
 @allowed_users(allowed_roles=['admin'])
@@ -153,7 +156,7 @@ def rent(request):
         'rents_count': rents_count,
         'users_count': users_count,
     }
-    return render(request, 'main/rent.html' , context)
+    return render(request, 'main/rent.html', context)
 
 
 @login_required
@@ -175,40 +178,39 @@ def graphs(request):
         'sales': sales,
         'sales_count': sales_count,
         'rents_count': rents_count,
-        'users_count': users_count ,
+        'users_count': users_count,
     }
 
+    return render(request, 'main/graphs.html', context)
 
-    return render(request, 'main/graphs.html' , context)
 
 def homepage(request):
     forsale = 'forsale'
     forrent = 'forrent'
 
-    return render(request, 'main/homepage.html',{'forsale':forsale , 'forrent':forrent})
+    return render(request, 'main/homepage.html', {'forsale': forsale, 'forrent': forrent})
 
 
-def list(request,RoS):
+def list(request, RoS):
     if RoS == 'forsale':
         cu = Post.objects.all().filter(postType='For Sale')
-    elif RoS =='forrent':
+    elif RoS == 'forrent':
         cu = Post.objects.all().filter(postType='For Rent')
 
-    myFilter = PostFilter(request.GET , queryset=cu)
+    myFilter = PostFilter(request.GET, queryset=cu)
     cu = myFilter.qs
 
-    return render(request, 'main/list.html' ,{'cu' :cu , 'myFilter':myFilter} )
+    return render(request, 'main/list.html', {'cu': cu, 'myFilter': myFilter})
 
 
-
-def postlistings(request,RoS):
+def postlistings(request, RoS):
     if RoS == 'forsale':
         cu = Post.objects.all().filter(postType='For Sale')
-    elif RoS =='forrent':
+    elif RoS == 'forrent':
         cu = Post.objects.all().filter(postType='For Rent')
 
     query = request.GET.get('query')
-    price_from = request.GET.get('price_from',0)
+    price_from = request.GET.get('price_from', 0)
     price_to = request.GET.get('price_to', 1000000000)
     min_area = request.GET.get('min_area', 0)
     max_area = request.GET.get('max_area', 4000)
@@ -221,39 +223,38 @@ def postlistings(request,RoS):
 
     if query != None:
         print("sadasdas")
-        cu = cu.filter(Q(post_title__icontains = query) | Q(location__icontains = query)| Q(area__icontains = query)| Q(building_type__icontains = query))
+        cu = cu.filter(Q(post_title__icontains=query) | Q(location__icontains=query) | Q(area__icontains=query) | Q(
+            building_type__icontains=query))
     else:
         query = ""
 
-    cu = cu.filter(price__gte =price_from).filter(price__lte=price_to)
+    cu = cu.filter(price__gte=price_from).filter(price__lte=price_to)
     cu = cu.filter(area__gte=min_area).filter(area__lte=max_area)
     cu = cu.filter(building_age__gte=min_age).filter(building_age__lte=max_age)
     cu = cu.filter(room__gte=min_room_num).filter(room__lte=max_room_num)
     cu = cu.filter(floor__gte=min_floor_num).filter(floor__lte=max_floor_num)
 
-    myFilter = PostFilter(request.GET , queryset=cu)
+    myFilter = PostFilter(request.GET, queryset=cu)
     cu = myFilter.qs
 
     context = {
         'cu': cu,
         'RoS': RoS,
-        'price_from':price_from,
-        'price_to':price_to,
-        'min_area':min_area,
-        'max_area':max_area,
+        'price_from': price_from,
+        'price_to': price_to,
+        'min_area': min_area,
+        'max_area': max_area,
         'min_age': min_age,
         'max_age': max_age,
-        'min_room_num':min_room_num,
-        'max_room_num':max_room_num,
-        'min_floor_num':min_floor_num,
-        'max_floor_num':max_floor_num,
+        'min_room_num': min_room_num,
+        'max_room_num': max_room_num,
+        'min_floor_num': min_floor_num,
+        'max_floor_num': max_floor_num,
         'myFilter': myFilter,
-        'query':query,
+        'query': query,
     }
 
-    return render(request, 'main/postlistings.html' , context )
-
-
+    return render(request, 'main/postlistings.html', context)
 
 
 """
@@ -271,13 +272,15 @@ def createpost(request):
     return render(request, 'main/createpost.html', context)
 
 """
+
+
 @login_required
 @allowed_users(allowed_roles=['customer'])
 def createpost(request):
     postForm = CreatePost()
-    imageForm=ImagePost()
+    imageForm = ImagePost()
     ouruser = request.user.ouruser
-    mydict = {'form': postForm,'imageForm':imageForm}
+    mydict = {'form': postForm, 'imageForm': imageForm}
     if request.method == 'POST':
         postForm = CreatePost(request.POST)
         # imageForm=ImagePost(request.POST,request.FILES)
@@ -293,12 +296,14 @@ def createpost(request):
             room = request.POST['room']
             post_description = request.POST['post_description']
             area = request.POST['area']
-            isFurniture=request.POST['isFurniture']
-            newPost = Post(postType=postType,building_type=building_type,location=location,post_title=post_title,price=price,building_age=building_age, floor=floor,room=room,post_description=post_description,area=area,isFurniture=isFurniture, ouruser=ouruser)
+            isFurniture = request.POST['isFurniture']
+            newPost = Post(postType=postType, building_type=building_type, location=location, post_title=post_title,
+                           price=price, building_age=building_age, floor=floor, room=room,
+                           post_description=post_description, area=area, isFurniture=isFurniture, ouruser=ouruser)
             newPost.save()
 
             for image in images:
-                photo = PostImages.objects.create(image =image , gallery=newPost)
+                photo = PostImages.objects.create(image=image, gallery=newPost)
 
             photo.save()
 
@@ -310,8 +315,6 @@ def createpost(request):
     return render(request, 'main/createpost.html', context=mydict)
 
 
-
-
 def createpostsuccess(request):
     return render(request, 'main/create-post-success.html')
 
@@ -321,40 +324,42 @@ def productdetails(request, pk):
 
     pimage = PostImages.objects.filter(gallery=posts)
 
-    return render(request, 'main/product_details.html', { 'posts':posts ,'pimage':pimage} )
+    return render(request, 'main/product_details.html', {'posts': posts, 'pimage': pimage})
+
 
 @login_required
 @allowed_users(allowed_roles=['customer'])
 def listaddedposts(request):
-
     fuser = ourUser.objects.get(user_id=request.user.id)
     posts = Post.objects.all().filter(ouruser=fuser)
-    mydict  =  { 'posts':posts , 'fuser':fuser}
-    return render(request, 'main/listaddedposts.html',context = mydict)
+    mydict = {'posts': posts, 'fuser': fuser}
+    return render(request, 'main/listaddedposts.html', context=mydict)
+
 
 @login_required
 @allowed_users(allowed_roles=['customer'])
-def editpost(request,pk):
+def editpost(request, pk):
     fuser = Post.objects.get(id=pk)
     p_form = CreatePost(instance=fuser)
     pimage = PostImages.objects.filter(gallery=fuser)
-    mydict  =  { 'fuser':fuser,'p_form':p_form ,'pimage':pimage }
+    mydict = {'fuser': fuser, 'p_form': p_form, 'pimage': pimage}
     if request.method == 'POST':
-        p_form = CreatePost(request.POST,instance=fuser)
+        p_form = CreatePost(request.POST, instance=fuser)
         images = request.FILES.getlist('images')
         if p_form.is_valid():
-            post=p_form.save()
+            post = p_form.save()
             fuser.save()
 
-            if images != None :
+            if images != None:
                 for image in images:
-                    photo = PostImages.objects.create(image =image , gallery=fuser)
+                    photo = PostImages.objects.create(image=image, gallery=fuser)
                     photo.save()
                 return redirect('listaddedposts')
 
-    return render(request, 'main/editpost.html',context = mydict)
+    return render(request, 'main/editpost.html', context=mydict)
 
-def deletepost(request,pk):
+
+def deletepost(request, pk):
     if request.method == 'POST':
         fuser = Post.objects.get(id=pk)
         pimage = PostImages.objects.filter(gallery=fuser)
@@ -363,13 +368,11 @@ def deletepost(request,pk):
     return redirect('listaddedposts')
 
 
-def deletephoto(request,pk):
+def deletephoto(request, pk):
     pimage = PostImages.objects.filter(id=pk)
     pimage.delete()
 
     return redirect(request.META['HTTP_REFERER'])
-
-
 
 
 @login_required

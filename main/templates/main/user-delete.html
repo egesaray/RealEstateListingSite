@@ -2,45 +2,49 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>NOVA ADMIN</title>
 </head>
 <body>
 {% block content %}
 {% include 'main/adminPage.html' %}
 
-  <div class="container">
+
+<div class="container">
         <div class="row mt-4">
-     <div class="col-md-9">
+     <div class="col-md-4">
 
+            </div>
+            <div class="col-md-8">
                 <div class="card">
-
                     <div class="card-header bg-info text-white">
                         Confirmation
                     </div>
                     <div class="card-body">
-                     <h3>Do you confirm the delete user '{% url 'deleteuser' user.id  %}'</h3>
-
-          <form method="post" action="{% url 'deleteuser' user.id  %}">
-                   {% csrf_token %}
-                   <button type="submit" id="delete" class="btn btn-danger btn-sm">Delete</button>
-               </form>
+                        <div class="center">
+                   <h3>Do you confirm the delete user '{{ user.username }}'</h3>
+<br>
+                    <form method="post" action="{% url 'deleteuser' user.id  %}">
+                        {% csrf_token %}
+                        <button type="submit" id="delete" class="btn-lg btn-secondary btn">Delete</button>
+                    </form>
+    </div>
                     </div>
                 </div>
-
             </div>
+        </div>
+    </div>
 
-
-                </div>
-            </div>
 
 {% endblock %}
 
 </body>
 </html>
 
+<style>
+    .center{
+
+        text-align: center;
 
 
-
-
-
-
+}
+</style>
