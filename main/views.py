@@ -407,7 +407,16 @@ def editpost_admin(request, pk):
     fuser = Post.objects.get(id=pk)
     p_form = CreatePost(instance=fuser)
     pimage = PostImages.objects.filter(gallery=fuser)
-    mydict = {'fuser': fuser, 'p_form': p_form, 'pimage': pimage}
+
+    sales = Post.objects.all().filter(postType='For Sale')
+    sales_count = sales.count()
+
+    rents = Post.objects.all().filter(postType='For Rent')
+    rents_count = rents.count()
+
+    users = ourUser.objects.all()
+    users_count = users.count()
+    mydict = {'fuser': fuser, 'p_form': p_form, 'pimage': pimage, 'sales_count':sales_count,'rents_count':rents_count,'users_count':users_count}
     if request.method == 'POST':
         p_form = CreatePost(request.POST, instance=fuser)
         images = request.FILES.getlist('images')
