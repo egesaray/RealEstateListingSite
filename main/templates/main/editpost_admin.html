@@ -1,33 +1,308 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>NOVA ADMIN</title>
-</head>
-
-
-<body>
+{% load widget_tweaks %}
+{% load static %}
 {% block content %}
 {% include 'main/adminPage.html' %}
+<!-- Postların yayında olup olmadığını anlamak için yayında mı checkbox yapılabilir -->
+<head xmlns="http://www.w3.org/1999/html">
+    <title>EDIT</title>
 
 
-<div class="container">
-    <div class="row mt-4">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header bg-info text-white">
-                    Edit Post
-                </div>
-                <div class="card-body">
+    <style >
+  hr{
+      border-style: none;
+    box-shadow: 2px 2px 5px 5px #102c35;
+  }
 
-                </div>
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+      background: white;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+     .custom_button{
+          background-color: #0c2026 ;
+          border: none;
+          border-bottom:4px solid #36362f;
+          border-radius:50px;
+          color: #f8fcfd;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+	      cursor: pointer;
+        }
+
+#slider{
+	width: 440px;
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	cursor: grab;
+}
+
+
+#message{
+height: 400px;
+width: 760px;
+top:50%;
+position: absolute;
+left : 50%;
+transform:translate(-50%,-50%);
+background-color:info;
+box-shadow: 2px 2px 15px 15px #020708;
+display:none;
+
+}
+
+#addphoto{
+display:none;
+}
+#addbutton{
+display:block;
+}
+
+
+#modal_inner {
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+  position:relative;
+  width: 660px;
+  height: 289px;
+  background-color: #fcfcfc;;
+  box-shadow: 0 1px 3px #000;
+}
+
+h1 {
+  font-size: 35px;
+    font-family: "Times New Roman", Times, cursive;
+    font-weight: lighter;
+    font-variant: small-caps;
+    color:#f8fcfd;
+}
+
+
+#slider::-webkit-scrollbar {
+		width: 8px;
+
+}
+
+#slider::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+
+}
+
+#slider::-webkit-scrollbar-thumb {
+  background-color: #7B9395 ;
+  outline: none;
+  border-radius: 100px;
+
+}
+#slider:active{
+cursor:grabbing;
+}
+
+#slider::-webkit-scrollbar-thumb:active{
+    background-color: #2F4345;
+}
+
+#updates{
+display:block;
+}
+  .desdiv{
+                    max-height: 300px;
+                    min-height: 255px;
+        }
+  </style>
+    <script>
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+
+        function show() {
+        document.getElementById("message").style.display = "block";
+        document.getElementById("updates").style.display = "none";
+        }
+        function hide() {
+        document.getElementById("message").style.display = "none";
+        document.getElementById("updates").style.display = "block";
+        }
+        function showphoto() {
+        document.getElementById("addphoto").style.display = "block";
+        document.getElementById("addbutton").style.display = "none";
+        }
+
+
+     </script>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body >
+
+
+
+    <div id="updates">
+<form method="post" enctype="multipart/form-data">
+
+  {% csrf_token %}
+<div class="container register-form">
+  <div class="form">
+    <div class="form-content">
+                <center>
+            <h4>EDIT</h4>
+            <hr>
+          </center>
+      <div class="row">
+        <div class="col-sm">
+          <div class="form-group">
+            <label>Post Title</label>
+            {% render_field p_form.post_title class="form-control" placeholder="Post Title" %}
+          </div>
+        <div class="row">
+        <div class="col-sm">
+            <div class="form-group">
+              <label>Post Type</label>
+              {% render_field p_form.postType class="form-control" placeholder="Post Type" %}
+            </div>
+            <div class="form-group">
+              <label>Location</label>
+              {% render_field p_form.location class="form-control" placeholder="Location" %}
+            </div>
+            <div class="form-group">
+              <label>Building Type</label>
+              {% render_field p_form.building_type class="form-control" placeholder="Type" %}
+            </div>
+            <div class="form-group">
+              <label>Furniture</label>
+              {% render_field p_form.isFurniture class="form-control" placeholder="Furniture" %}
             </div>
         </div>
+          <div class="col-sm">
+            <div class="form-group">
+              <label>Price</label>
+              {% render_field p_form.price class="form-control" placeholder="Price" %}
+            </div>
+            <div class="form-group">
+              <label>Age</label>
+              {% render_field p_form.building_age class="form-control" placeholder="Age" %}
+            </div>
+            <div class="form-group">
+              <label>Floor</label>
+              {% render_field p_form.floor class="form-control" placeholder="Floor" %}
+            </div>
+               <div class="form-group">
+                 <label>Area</label>
+              {% render_field p_form.area class="form-control" placeholder="Area" %}
+            </div>
+                           <div class="form-group">
+                 <label>Room</label>
+              {% render_field p_form.room class="form-control" placeholder="Room" %}
+            </div>
+          </div>
+        </div>
+
+            <div class="form-group">
+              <label>Description</label>
+              {% render_field p_form.post_description class="form-control desdiv" placeholder="Description" %}
+            </div>
+        </div>
+
+		<div class="col-sm">
+            <div id="slide-wrapper">
+                <div id="slider" >
+                    {% for i in pimage %}
+                    <div class="border border-info">
+                    <img class="thumbnail" src="{% static i.image.url %}" width="500" height="333">
+                        <center><a href="{% url 'delete-photo' i.id %}" class="btn btn-danger btn-lg active" role="button"
+                                   aria-pressed="true">X</a></center>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                <div id="addbutton"  style="top:15px;" class="col-sm">
+                    <h1>New Photo</h1>
+                <button  onclick="showphoto()" type="button" class=" btnSubmit btn-info ">+</button>
+                </div>
+            <div id="addphoto" style="top:15px;" class="col-sm">
+                  <div class=" border border-info input-group form-group">
+                     <div class="input-group-prepend">
+                            <h1>New Photo</h1>
+                        </div>
+
+                          <div class="form-group ">
+
+                            <input style="
+                                              border-radius: 50px 20px;
+                                              cursor:cell;
+                                              background-color: #f8fcfd;;
+                                              box-shadow: 2px 2px 5px 5px #e9f5f8;
+                                              padding: 10px;
+                                              text-align: center;
+                                              text-decoration: none;
+                                              margin: 4px 2px;
+                                              outline: none;
+                                        " name="images" type="file" multiple class="form-control-file">
+            </div>
+
+                    </div>
+          </div>
+            </div>
+		</div>
+
+
+
+
+      </div>
+      <hr>
+           <center>
+               <button type="submit" class="btnSubmit btn-primary" >Update<i class="far fa-edit"></i></button>
+
+
+      </center>
     </div>
+
+
+  </div>
 </div>
 
+</form>
 
-{% endblock %}
+
+    </div>
+
+
 
 </body>
-</html>
+
+{% endblock content %}
+
+
+

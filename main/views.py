@@ -404,9 +404,24 @@ def delete_post(request, pk):
 @login_required
 @allowed_users(allowed_roles=['admin'])
 def editpost_admin(request, pk):
-    post = Post.objects.get(id=pk)
+    fuser = Post.objects.get(id=pk)
+    p_form = CreatePost(instance=fuser)
+    pimage = PostImages.objects.filter(gallery=fuser)
+    mydict = {'fuser': fuser, 'p_form': p_form, 'pimage': pimage}
+    if request.method == 'POST':
+        p_form = CreatePost(request.POST, instance=fuser)
+        images = request.FILES.getlist('images')
+        if p_form.is_valid():
+            post = p_form.save()
+            fuser.save()
 
-    context = {
-        'post': post
-    }
-    return render(request, 'main/editpost_admin.html', context)
+            if images != None:
+                for image in images:
+                    photo = PostImages.objects.create(image=image, gallery=fuser)
+                    photo.save()
+                if fuser.postType=='For Sale':
+                    return redirect('sale')
+                else:
+                    return redirect('rent')
+
+    return render(request, 'main/editpost_admin.html', context=mydict)
