@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NOVA ADMIN</title>
+</head>
+<body>
+{% block content %}
+{% include 'main/adminPage.html' %}
+
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    Post Details ({{ post.post_title }})
+                </div>
+
+
+                <table class="table table-borderless">
+
+                    <tbody>
+                    <tr>
+                        <th>Post Title</th>
+                        <td>{{ post.post_title }}</td>
+                        <th>Post Type</th>
+                        <td>{{ post.postType }}</td>
+
+                    </tr>
+
+                    <tr>
+                        <th>Location</th>
+                        <td>{{ post.location }}</td>
+                        <th>Price</th>
+                        <td>{{ post.price }}</td>
+                    </tr>
+
+
+                    <tr>
+                        <th>Floor</th>
+                        <td>{{ post.floor }}</td>
+                        <th>Building Age</th>
+                        <td>{{ post.building_age }}</td>
+
+                    </tr>
+
+                    <tr>
+                        <th>Building Type</th>
+                        <td>{{ post.building_type }}</td>
+
+                        <th>Area</th>
+                        <td>{{ post.area }}</td>
+                    </tr>
+
+                    <tr>
+                            <th>With Furniture</th>
+                        <td>{{ post.isFurniture }}</td>
+
+                        <th>Room Number</th>
+                        <td>{{ post.room }}</td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+
+
+                <div class="center">
+                    <a class="btn btn-warning btn-lg mr-2" href="{% url 'sale'  %}">Done</a>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+</body>
+</html>
+
+<style>
+    .center {
+
+        text-align: center;
+    }
+
+</style>

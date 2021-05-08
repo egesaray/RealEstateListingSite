@@ -85,7 +85,7 @@ def adminPage(request):
         'rents_count': rents_count,
         'users_count': users_count,
     }
-    return render(request, 'main/adminPage.html', context)
+    return render(request, 'main/adminpage.html', context)
 
 
 @login_required
@@ -488,6 +488,31 @@ def user_detail(request, pk):
 
     }
     return render(request, 'main/user_detail.html', context)
+
+@login_required
+@allowed_users(allowed_roles=['admin'])
+def post_detail(request, pk):
+
+
+    sales = Post.objects.all().filter(postType='For Sale')
+    sales_count = sales.count()
+
+    rents = Post.objects.all().filter(postType='For Rent')
+    rents_count = rents.count()
+
+    users = ourUser.objects.all()
+    users_count = users.count()
+
+    post = Post.objects.get(id=pk)
+
+    context = {
+        'post': post,
+        'sales_count': sales_count,
+        'rents_count': rents_count,
+        'users_count': users_count,
+
+    }
+    return render(request, 'main/post_detail.html', context)
 
 
 def productbyloc(request, loc):

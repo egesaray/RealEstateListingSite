@@ -27,5 +27,6 @@ urlpatterns = [
     path('graphs/', views.graphs, name="graphs"),
     path('editpost_admin/<int:pk>', views.editpost_admin, name="editpost_admin"),
     path('user_detail/<int:pk>', views.user_detail, name="user_detail"),
+    path('post_detail/<int:pk>', views.post_detail, name="post_detail"),
 
 ]
