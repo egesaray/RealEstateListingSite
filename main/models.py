@@ -14,6 +14,11 @@ class ourUser(models.Model):
         return self.username
 
 
+class Visitor(models.Model):
+    userip=models.TextField(default=None)
+    def __str__(self):
+        return self.userip
+
 city=[
     ('İstanbulAsya', 'İstanbulAsya'),
     ('İstanbulAvrupa', 'İstanbulAvrupa'),
