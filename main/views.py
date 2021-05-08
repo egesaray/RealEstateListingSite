@@ -11,7 +11,7 @@ from .filters import *
 from django.db.models import Q
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
-from django.core.paginator import Paginator,PageNotAnInteger,EmptyPage
+
 
 
 def logoutUser(request):
@@ -80,10 +80,9 @@ def adminPage(request):
 
     users = ourUser.objects.all()
     users_count = users.count()
-    count=Visitor.objects.all().count()
 
     context = {
-        'count':count,
+
         'sales_count': sales_count,
         'rents_count': rents_count,
         'users_count': users_count,
@@ -188,37 +187,6 @@ def graphs(request):
 
 
 def homepage(request):
-    user=ourUser.objects.all()
-    paginator=Paginator(user,4)
-    page=request.GET.get('page')
-
-    def get_ip(requets):
-        adress= request.META.get('HTTP_X_FORWARDED_FOR')
-        if adress:
-            ip = adress.split(',')[-1].strip()
-        else:
-            ip = request.META.get('REMOTE_ADDR')
-        return ip
-    ip = get_ip(request)
-    u=Visitor(userip=ip)
-    result=Visitor.objects.filter(Q(userip__icontains=ip))
-    if len(result)==1:
-        pass
-    elif len(result)>1:
-        pass
-    else:
-        u.save()
-
-    try:
-        user=paginator.page(page)
-    except PageNotAnInteger:
-        user=paginator.page(1)
-    except EmptyPage:
-        user=paginator.page(paginator.num_pages)
-
-
-
-
     forsale = 'forsale'
     forrent = 'forrent'
 
