@@ -53,7 +53,7 @@
 
 <div style="margin-left: 17%">
     <div class="container p-1 my-1 text-white rounded">
-
+        <h1> All post in {{location}}</h1>
         <div class="col-md-8 rounded" style=" box-shadow: 2px 2px 5px 5px #000000;background-color: rgba(0,0,0,0.7)">
             <div class="row p-2 my-2">
 
@@ -82,9 +82,9 @@
                 {% endfor %}
                 {%else%}
 
-                <h3>You dont have any post yet</h3>
+                <h3> There is no post in {{location}}</h3>
 
-                <h2>If you want to post <a href="{% url 'createpost' %}">click here</a></h2>
+
 
                 {% endif %}
 

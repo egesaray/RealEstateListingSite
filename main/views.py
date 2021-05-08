@@ -491,9 +491,10 @@ def user_detail(request, pk):
 
 
 def productbyloc(request, loc):
+    location=loc
     posts = Post.objects.all()
     posts = posts.filter(Q(location__icontains=loc))
-    mydict = {'posts': posts}
+    mydict = {'posts': posts,'location':location}
     return render(request, 'main/productByLocation.html', context=mydict)
 
 
