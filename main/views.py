@@ -30,7 +30,7 @@ def loginpage(request):
         if user is not None:
             login(request, user)
             if user.is_staff:
-                return redirect('adminPage')
+                return redirect('adminpage')
             else:
                 return redirect('homepage')
         else:
@@ -70,7 +70,7 @@ def homepagealternative(request):
 
 @login_required
 @allowed_users(allowed_roles=['admin'])
-def adminPage(request):
+def adminpage(request):
 
     sales = Post.objects.all().filter(postType='For Sale')
     sales_count = sales.count()
@@ -393,6 +393,7 @@ def delete_user(request, pk):
         user.delete()
         return redirect('user')
     context = {
+        'users': users,
         'user': user,
         'sales_count': sales_count,
         'rents_count': rents_count,
@@ -483,6 +484,7 @@ def user_detail(request, pk):
     user = ourUser.objects.get(id=pk)
 
     context = {
+        'users' : users,
         'user': user,
         'sales_count': sales_count,
         'rents_count': rents_count,
@@ -508,6 +510,7 @@ def post_detail(request, pk):
     post = Post.objects.get(id=pk)
 
     context = {
+        'users': users,
         'post': post,
         'sales_count': sales_count,
         'rents_count': rents_count,

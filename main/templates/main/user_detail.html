@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>NOVA ADMIN</title>
+    {% block content %}
+{% include 'main/adminpage.html' %}
+{% endblock %}
 </head>
 <body>
-{% block content %}
-{% include 'main/adminPage.html' %}
 
 
 <div class="container">
@@ -57,7 +58,7 @@
 </div>
 
 
-{% endblock %}
+
 
 </body>
 </html>
