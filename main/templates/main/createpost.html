@@ -45,14 +45,19 @@
 
         .cardR{
           height: 500px;
-          width: 450px;
+          width: 70%;
           background-color:#194553 !important;
           box-shadow: 2px 2px 15px 15px #020708;
           border-radius: 70px 33px;
-
-
-
     }
+            .cardR2{
+          height: 500px;
+          width: 100%;
+          background-color:#194553 !important;
+          box-shadow: 2px 2px 15px 15px #020708;
+          border-radius: 70px 33px;
+    }
+
 
         .rightb{
            position: absolute;
@@ -117,21 +122,21 @@
             background-color: #f8fcfd;
             color: black;
             border-radius: 50px 20px;
-            min-width: 60px;
+
         }
 
         .form-control{
           background-color: #f8fcfd;
           color: black;
           border:1px solid #b3aca5;
-
+          width: 100%;
         }
 
 
 
         .desdiv{
                     max-height: 370px;
-                    min-height: 255px;
+                    min-height: 307px;
         }
 
 
@@ -152,7 +157,7 @@
              box-shadow: 2px 2px 5px 5px #e9f5f8;
              cursor:pointer;
              border-radius: 50px 20px;
-             min-width: 140px;
+
 
         }
 
@@ -318,7 +323,7 @@
 
                                 {% csrf_token %}
                                  <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
 
                                   <div class="input-group form-group">
                                   <label   class="form-control input-group form-group bg" >Post Type</label>
@@ -363,7 +368,7 @@
         <div class="col-md-4 ele" id="step2" >
             <div class="container">
                 <div class="d-flex justify-content-center h-100">
-                    <div class="cardR">
+                    <div class="cardR2">
                            <div class="card-header">
                             <center><p class="txt"><b>Fill blanks</b></font></p></center>
 
@@ -375,7 +380,7 @@
                         <div class="col-md-6">
                                 <div class="input-group form-group">
                                     <div class="input-group-prepend">
-                                        <span style="width: 50px;" class="input-group-text bg"><i class="fas fa-heading" ></i></span>
+                                        <span  class="input-group-text bg"><i class="fas fa-heading" ></i></span>
                                     </div>
 
                                         {% render_field form.post_title class="form-control b-r" placeholder="Post Title" id="post_title" %}
@@ -384,7 +389,7 @@
 
                                 <div class="input-group form-group">
                                     <div class="input-group-prepend">
-                                        <span style="width: 50px;" style="width: 110px;" class="input-group-text bg"><i class="fas fa-dollar-sign"> </i></span>
+                                        <span  class="input-group-text bg"><i class="fas fa-dollar-sign"> </i></span>
                                     </div>
                                      {% render_field form.price class="form-control b-r" placeholder="Price" id="price" %}
 
@@ -392,7 +397,7 @@
 
                                    <div class="input-group form-group">
                                     <div class="input-group-prepend">
-                                        <span style="width: 50px;" class="input-group-text bg"><i class="fab fa-pagelines"></i></span>
+                                        <span  class="input-group-text bg"><i class="fab fa-pagelines"></i></span>
                                     </div>
                                      {% render_field form.building_age class="form-control b-r" placeholder="Building Age" id="building_age" %}
 
@@ -400,7 +405,7 @@
 
                                    <div class="input-group form-group">
                                     <div class="input-group-prepend">
-                                        <span style="width: 50px;"  class="input-group-text bg"><i class="fas fa-building"></i></span>
+                                        <span   class="input-group-text bg"><i class="fas fa-building"></i></span>
                                     </div>
                                     {% render_field form.floor class="form-control b-r" placeholder="Building Floor" id="floor" %}
 
@@ -408,14 +413,14 @@
 
                                    <div class="input-group form-group">
                                     <div class="input-group-prepend">
-                                        <span style="width: 50px;" class="input-group-text bg"><i class="fas fa-arrows-alt"></i></span>
+                                        <span  class="input-group-text bg"><i class="fas fa-arrows-alt"></i></span>
                                     </div>
                                     {% render_field form.area class="form-control b-r" placeholder="Area m²" id=area%}
 
                                 </div>
                                      <div class="input-group form-group">
                                     <div class="input-group-prepend">
-                                        <span style="width: 50px;"  class="input-group-text bg"><i class="fas fa-building"></i></span>
+                                        <span   class="input-group-text bg"><i class="fas fa-building"></i></span>
                                     </div>
                                     {% render_field form.room class="form-control b-r" placeholder="Room Number" id="room" %}
 
@@ -428,7 +433,7 @@
                          <div class="col-md-6">
                               <div  class="input-group form-group">
                                     <div class="input-group-prepend">
-                                        <span style="width: 50px;" class="input-group-text bg"><i class="fas fa-paragraph"></i></span>
+                                        <span  class="input-group-text bg"><i class="fas fa-paragraph"></i></span>
 
                                     </div>
                                    {% render_field form.post_description class="form-control desdiv b-r" placeholder="Description" id="post_description"%}
