@@ -381,6 +381,7 @@ def deletephoto(request, pk):
 @allowed_users(allowed_roles=['admin'])
 def delete_user(request, pk):
     user = ourUser.objects.get(id=pk)
+    queryuser = ourUser.objects.filter(id=pk)
     sales = Post.objects.all().filter(postType='For Sale')
     sales_count = sales.count()
 
@@ -390,7 +391,12 @@ def delete_user(request, pk):
     users = ourUser.objects.all()
     users_count = users.count()
     if request.method == 'POST':
+
+        if len(queryuser) == 0 :
+            messages.error(request, ' Error: User is not deleted ')
+
         user.delete()
+        messages.success(request, ' User Successfully Deleted  ')
         return redirect('user')
     context = {
         'users': users,
@@ -406,6 +412,7 @@ def delete_user(request, pk):
 @allowed_users(allowed_roles=['admin'])
 def delete_post(request, pk):
     post = Post.objects.get(id=pk)
+    querypost = Post.objects.filter(id=pk)
     sales = Post.objects.all().filter(postType='For Sale')
     sales_count = sales.count()
 
@@ -415,11 +422,17 @@ def delete_post(request, pk):
     users = ourUser.objects.all()
     users_count = users.count()
     if request.method == 'POST':
+
+        if len(querypost) == 0 :
+            messages.error(request, ' Error: Post is not deleted ')
+
         post.delete()
+        messages.success(request,' Post Successfully Deleted  ')
         if post.postType == 'For Sale':
             return redirect('sale')
         else:
             return redirect('rent')
+
 
     context = {
         'post': post,
@@ -452,7 +465,7 @@ def editpost_admin(request, pk):
         if p_form.is_valid():
             post = p_form.save()
             post_name = p_form.cleaned_data.get('post_title')
-            messages.success(request, f'{post_name} has been added')
+            messages.success(request, f'{post_name} has been updated')
             fuser.save()
 
             if images != None:

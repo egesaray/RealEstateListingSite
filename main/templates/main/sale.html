@@ -12,6 +12,18 @@
         <div class="col-md-4">
         </div>
         <div class="col-md-8">
+            <div class="row justify-content-center">
+                {% if messages %}
+                <div class="card bg-info text-white my-2">
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }}</li>
+                    {% endfor %}
+                </ul>
+                </div>
+                {% endif %}
+            </div>
+
             <div class="row ">
                 <table class="table bg-white">
                     <thead class="bg-info text-white">
