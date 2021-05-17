@@ -46,7 +46,15 @@
             height: calc(3rem + 2px) !important;
             border-radius: 0;
         }
-
+    .login_btn {
+			width: 67%;
+			 background-color: rgba(0,0,0,0.7) !important;
+			color: white !important;
+		}
+		.login_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
     </style>
 
 </head>
@@ -91,6 +99,7 @@
 
             </div>
         </div>
+            <button class="btn login_btn" onclick="window.location.href='/'">Return main page</button>
     </div>
 </div>
 {% endblock %}
