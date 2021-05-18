@@ -559,6 +559,7 @@ def editprofile(request):
             ouser=userForm.save()
             ouser.save()
             post = p_form.save()
+            fuser.username = ouser.username
             fuser.save()
 
 
