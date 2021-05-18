@@ -18,6 +18,7 @@ urlpatterns = [
     path('postlistings/<str:RoS>', views.postlistings, name="postlistings"),
     path('listaddedposts/', views.listaddedposts, name="listaddedposts"),
     path('editpost/<int:pk>', views.editpost, name="editpost"),
+    path('editprofile/', views.editprofile, name="editprofile"),
     path('delete-post/<int:pk>', views.deletepost, name='delete-post'),
     path('delete-photo/<int:pk>', views.deletephoto, name='delete-photo'),
     path('adminpage/', views.adminpage, name="adminpage"),

@@ -1,0 +1,236 @@
+{% extends 'main/mainpage.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+<!-- Postların yayında olup olmadığını anlamak için yayında mı checkbox yapılabilir -->
+<head xmlns="http://www.w3.org/1999/html">
+    <title>ProfileSetting</title>
+
+
+    <style >
+  hr{
+      border-style: none;
+    box-shadow: 2px 2px 5px 5px #102c35;
+  }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    .note {
+      text-align: center;
+      height: 80px;
+      color: #fff;
+      font-weight: bold;
+      line-height: 80px;
+    }
+
+    .form-content {
+      padding: 5%;
+      border: 1px solid #ced4da;
+      margin-bottom: 2%;
+      background: white;
+    }
+
+    .btnSubmit {
+      border: none;
+      border-radius: 1.5rem;
+      padding: 1%;
+      width: 20%;
+      cursor: pointer;
+      background: #0062cc;
+      color: #fff;
+    }
+     .custom_button{
+          background-color: #0c2026 ;
+          border: none;
+          border-bottom:4px solid #36362f;
+          border-radius:50px;
+          color: #f8fcfd;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+	      cursor: pointer;
+        }
+
+#slider{
+	width: 440px;
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	cursor: grab;
+}
+
+
+#message{
+height: 400px;
+width: 760px;
+top:50%;
+position: absolute;
+left : 50%;
+transform:translate(-50%,-50%);
+background-color:info;
+box-shadow: 2px 2px 15px 15px #020708;
+display:none;
+
+}
+
+#addphoto{
+display:none;
+}
+#addbutton{
+display:block;
+}
+
+
+#modal_inner {
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+  position:relative;
+  width: 660px;
+  height: 289px;
+  background-color: #fcfcfc;;
+  box-shadow: 0 1px 3px #000;
+}
+
+h1 {
+  font-size: 35px;
+    font-family: "Times New Roman", Times, cursive;
+    font-weight: lighter;
+    font-variant: small-caps;
+    color:#f8fcfd;
+}
+
+
+#slider::-webkit-scrollbar {
+		width: 8px;
+
+}
+
+#slider::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+
+}
+
+#slider::-webkit-scrollbar-thumb {
+  background-color: #7B9395 ;
+  outline: none;
+  border-radius: 100px;
+
+}
+#slider:active{
+cursor:grabbing;
+}
+
+#slider::-webkit-scrollbar-thumb:active{
+    background-color: #2F4345;
+}
+
+#updates{
+display:none;
+}
+#btnshw{
+display:block;
+}
+  .desdiv{
+                    max-height: 300px;
+                    min-height: 255px;
+        }
+  </style>
+    <script>
+        function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+
+         function show() {
+        document.getElementById("updates").style.display = "block";
+        document.getElementById("btnshw").style.display = "none";
+        }
+
+     </script>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body >
+
+<div>
+
+    <div class="form-content">
+
+      <div class="row">
+        <div class="col-sm">
+          <div class="form-group">
+            {{fuser.first_name}}
+          </div>
+            <div class="form-group">
+            {{fuser.last_name}}
+          </div>
+            <div class="form-group">
+            {{fuser.email}}
+          </div>
+      </div>
+    </div>
+</div>
+</div>
+ <button onclick="show()" type="button" class=" btnSubmit btn-info ">Settings</button>
+    <div id="updates">
+<form method="post" enctype="multipart/form-data">
+
+  {% csrf_token %}
+<div class="container register-form">
+  <div class="form">
+    <div class="form-content">
+                <center>
+            <h4>Setting</h4>
+            <hr>
+          </center>
+      <div class="row">
+        <div class="col-sm">
+          <div class="form-group">
+            <label>username</label>
+            {% render_field p_form.username class="form-control" placeholder="username" %}
+          </div>
+        <div class="row">
+        <div class="col-sm">
+            <div class="form-group">
+              <label>first_name</label>
+              {% render_field p_form.first_name class="form-control" placeholder="first_name" %}
+            </div>
+            <div class="form-group">
+              <label>last_name</label>
+              {% render_field p_form.last_name class="form-control" placeholder="last_name" %}
+            </div>
+            <div class="form-group">
+              <label>email</label>
+              {% render_field p_form.email class="form-control" placeholder="email" %}
+            </div>
+      </div>
+      <hr>
+
+        </div>
+        </div>
+      </div>
+        <center>
+               <button type="submit" class="btnSubmit btn-primary" >Update<i class="far fa-edit"></i></button>
+
+      </center>
+    </div>
+  </div>
+</div>
+</form>
+
+
+
+
+</div>
+
+</body>
+
+{% endblock content %}
