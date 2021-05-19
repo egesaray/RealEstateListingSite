@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.http import HttpResponseRedirect
 from .decorators import unauthenticated_user, allowed_users
 from .forms import *
@@ -11,7 +11,7 @@ from .filters import *
 from django.db.models import Q
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import User
-
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 def logoutUser(request):
@@ -564,3 +564,17 @@ def editprofile(request):
 
 
     return render(request, 'main/editprofile.html', context=mydict)
+
+@login_required
+@allowed_users(allowed_roles=['customer'])
+def changepassword(request):
+
+    form = PasswordChangeForm(data=request.POST, user=request.user)
+    if request.method == 'POST':
+        form = PasswordChangeForm(data=request.POST, user=request.user)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)  # değiştirdikten sonra hala giriş yapmış şekilde kalması için
+            return redirect('/')
+
+    return render(request, 'main/changepassword.html', {'form':form})
