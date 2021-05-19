@@ -542,3 +542,25 @@ def productbyloc(request, loc):
 
 
 
+@login_required
+@allowed_users(allowed_roles=['customer'])
+def editprofile(request):
+    fuser = ourUser.objects.get(user_id=request.user.id)
+    ouser=User.objects.get(id=fuser.user_id)
+    userForm=UserForm(instance=ouser)
+
+    p_form = OurUserForm(instance=fuser)
+
+    mydict = {'fuser': fuser, 'p_form': p_form,'userForm':userForm}
+    if request.method == 'POST':
+        userForm=UserForm(request.POST,instance=ouser)
+        p_form = OurUserForm(request.POST, instance=fuser)
+        if userForm.is_valid() and p_form.is_valid():
+            ouser=userForm.save()
+            ouser.save()
+            post = p_form.save()
+            fuser.username = ouser.username
+            fuser.save()
+
+
+    return render(request, 'main/editprofile.html', context=mydict)

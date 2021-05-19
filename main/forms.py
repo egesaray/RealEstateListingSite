@@ -25,4 +25,14 @@ class ImagePost(ModelForm):
         fields = ['image']
 
 
+class OurUserForm(ModelForm):
+    class Meta:
+        model= User
+        fields = ['first_name' , 'last_name' , 'email']
+
+class UserForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ['username']
+
 
