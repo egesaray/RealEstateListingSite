@@ -395,6 +395,8 @@ def delete_user(request, pk):
         if len(queryuser) == 0 :
             messages.error(request, ' Error: User is not deleted ')
 
+        uposts = Post.objects.filter(ouruser=user)
+        uposts.delete()
         user.delete()
         messages.success(request, ' User Successfully Deleted  ')
         return redirect('user')

@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class ourUser(models.Model):
-    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)  # relation with django's user # will be implemented later
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     username = models.CharField(max_length=255,null=True)
     first_name = models.CharField(max_length=255,null=True)
     last_name = models.CharField(max_length=255,null=True)
