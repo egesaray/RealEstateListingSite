@@ -381,6 +381,9 @@ def deletephoto(request, pk):
 @allowed_users(allowed_roles=['admin'])
 def delete_user(request, pk):
     user = ourUser.objects.get(id=pk)
+    dusername = user.username
+    duser = User.objects.get(username=dusername)
+    
     queryuser = ourUser.objects.filter(id=pk)
     sales = Post.objects.all().filter(postType='For Sale')
     sales_count = sales.count()
@@ -398,6 +401,7 @@ def delete_user(request, pk):
         uposts = Post.objects.filter(ouruser=user)
         uposts.delete()
         user.delete()
+        duser.delete()
         messages.success(request, ' User Successfully Deleted  ')
         return redirect('user')
     context = {
