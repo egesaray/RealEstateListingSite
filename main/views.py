@@ -383,7 +383,7 @@ def delete_user(request, pk):
     user = ourUser.objects.get(id=pk)
     dusername = user.username
     duser = User.objects.get(username=dusername)
-    
+
     queryuser = ourUser.objects.filter(id=pk)
     sales = Post.objects.all().filter(postType='For Sale')
     sales_count = sales.count()
