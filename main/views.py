@@ -63,6 +63,185 @@ def register(request):
     context = {'form': form}
     return render(request, 'main/register.html', context)
 
+def homepage(request):
+    forsale = 'forsale'
+    forrent = 'forrent'
+    adana = Post.objects.all().filter(location='Adana').count()
+    istanbulasya = Post.objects.all().filter(location='İstanbulAsya').count()
+    istanbulavrupa = Post.objects.all().filter(location='İstanbulAvrupa').count()
+    adiyaman = Post.objects.all().filter(location='Adıyaman').count()
+    afyonkarahisar = Post.objects.all().filter(location='Afyonkarahisar').count()
+    agri = Post.objects.all().filter(location='Ağrı').count()
+    amasya = Post.objects.all().filter(location='Amasya').count()
+    ankara = Post.objects.all().filter(location='Ankara').count()
+    antalya = Post.objects.all().filter(location='Antalya').count()
+    artvin = Post.objects.all().filter(location='Artvin').count()
+    aydin = Post.objects.all().filter(location='Aydın').count()
+    balikesir = Post.objects.all().filter(location='Balıkesir').count()
+    bilecik = Post.objects.all().filter(location='Bilecik').count()
+    bingol = Post.objects.all().filter(location='Bingöl').count()
+    bitlis = Post.objects.all().filter(location='Bitlis').count()
+    bolu = Post.objects.all().filter(location='Bolu').count()
+    burdur = Post.objects.all().filter(location='Burdur').count()
+    bursa = Post.objects.all().filter(location='Bursa').count()
+    canakkale = Post.objects.all().filter(location='Çanakkale').count()
+    cankiri = Post.objects.all().filter(location='Çankırı').count()
+    corum = Post.objects.all().filter(location='Çorum').count()
+    denizli = Post.objects.all().filter(location='Denizli').count()
+    diyarbakir = Post.objects.all().filter(location='Diyarbakır').count()
+    edirne = Post.objects.all().filter(location='Edirne').count()
+    elazig = Post.objects.all().filter(location='Elazığ').count()
+    erzincan = Post.objects.all().filter(location='Erzincan').count()
+    erzurum = Post.objects.all().filter(location='Erzurum').count()
+    eskisehir = Post.objects.all().filter(location='Eskişehir').count()
+    gaziantep = Post.objects.all().filter(location='Gaziantep').count()
+    giresun = Post.objects.all().filter(location='Giresun').count()
+    gumushane = Post.objects.all().filter(location='Gümüşhane').count()
+    hakkari = Post.objects.all().filter(location='Hakkari').count()
+    hatay = Post.objects.all().filter(location='Hatay').count()
+    isparta = Post.objects.all().filter(location='Isparta').count()
+    mersin = Post.objects.all().filter(location='Mersin').count()
+    izmir = Post.objects.all().filter(location='İzmir').count()
+    kars = Post.objects.all().filter(location='Kars').count()
+    kastamonu = Post.objects.all().filter(location='Kastamonu').count()
+    kayseri = Post.objects.all().filter(location='Kayseri').count()
+    kirklareli = Post.objects.all().filter(location='Kırklareli').count()
+    kirsehir = Post.objects.all().filter(location='Kırşehir').count()
+    kocaeli = Post.objects.all().filter(location='Kocaeli').count()
+    konya = Post.objects.all().filter(location='Konya').count()
+    kutahya = Post.objects.all().filter(location='Kütahya').count()
+    malatya = Post.objects.all().filter(location='Malatya').count()
+    manisa = Post.objects.all().filter(location='Manisa').count()
+    kahramanmaras = Post.objects.all().filter(location='Kahramanmaraş').count()
+    mardin = Post.objects.all().filter(location='Mardin').count()
+    mugla = Post.objects.all().filter(location='Muğla').count()
+    mus = Post.objects.all().filter(location='Muş').count()
+    nevsehir = Post.objects.all().filter(location='Nevşehir').count()
+    nigde = Post.objects.all().filter(location='Niğde').count()
+    ordu = Post.objects.all().filter(location='Ordu').count()
+    rize = Post.objects.all().filter(location='Rize').count()
+    sakarya = Post.objects.all().filter(location='Sakarya').count()
+    samsun = Post.objects.all().filter(location='Samsun').count()
+    siirt = Post.objects.all().filter(location='Siirt').count()
+    sinop = Post.objects.all().filter(location='Sinop').count()
+    sivas = Post.objects.all().filter(location='Sivas').count()
+    tekirdag = Post.objects.all().filter(location='Tekirdağ').count()
+    tokat = Post.objects.all().filter(location='Tokat').count()
+    trabzon = Post.objects.all().filter(location='Trabzon').count()
+    tunceli = Post.objects.all().filter(location='Tunceli').count()
+    sanliurfa = Post.objects.all().filter(location='Şanlıurfa').count()
+    usak = Post.objects.all().filter(location='Uşak').count()
+    van = Post.objects.all().filter(location='Van').count()
+    yozgat = Post.objects.all().filter(location='Yozgat').count()
+    zonguldak = Post.objects.all().filter(location='Zonguldak').count()
+    aksaray = Post.objects.all().filter(location='Aksaray').count()
+    bayburt = Post.objects.all().filter(location='Bayburt').count()
+    karaman = Post.objects.all().filter(location='Karaman').count()
+    kirikkale = Post.objects.all().filter(location='Kırıkkale').count()
+    batman = Post.objects.all().filter(location='Batman').count()
+    sirnak = Post.objects.all().filter(location='Şırnak').count()
+    bartin = Post.objects.all().filter(location='Bartın').count()
+    ardahan = Post.objects.all().filter(location='Ardahan').count()
+    igdir = Post.objects.all().filter(location='Iğdır').count()
+    yalova = Post.objects.all().filter(location='Yalova').count()
+    karabuk = Post.objects.all().filter(location='Karabük').count()
+    kilis = Post.objects.all().filter(location='Kilis').count()
+    osmaniye = Post.objects.all().filter(location='Osmaniye').count()
+    duzce = Post.objects.all().filter(location='Düzce').count()
+    kuzeykibris = Post.objects.all().filter(location='KuzeyKıbrıs').count()
+
+
+    mydict = {
+
+    'istanbulasya': istanbulasya,
+    'istanbulavrupa': istanbulavrupa,
+    'adana': adana,
+    'adiyaman': adiyaman ,
+    'afyonkarahisar': afyonkarahisar ,
+    'agri':agri ,
+    'amasya': amasya ,
+    'ankara': ankara ,
+    'antalya': antalya ,
+    'artvin': artvin ,
+    'aydin': aydin ,
+    'balikesir': balikesir ,
+    'bilecik': bilecik ,
+    'bingol': bingol ,
+    'bitlis': bitlis ,
+    'bolu': bolu ,
+    'burdur': burdur ,
+    'bursa': bursa ,
+    'canakkale': canakkale ,
+    'cankiri': cankiri ,
+    'corum': corum ,
+    'denizli': denizli ,
+    'diyarbakir': diyarbakir ,
+    'edirne': edirne ,
+    'elazig': elazig ,
+    'erzincan': erzincan ,
+    'erzurum': erzurum ,
+    'eskisehir': eskisehir ,
+    'gaziantep': gaziantep ,
+    'giresun': giresun,
+    'gumushane': gumushane ,
+    'hakkari': hakkari ,
+    'hatay': hatay ,
+    'isparta': isparta ,
+    'mersin': mersin ,
+    'izmir': izmir ,
+    'kars': kars ,
+    'kastamonu': kastamonu ,
+    'kayseri': kayseri ,
+    'kirklareli': kirklareli ,
+    'kirsehir': kirsehir ,
+    'kocaeli': kocaeli ,
+    'konya': konya,
+    'kutahya': kutahya ,
+    'malatya': malatya ,
+    'manisa': manisa ,
+    'kahramanmaras': kahramanmaras,
+    'mardin': mardin,
+    'mugla': mugla,
+    'mus': mus,
+    'nevsehir': nevsehir,
+    'nigde': nigde,
+    'ordu': ordu,
+    'rize': rize,
+    'sakarya': sakarya,
+    'samsun': samsun,
+    'siirt': siirt,
+    'sinop': sinop,
+    'sivas': sivas,
+    'tekirdag': tekirdag,
+    'tokat': tokat,
+    'trabzon': trabzon,
+    'tunceli': tunceli,
+    'sanliurfa': sanliurfa,
+    'usak': usak,
+    'van': van,
+    'yozgat': yozgat,
+    'zonguldak': zonguldak,
+    'aksaray': aksaray,
+    'bayburt': bayburt,
+    'karaman': karaman,
+    'kirikkale': kirikkale,
+    'batman':batman,
+    'sirnak': sirnak,
+    'bartin': bartin,
+    'ardahan': ardahan,
+    'igdir': igdir,
+    'yalova': yalova,
+    'karabuk': karabuk,
+    'kilis': kilis,
+    'osmaniye': osmaniye,
+    'duzce': duzce,
+    'kuzeykibris': kuzeykibris,
+    'forsale': forsale,
+    'forrent': forrent,
+
+              }
+
+    return render(request, 'main/homepage.html', context=mydict)
 
 def homepagealternative(request):
     return render(request, 'main/homepagealternative.html')
@@ -186,11 +365,7 @@ def graphs(request):
     return render(request, 'main/graphs.html', context)
 
 
-def homepage(request):
-    forsale = 'forsale'
-    forrent = 'forrent'
 
-    return render(request, 'main/homepage.html', {'forsale': forsale, 'forrent': forrent})
 
 
 def list(request, RoS):
